@@ -1,0 +1,758 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light}body{margin:0;font:14px system-ui}img{max-width:100%}</style></head><body><title>Sam's Aquarium Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@94..112,500..800&family=Source+Sans+3:ital,wght@0,400..600;1,400&display=swap" rel="stylesheet">
+<style>
+  /* The page descends through water: bright at the surface, dark at the bottom.
+     Colours are the Sam's Aquarium website's own, painted explicitly so the page
+     reads the same in any browser theme. Screen mockups use their real-world
+     colours (WhatsApp green, Google white) so they read as the actual apps. */
+  :root{
+    --ink:#06161f; --deep:#0b2a38; --teal:#146475; --teal-2:#1e8a9a; --glass:#9fd6dd;
+    --foam:#eef6f5; --foam-2:#dcebea; --paper:#ffffff;
+    --orange:#f26a3d; --orange-2:#d8532a; --blue:#1e4fa8;
+    --text:#0e2430; --text-dim:#48616d; --on-dark:#eaf4f3; --on-dark-dim:#a9c4c8;
+    --rule:rgba(14,36,48,.12);
+    --head:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --body:"Source Sans 3","Segoe UI",Helvetica,Arial,sans-serif;
+    --wrap:1040px; --gutter:clamp(20px,5vw,56px);
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:var(--body);
+       font-size:17.5px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit}
+  p{margin:0 0 1em;max-width:60ch}
+  ul{margin:0 0 1.2em;padding-left:1.15em;max-width:60ch}
+  li{margin-bottom:.45em}
+  li::marker{color:var(--text-dim)}
+  strong{font-weight:600}
+  h1,h2,h3{font-family:var(--head);color:var(--ink);letter-spacing:-.018em;
+           font-variation-settings:"wdth" 104;text-wrap:balance}
+  h1{font-size:clamp(2.6rem,6.4vw,4.6rem);font-weight:800;line-height:.98;margin:0 0 .5em}
+  h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;line-height:1.04;margin:0 0 .6em}
+  h3{font-size:clamp(1.45rem,2.8vw,2.1rem);font-weight:800;line-height:1.08;margin:0 0 .55em}
+  h4{font-family:var(--head);font-size:1.02rem;font-weight:700;margin:0 0 .8em;color:var(--ink)}
+  .wrap{width:min(100% - 2*var(--gutter),var(--wrap));margin-inline:auto}
+  .lead{font-size:clamp(1.15rem,1.6vw,1.32rem);line-height:1.55;color:var(--text-dim);max-width:56ch}
+  .dim{color:var(--text-dim)}
+  .on-dark .lead,.on-dark .dim{color:var(--on-dark-dim)}
+  .on-dark h2,.on-dark h3,.on-dark h4{color:#fff}
+  .on-dark{color:var(--on-dark)}
+  .section{position:relative;padding-block:clamp(3.4rem,8vw,6.5rem)}
+  .kicker{font-family:var(--head);font-weight:700;font-size:.92rem;color:var(--orange);margin:0 0 .9rem;letter-spacing:.01em}
+
+  /* ---------- rail + progress ---------- */
+  .rail{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:16px;
+        padding:14px 10px;border-radius:24px;background:rgba(6,22,31,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+        box-shadow:0 0 0 1px rgba(159,214,221,.15)}
+  .rail a{position:relative;display:block;width:10px;height:10px;border-radius:50%;background:rgba(159,214,221,.35);text-decoration:none;
+          transition:background .3s,transform .3s}
+  .rail a span{position:absolute;right:22px;top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--head);font-weight:700;
+               font-size:.82rem;color:#fff;background:rgba(6,22,31,.85);padding:.35em .7em;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .25s}
+  .rail a:hover span,.rail a.is-on span{opacity:1}
+  .rail a.is-on{background:var(--orange);transform:scale(1.35);box-shadow:0 0 0 5px rgba(242,106,61,.25)}
+  .progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:60;background:transparent;pointer-events:none}
+  .progress i{display:block;height:100%;width:calc(var(--p,0)*1%);background:var(--orange);transition:width .1s linear}
+  @media(max-width:1100px){.rail{display:none}}
+  @media(min-width:1101px){.progress{display:none}}
+
+  /* ---------- cover ---------- */
+  .cover{position:relative;min-height:100svh;display:grid;align-items:end;background:var(--ink);color:#fff;overflow:hidden;
+         padding-block:clamp(3rem,8vw,5rem)}
+  .cover__bg{position:absolute;inset:-12% 0;z-index:0;will-change:transform}
+  .cover__bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+  .cover__veil{position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,rgba(6,22,31,.55) 0%,rgba(6,22,31,.2) 35%,rgba(6,22,31,.82) 72%,var(--ink) 100%),
+               linear-gradient(90deg,rgba(6,22,31,.6) 0%,rgba(6,22,31,0) 60%)}
+  .fish{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none}
+  .cover__in{position:relative;z-index:3}
+  .cover__logo{width:min(320px,70vw);height:auto;margin:0 0 clamp(2rem,5vw,3.4rem);filter:drop-shadow(0 8px 22px rgba(0,0,0,.5));
+               opacity:0;animation:rise 1s var(--ease) .1s forwards}
+  .cover h1{color:#fff;max-width:14ch}
+  .cover h1 span{display:block;opacity:0;animation:rise .9s var(--ease) forwards}
+  .cover h1 span:nth-child(1){animation-delay:.35s}
+  .cover h1 span:nth-child(2){animation-delay:.5s}
+  .cover h1 span:nth-child(3){animation-delay:.65s}
+  .cover p{color:rgba(255,255,255,.9);font-size:clamp(1.1rem,1.6vw,1.3rem);max-width:46ch;opacity:0;animation:rise .9s var(--ease) .95s forwards}
+  .cover__meta{margin-top:2.4rem;padding-top:1.1rem;border-top:1px solid rgba(159,214,221,.3);display:grid;grid-template-columns:repeat(3,auto);
+               gap:.4rem 2.6rem;font-size:.9rem;color:rgba(255,255,255,.72);opacity:0;animation:rise .9s var(--ease) 1.15s forwards}
+  .cover__meta b{display:block;color:#fff;font-weight:600;font-size:.98rem}
+  .cover__scroll{position:absolute;left:50%;bottom:22px;z-index:3;transform:translateX(-50%);width:22px;height:36px;
+                 border:2px solid rgba(255,255,255,.45);border-radius:12px}
+  .cover__scroll::after{content:"";position:absolute;left:50%;top:6px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--glass);animation:drift 1.8s var(--ease) infinite}
+  @keyframes drift{0%{transform:translateY(0);opacity:1}100%{transform:translateY(12px);opacity:0}}
+  @keyframes rise{to{opacity:1;transform:none}from{opacity:0;transform:translateY(22px)}}
+  @media(max-width:560px){.cover__meta{grid-template-columns:1fr}}
+
+  /* ---------- the website: before / after slider ---------- */
+  .surface{background:var(--paper)}
+  .cmp{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:10px;background:var(--deep);user-select:none;
+       box-shadow:0 40px 80px -40px rgba(6,22,31,.7),0 0 0 1px rgba(6,22,31,.08);margin:clamp(1.6rem,4vw,2.6rem) 0}
+  .cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top left}
+  .cmp__old{clip-path:inset(0 calc(100% - var(--split,50)*1%) 0 0)}
+  .cmp__line{position:absolute;top:0;bottom:0;left:calc(var(--split,50)*1%);width:2px;background:#fff;transform:translateX(-1px);
+             box-shadow:0 0 0 1px rgba(6,22,31,.25);pointer-events:none}
+  .cmp__grip{position:absolute;top:50%;left:50%;width:46px;height:46px;transform:translate(-50%,-50%);border-radius:50%;background:#fff;
+             box-shadow:0 8px 24px rgba(6,22,31,.45);display:grid;place-items:center}
+  .cmp__grip::before,.cmp__grip::after{content:"";width:8px;height:8px;border-top:2.5px solid var(--ink);border-left:2.5px solid var(--ink);position:absolute;top:50%}
+  .cmp__grip::before{left:12px;transform:translateY(-50%) rotate(-45deg)}
+  .cmp__grip::after{right:12px;transform:translateY(-50%) rotate(135deg)}
+  .cmp__tag{position:absolute;bottom:14px;z-index:3;font-family:var(--head);font-weight:700;font-size:.85rem;color:#fff;background:rgba(6,22,31,.72);
+            padding:.35em .75em;border-radius:5px;backdrop-filter:blur(6px);pointer-events:none}
+  .cmp__tag--l{left:14px}.cmp__tag--r{right:14px;background:var(--orange)}
+  .cmp__range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none;background:transparent;z-index:4}
+  .cmp__range::-webkit-slider-runnable-track{height:100%;background:transparent}
+  .cmp__range::-webkit-slider-thumb{-webkit-appearance:none;width:56px;height:100%;background:transparent;cursor:ew-resize}
+  .cmp__range::-moz-range-track{height:100%;background:transparent}
+  .cmp__range::-moz-range-thumb{width:56px;height:100%;border:0;background:transparent;cursor:ew-resize}
+  .cmp__range:focus-visible ~ .cmp__line{box-shadow:0 0 0 3px var(--orange)}
+  .cmp-print{display:none}
+  .split2{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.6rem,4vw,3.4rem);align-items:start}
+  @media(max-width:760px){.split2{grid-template-columns:1fr}}
+  .btn{display:inline-flex;align-items:center;gap:.6em;padding:.9em 1.4em;border-radius:999px;background:var(--orange);color:#fff;font-weight:700;
+       text-decoration:none;font-size:1rem;box-shadow:0 12px 26px -14px rgba(242,106,61,.9);transition:transform .3s var(--ease),background .25s}
+  .btn:hover{background:var(--orange-2);transform:translateY(-2px)}
+  .btn--ghost{background:transparent;color:inherit;border:2px solid currentColor;box-shadow:none}
+  .btn--ghost:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+
+  /* ---------- what you get ---------- */
+  .gives{display:grid;grid-template-columns:9.5rem 1fr;gap:0 clamp(1rem,3vw,2.2rem);margin-top:1.6rem}
+  .gives > div{padding:1.1rem 0;border-top:1px solid var(--rule)}
+  .gives__k{font-family:var(--head);font-weight:700;color:var(--ink)}
+  .gives__v{position:relative;padding-left:1.4rem !important}
+  .gives__v::before{content:"";position:absolute;left:0;top:1.55rem;width:.6em;height:.6em;border-radius:50%;background:var(--orange)}
+  @media(max-width:700px){
+    .gives{grid-template-columns:1fr}
+    .gives__k{padding-bottom:.15rem}
+    .gives__v{border-top:0;padding:.1rem 0 1.2rem 1.4rem}
+    .gives__v::before{top:.55rem}
+  }
+
+  /* ---------- the week ---------- */
+  .week-head{background:var(--paper);padding-bottom:0}
+  .scene{position:relative;padding-block:clamp(2.6rem,6vw,4.6rem);overflow:hidden}
+  .scene:nth-of-type(odd){background:var(--paper)}
+  .scene:nth-of-type(even){background:var(--foam)}
+  .scene__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,5vw,4.5rem);align-items:center}
+  .scene--flip .scene__art{order:2}
+  .scene__art{display:flex;justify-content:center;perspective:1400px}
+  .scene__text p{margin-bottom:.7em}
+  .scene__text .btn{margin-top:.6rem}
+  @media(max-width:760px){.scene__grid{grid-template-columns:1fr;gap:1.6rem}.scene--flip .scene__art{order:0}}
+  @keyframes lift3d{from{opacity:.25;transform:translateY(46px) rotateX(9deg) rotateY(-7deg) scale(.95)}to{opacity:1;transform:none}}
+  @keyframes lift3dR{from{opacity:.25;transform:translateY(46px) rotateX(9deg) rotateY(7deg) scale(.95)}to{opacity:1;transform:none}}
+  @keyframes arrive{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .scene.is-in .device{animation:lift3d 1.1s var(--ease) both}
+  .scene--flip.is-in .device{animation-name:lift3dR}
+  .scene.is-in .a{animation:arrive .5s var(--ease) both;animation-delay:calc(.45s + var(--d,0)*.24s)}
+
+  /* phone frame */
+  .phone{width:296px;max-width:100%;background:#0f0f10;border-radius:40px;padding:11px;
+         box-shadow:0 44px 70px -34px rgba(6,22,31,.75),0 0 0 1px rgba(0,0,0,.3);
+         font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111;transform-style:preserve-3d}
+  .screen{background:#fff;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;aspect-ratio:9/18.2;font-size:13px;line-height:1.35}
+  .status{display:flex;justify-content:space-between;align-items:center;padding:8px 18px 4px;font-size:11.5px;font-weight:600;background:inherit}
+  .status i{font-style:normal;letter-spacing:-1px}
+  .badge{background:#fff url(img/logo.png) 0 50%/297% auto no-repeat}
+  .wa .status{background:#075E54;color:#fff}
+  .wa-head{background:#075E54;color:#fff;padding:6px 12px 10px;display:flex;align-items:center;gap:10px}
+  .wa-back{width:9px;height:9px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg);margin-right:2px;opacity:.9}
+  .wa-av{width:34px;height:34px;border-radius:50%;flex:none;box-shadow:0 0 0 1.5px rgba(255,255,255,.35)}
+  .wa-name{font-weight:600;font-size:14px;line-height:1.15}
+  .wa-sub{font-size:11px;opacity:.85}
+  .wa-body{flex:1;background:#e5ddd5;padding:12px 10px;display:flex;flex-direction:column;gap:7px;overflow:hidden}
+  .wa-date{align-self:center;background:#e1f2fb;color:#4a5b66;font-size:10.5px;padding:3px 8px;border-radius:6px;margin-bottom:2px}
+  .msg{max-width:86%;background:#fff;border-radius:8px;padding:6px 8px 5px;box-shadow:0 1px .5px rgba(0,0,0,.13)}
+  .msg--out{align-self:flex-end;background:#dcf8c6}
+  .msg img{border-radius:6px;margin-bottom:6px;width:100%;aspect-ratio:16/10;object-fit:cover}
+  .msg-t{font-size:10px;color:#7a8a94;text-align:right;margin-top:2px;line-height:1}
+  .msg--out .msg-t::after{content:" ✓✓";color:#4fc3f7;letter-spacing:-2px}
+  .wa-foot{background:#f0f0f0;padding:7px 8px;display:flex;align-items:center;gap:6px}
+  .wa-in{flex:1;background:#fff;border-radius:18px;padding:7px 12px;color:#8a8a8a;font-size:12.5px}
+  .wa-mic{width:34px;height:34px;border-radius:50%;background:#128C7E}
+  .ig-head{display:flex;align-items:center;gap:9px;padding:10px 12px}
+  .ig-av{width:32px;height:32px;border-radius:50%;padding:2px;background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}
+  .ig-av span{display:block;width:100%;height:100%;border-radius:50%}
+  .ig-user{font-weight:600;font-size:13px;line-height:1.15}
+  .ig-loc{font-size:11px;color:#555}
+  .ig-img{aspect-ratio:1;overflow:hidden}
+  .ig-img img{width:100%;height:100%;object-fit:cover}
+  .ig-act{display:flex;gap:14px;padding:10px 12px 6px}
+  .ig-act svg{width:22px;height:22px;stroke:#111;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .ig-cap{padding:0 12px 12px;font-size:12.5px;line-height:1.4}
+  .ig-cap b{font-weight:600}
+  .ig-cap small{display:block;color:#888;font-size:10.5px;margin-top:6px}
+  .sh-head{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid #eee}
+  .sh-head img{height:28px;width:auto}
+  .sh-cart{width:20px;height:16px;border:2px solid #0b1f2a;border-top-width:0;border-radius:0 0 4px 4px;position:relative}
+  .sh-cart::before{content:"";position:absolute;left:3px;right:3px;top:-6px;height:6px;border:2px solid #0b1f2a;border-bottom:0;border-radius:6px 6px 0 0}
+  .sh-img{aspect-ratio:4/3;overflow:hidden;background:#eef2f1}
+  .sh-img img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
+  .sh-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .sh-cat{font-size:10.5px;color:#777}
+  .sh-name{font-family:var(--head);font-weight:700;font-size:15px;color:#0b1f2a;line-height:1.2}
+  .sh-price{font-family:var(--head);font-weight:700;font-size:17px;color:#0b1f2a}
+  .sh-stock{font-size:11.5px;color:#1a7f4b}
+  .sh-btns{display:grid;gap:7px;margin-top:6px}
+  .sh-btn{text-align:center;padding:9px;border-radius:8px;font-weight:600;font-size:12.5px;border:1.5px solid #0b1f2a;color:#0b1f2a}
+  .sh-btn--fill{background:#0b1f2a;color:#fff}
+  .sh-note{font-size:10.5px;color:#666;margin-top:auto;line-height:1.35}
+  .g{width:100%;max-width:440px;background:#fff;border-radius:14px;box-shadow:0 40px 70px -34px rgba(6,22,31,.6),0 0 0 1px rgba(0,0,0,.06);
+     padding:14px 16px 16px;font-family:arial,sans-serif;color:#202124;font-size:13px}
+  .g-bar{display:flex;align-items:center;gap:10px;border:1px solid #dfe1e5;border-radius:24px;padding:9px 14px;box-shadow:0 1px 6px rgba(32,33,36,.12)}
+  .g-bar svg{width:16px;height:16px;flex:none}
+  .g-q{flex:1;font-size:14px}
+  .g-label{font-size:11.5px;color:#70757a;margin:14px 0 8px}
+  .g-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .g-tile{border:1px solid #dadce0;border-radius:8px;padding:8px;font-size:11px;line-height:1.3}
+  .g-tile .im{aspect-ratio:1;border-radius:4px;overflow:hidden;background:#f1f3f4;margin-bottom:6px}
+  .g-tile .im img{width:100%;height:100%;object-fit:cover}
+  .g-tile .im.ph{background:repeating-linear-gradient(135deg,#eceff1 0 6px,#e3e7ea 6px 12px)}
+  .g-tile b{display:block;font-weight:400;color:#202124;margin-bottom:2px}
+  .g-tile .pr{font-weight:700;color:#202124}
+  .g-tile .st{color:#70757a;font-size:10.5px;margin-top:2px}
+  .g-tile .st.us{color:#188038;font-weight:600}
+  .g-tile--us{border-color:#0b1f2a}
+  .g-map{margin-top:14px;padding-top:12px;border-top:1px solid #eee;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}
+  .g-map .nm{color:#1a0dab;font-size:15px;line-height:1.25}
+  .g-map .rt{color:#70757a;font-size:12px;margin-top:2px}
+  .g-map .rt b{color:#e37400;font-weight:400;letter-spacing:-1px}
+  .g-map .op{color:#188038;font-size:12px}
+  .g-pin{width:44px;height:44px;border-radius:8px;background:#e8f0fe;display:grid;place-items:center}
+  .g-pin svg{width:22px;height:22px;fill:#ea4335}
+  .rep{width:100%;max-width:410px;background:#fff;border-radius:12px;box-shadow:0 40px 70px -34px rgba(6,22,31,.6),0 0 0 1px rgba(0,0,0,.06);overflow:hidden}
+  .rep-h{background:var(--ink);color:#fff;padding:14px 18px;font-family:var(--head);font-weight:700;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .rep-h img{height:22px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+  .rep-g{display:grid;grid-template-columns:1fr 1fr}
+  .rep-g div{padding:14px 18px;border-bottom:1px solid var(--rule);border-right:1px solid var(--rule)}
+  .rep-g div:nth-child(2n){border-right:0}
+  .rep-g b{display:block;font-family:var(--head);font-weight:800;font-size:1.8rem;color:var(--ink);line-height:1;font-variant-numeric:tabular-nums}
+  .rep-g span{display:block;font-size:11.5px;color:var(--text-dim);margin-top:4px}
+  .rep-l{padding:12px 18px 14px;font-size:12.5px;line-height:1.5}
+  .rep-l div{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px dashed var(--rule)}
+  .rep-l div:last-child{border-bottom:0}
+  .rep-l span{color:var(--text-dim)}
+  .rep-f{padding:8px 18px 12px;font-size:10.5px;color:var(--text-dim);border-top:1px solid var(--rule)}
+
+  /* ---------- photo band ---------- */
+  .band{position:relative;height:clamp(260px,42vw,520px);overflow:hidden;background:var(--deep)}
+  .band img{position:relative;top:-15%;width:100%;height:130%;object-fit:cover;object-position:center 30%;will-change:transform}
+  .band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,100,117,.18),rgba(6,22,31,.45));mix-blend-mode:multiply;pointer-events:none}
+  .band__cap{position:absolute;left:var(--gutter);bottom:1.6rem;z-index:2;color:#fff;font-family:var(--head);font-weight:700;font-size:1rem;
+             background:rgba(6,22,31,.7);padding:.45em .9em;border-radius:4px;backdrop-filter:blur(6px)}
+
+  /* ---------- included ---------- */
+  .midwater{background:var(--foam-2)}
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3.4rem);margin-top:1.4rem}
+  @media(max-width:700px){.pair{grid-template-columns:1fr}}
+  .card{background:var(--paper);border-radius:12px;padding:clamp(1.4rem,3vw,2rem);box-shadow:0 30px 60px -40px rgba(6,22,31,.5)}
+  .card h4{font-size:1.15rem;padding-bottom:.6em;border-bottom:2px solid var(--ink)}
+  .card ul{max-width:none;margin-bottom:0}
+
+  /* ---------- price (the deep) ---------- */
+  .depths{background:linear-gradient(180deg,var(--deep) 0%,var(--ink) 100%);color:var(--on-dark);overflow:hidden}
+  .caustics{position:absolute;inset:0;pointer-events:none;z-index:0}
+  .caustics::before,.caustics::after{content:"";position:absolute;width:70vw;height:70vw;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(30,138,154,.32),transparent 70%);filter:blur(40px);animation:sway 26s ease-in-out infinite alternate}
+  .caustics::before{top:-30vw;left:-20vw}
+  .caustics::after{bottom:-35vw;right:-20vw;animation-duration:34s;animation-direction:alternate-reverse;
+    background:radial-gradient(closest-side,rgba(242,106,61,.16),transparent 70%)}
+  @keyframes sway{from{transform:translate(0,0) scale(1)}to{transform:translate(12vw,8vw) scale(1.15)}}
+  .depths .wrap{position:relative;z-index:1}
+  .price{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.6rem 2.4rem;align-items:start;padding:2rem 0;margin:1rem 0 1.8rem;
+         border-top:1px solid rgba(159,214,221,.22);border-bottom:1px solid rgba(159,214,221,.22)}
+  @media(max-width:700px){.price{grid-template-columns:1fr}}
+  .price small{display:block;font-size:.9rem;color:var(--on-dark-dim);margin-bottom:.35rem}
+  .price b{display:block;font-family:var(--head);font-weight:800;font-size:clamp(2rem,4.4vw,3.1rem);color:#fff;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+  .price span{display:block;font-size:.94rem;color:var(--on-dark-dim);margin-top:.55rem;max-width:26ch}
+  .depths table{width:100%;max-width:60ch;border-collapse:collapse;font-size:.98rem;margin:0}
+  .depths td{padding:.6rem .8rem .6rem 0;border-bottom:1px solid rgba(159,214,221,.16);vertical-align:top}
+  .depths td:last-child{text-align:right;padding-right:0;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .terms{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3.4rem);margin-top:2.6rem;padding-top:2.2rem;border-top:1px solid rgba(159,214,221,.22)}
+  @media(max-width:700px){.terms{grid-template-columns:1fr}}
+  .terms ul{max-width:none}
+  .terms li::marker{color:var(--glass)}
+
+  /* ---------- close ---------- */
+  .close{position:relative;min-height:88svh;display:grid;align-items:center;background:var(--ink);color:#fff;overflow:hidden;padding-block:clamp(3rem,8vw,5rem)}
+  .close .cover__bg img{object-position:center 45%}
+  .close__in{position:relative;z-index:3}
+    .close h2{color:#fff;max-width:14ch;font-size:clamp(2.2rem,5.4vw,3.8rem)}
+  .close p{color:rgba(255,255,255,.9);max-width:46ch;font-size:1.12rem}
+  .sig{margin-top:2.2rem;font-family:var(--head);font-weight:700;color:#fff;font-size:1.1rem}
+  .sig small{display:block;font-family:var(--body);font-weight:400;color:var(--on-dark-dim);font-size:.92rem;margin-top:.2rem}
+  footer.foot{background:var(--ink);color:var(--on-dark-dim);padding-block:1.3rem;font-size:.88rem;border-top:1px solid rgba(159,214,221,.15)}
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .fish,.cover__scroll{display:none}
+    .caustics::before,.caustics::after{animation:none}
+    .cover__bg,.band img{transform:none !important}
+    .cover__logo,.cover h1 span,.cover p,.cover__meta{animation:none;opacity:1}
+    .scene.is-in .device,.scene.is-in .a{animation:none}
+  }
+  @media print{
+    body{background:#fff;font-size:11pt}
+    .rail,.progress,.fish,.cover__scroll,.caustics,.band{display:none}
+    .cover,.close{min-height:0;padding-block:2rem;background:var(--ink)}
+    .cover__bg{display:none}
+    .cover__logo,.cover h1 span,.cover p,.cover__meta{animation:none;opacity:1}
+    .section{padding-block:1.2rem}
+    .scene{break-inside:avoid;padding-block:1.2rem}
+    .cmp,.cmp__range{display:none}
+    .cmp-print{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0}
+    .cmp-print img{border:1px solid #ccc}
+    .phone,.g,.rep,.card{box-shadow:none}
+    .depths{background:var(--ink)}
+  }
+</style>
+
+<nav class="rail" aria-label="Sections">
+  <a href="#website"><span>The website</span></a>
+  <a href="#today"><span>What you get</span></a>
+  <a href="#week"><span>A week at Sam's</span></a>
+  <a href="#included"><span>What is included</span></a>
+  <a href="#price"><span>What it costs</span></a>
+  <a href="#next"><span>Next step</span></a>
+</nav>
+<div class="progress" aria-hidden="true"><i></i></div>
+
+<!-- ============================================================ COVER -->
+<header class="cover">
+  <div class="cover__bg" data-parallax="0.12"><img src="img/hero.webp" alt="A school of orange fish in a dark freshwater aquarium" width="2000" height="1334"></div>
+  <div class="cover__veil"></div>
+  <canvas class="fish" aria-hidden="true"></canvas>
+  <div class="wrap cover__in">
+    <img class="cover__logo" src="img/logo.png" alt="Sam's Aquarium" width="350" height="118">
+    <h1><span>A new website,</span><span>and everything</span><span>that goes with it.</span></h1>
+    <p>The website is complete and is provided at no charge. This proposal also sets out one package: an online shop with same-day delivery, weekly contact with your customers, and your products in Google results. One monthly fee, month to month.</p>
+    <div class="cover__meta">
+      <div>Prepared for<b>Sam's Aquarium, Bergvliet</b></div>
+      <div>Prepared by<b>Skye Harmse</b></div>
+      <div>Date<b>September 2026</b></div>
+    </div>
+  </div>
+  <div class="cover__scroll" aria-hidden="true"></div>
+</header>
+
+<!-- ============================================================ THE WEBSITE -->
+<section class="section surface" id="website">
+  <div class="wrap">
+    <p class="kicker">The website</p>
+    <h2>The website.</h2>
+    <p class="lead">It is finished, it is yours, and there is nothing to pay. Drag the line to compare it with the one you have now.</p>
+    <div class="cmp" style="--split:50">
+      <img src="img/site-new.jpg" alt="The new Sam's Aquarium website" width="1200" height="750">
+      <img class="cmp__old" src="img/site-old.jpg" alt="The current Sam's Aquarium website from 2015" width="1200" height="750">
+      <input class="cmp__range" type="range" min="2" max="98" value="50" aria-label="Drag to compare the old and new website">
+      <div class="cmp__line"><span class="cmp__grip"></span></div>
+      <span class="cmp__tag cmp__tag--l">2015</span><span class="cmp__tag cmp__tag--r">Now</span>
+    </div>
+    <div class="cmp-print"><img src="img/site-old.jpg" alt="The 2015 website"><img src="img/site-new.jpg" alt="The new website"></div>
+    <div class="split2">
+      <div>
+        <p>Six pages, built to work on a phone, with photographs of your own tanks and shopfront throughout. It gives Google your address, your hours and what you sell, in the format Google reads. Every page has a WhatsApp button, and the opening hours line shows whether the shop is open at that moment, including the Friday lunch closure.</p>
+        <p>All it needs to go live is a WhatsApp number for the buttons, which currently point at the shop landline.</p>
+        <p><a class="btn" href="https://skyeh01.github.io/sams-aquarium/" target="_blank" rel="noopener">Open the new website</a></p>
+      </div>
+      <div>
+        <p class="dim">The website presents the shop. It does not take orders, send messages to customers, or place products in search results.</p>
+        <p class="dim">The package below adds those three things.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TODAY / AFTER -->
+<section class="section shallows" id="today">
+  <div class="wrap">
+    <p class="kicker">The package</p>
+    <h2>What you get.</h2>
+    <p class="lead">One package, one monthly fee. This is what it delivers.</p>
+    <div class="gives">
+      <div class="gives__k">Reaching customers</div>
+      <div class="gives__v">A WhatsApp message each week to everyone who has signed up to hear from you.</div>
+      <div class="gives__k">Social media</div>
+      <div class="gives__v">A post each week on Facebook and Instagram: new arrivals, the tanks, what is looking good.</div>
+      <div class="gives__k">Selling</div>
+      <div class="gives__v">Orders online for collection at the counter, courier delivery anywhere in Cape Town, and same-day delivery in the Southern Suburbs, live fish included.</div>
+      <div class="gives__k">Being found</div>
+      <div class="gives__v">Your Google listing maintained, and your products in Google results with a photograph and a price.</div>
+      <div class="gives__k">Knowing what works</div>
+      <div class="gives__v">A one-page report each month: what sold, who got in touch, and where they came from.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ THE WEEK -->
+<section class="section week-head" id="week">
+  <div class="wrap">
+    <p class="kicker">In practice</p>
+    <h2>A week at Sam's, with the package running.</h2>
+    <p class="lead">Seen from the customer's side of the screen. The photographs are yours. The products, prices and figures are examples.</p>
+  </div>
+</section>
+
+<section class="scene">
+  <div class="wrap scene__grid">
+    <div class="scene__art">
+      <div class="phone device"><div class="screen">
+        <div class="status"><span>08:31</span><i>●●●● ▮</i></div>
+        <div class="ig-head"><div class="ig-av"><span class="badge"></span></div><div><div class="ig-user">samsaquarium</div><div class="ig-loc">Bergvliet, Cape Town</div></div></div>
+        <div class="ig-img a" style="--d:0"><img src="img/yellow-labs.webp" alt="Yellow Lab cichlids in a shop tank"></div>
+        <div class="ig-act a" style="--d:1">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l2-4.8A8.4 8.4 0 1 1 21 11.5z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </div>
+        <div class="ig-cap a" style="--d:2"><b>samsaquarium</b> New Malawi cichlids in this morning. Yellow labs, demasoni and a few peacocks, all settled and eating. Come and have a look, or message us on WhatsApp and we will hold some for you.<small>1 hour ago</small></div>
+      </div></div>
+    </div>
+    <div class="scene__text">
+      <p class="kicker">Monday, 8:30</p>
+      <h3>A post goes up.</h3>
+      <p>Each week, one post goes onto Facebook and Instagram: new arrivals, a tank at its best, the macaw. I write it and post it. You supply a photograph when there is something to show.</p>
+      <p>Your pages stay current, and the people who follow them see the shop regularly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scene scene--flip">
+  <div class="wrap scene__grid">
+    <div class="scene__art">
+      <div class="phone device"><div class="screen wa">
+        <div class="status"><span>09:15</span><i>●●●● ▮</i></div>
+        <div class="wa-head"><div class="wa-back"></div><div class="wa-av badge"></div><div><div class="wa-name">Sam's Aquarium</div><div class="wa-sub">Business account</div></div></div>
+        <div class="wa-body">
+          <div class="wa-date">Tuesday</div>
+          <div class="msg a" style="--d:0"><img src="img/angelfish.webp" alt="Angelfish in a shop tank">Morning! Angelfish landed an hour ago. Silver, marble and a few koi angels, all a good size and eating well. Reply and we will hold some for you until Thursday.<div class="msg-t">09:15</div></div>
+          <div class="msg msg--out a" style="--d:2">Please hold 4 marble for me, I'll come Wednesday<div class="msg-t">09:22</div></div>
+          <div class="msg a" style="--d:3">Done, 4 marble under your name. See you Wednesday.<div class="msg-t">09:24</div></div>
+        </div>
+        <div class="wa-foot"><div class="wa-in">Message</div><div class="wa-mic"></div></div>
+      </div></div>
+    </div>
+    <div class="scene__text">
+      <p class="kicker">Tuesday, 9:15</p>
+      <h3>New arrivals, straight to the people who care.</h3>
+      <p>When stock arrives, a message goes to everyone who has signed up to hear from you. A reply reserves the fish, and their name goes on the tank.</p>
+      <p>Messages go only to customers who have opted in, so each one reaches a person who asked to receive it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scene">
+  <div class="wrap scene__grid">
+    <div class="scene__art">
+      <div class="g device">
+        <div class="g-bar"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#9aa0a6" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="#9aa0a6" stroke-width="2" stroke-linecap="round"/></svg><span class="g-q">fish food cape town</span></div>
+        <div class="g-label">Shopping</div>
+        <div class="g-tiles">
+          <div class="g-tile g-tile--us a" style="--d:0"><div class="im"><img src="img/food-shelf.webp" alt=""></div><b>Tropical flake food, 250g</b><span class="pr">R89</span><div class="st us">Sam's Aquarium · Collect today</div></div>
+          <div class="g-tile a" style="--d:1"><div class="im ph"></div><b>Tropical flakes 250g</b><span class="pr">R94</span><div class="st">Online store · 2 to 4 days</div></div>
+          <div class="g-tile a" style="--d:2"><div class="im ph"></div><b>Flake food 200g</b><span class="pr">R79</span><div class="st">Online store · 3 to 5 days</div></div>
+        </div>
+        <div class="g-map a" style="--d:3">
+          <div><div class="nm">Sam's Aquarium</div><div class="rt">4.6 <b>★★★★★</b> (777) · Aquarium shop · Bergvliet</div><div class="op">Open · Closes 17:30 · Same-day delivery</div></div>
+          <div class="g-pin"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="scene__text">
+      <p class="kicker">Wednesday, lunchtime</p>
+      <h3>Someone in Tokai searches.</h3>
+      <p>They search for fish food in Cape Town. Your product appears with a photograph, a price, and "collect today". Your Google listing appears beside it with your rating and review count.</p>
+      <p>The product tile is advertising, charged per click from a budget you set. The listing beneath it is free.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scene scene--flip">
+  <div class="wrap scene__grid">
+    <div class="scene__art">
+      <div class="phone device"><div class="screen wa">
+        <div class="status"><span>13:52</span><i>●●●● ▮</i></div>
+        <div class="wa-head"><div class="wa-back"></div><div class="wa-av badge"></div><div><div class="wa-name">Sam's Aquarium</div><div class="wa-sub">Business account</div></div></div>
+        <div class="wa-body">
+          <div class="wa-date">Thursday</div>
+          <div class="msg msg--out a" style="--d:0">Hi! Do you have neon tetras in? I'd love 6 delivered to Tokai today if that's possible<div class="msg-t">13:40</div></div>
+          <div class="msg a" style="--d:1">Afternoon! Yes, a lovely batch in this week. We can have them with you by 3 this afternoon. Shall I bag them?<div class="msg-t">13:43</div></div>
+          <div class="msg msg--out a" style="--d:2">Yes please!<div class="msg-t">13:44</div></div>
+          <div class="msg a" style="--d:3">Done. Bagged and on their way. Float the bag in your tank for 15 minutes before you let them out, and they will settle in no time.<div class="msg-t">13:52</div></div>
+        </div>
+        <div class="wa-foot"><div class="wa-in">Message</div><div class="wa-mic"></div></div>
+      </div></div>
+    </div>
+    <div class="scene__text">
+      <p class="kicker">Thursday, 2 o'clock</p>
+      <h3>Six neons to Tokai by three.</h3>
+      <p>A customer messages. The fish are bagged at the counter and sent by driver or Uber, with care instructions in the same conversation.</p>
+      <p>The Cape Town aquarium shops that sell online send live fish by courier, on Monday to Wednesday only. Sam's would deliver the same day.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scene">
+  <div class="wrap scene__grid">
+    <div class="scene__art">
+      <div class="phone device"><div class="screen">
+        <div class="status"><span>21:04</span><i>●●●● ▮</i></div>
+        <div class="sh-head"><img src="img/logo.png" alt="Sam's Aquarium"><div class="sh-cart"></div></div>
+        <div class="sh-img a" style="--d:0"><img src="img/food-shelf.webp" alt="Tins of fish food on the shop shelf"></div>
+        <div class="sh-body">
+          <div class="a" style="--d:1"><div class="sh-cat">Food</div><div class="sh-name">Tropical flake food, 250g</div></div>
+          <div class="a" style="--d:2"><div class="sh-price">R89</div><div class="sh-stock">In stock at the shop</div></div>
+          <div class="sh-btns a" style="--d:3"><div class="sh-btn sh-btn--fill">Collect at the shop</div><div class="sh-btn">Deliver to me</div></div>
+          <div class="sh-note">Collect from 8:30 tomorrow. Same-day delivery in the Southern Suburbs on orders before 2pm, courier anywhere in Cape Town.</div>
+        </div>
+      </div></div>
+    </div>
+    <div class="scene__text">
+      <p class="kicker">Sunday, 9 in the evening</p>
+      <h3>The flake tin is empty.</h3>
+      <p>They open your shop on their phone, tap collect, and pick it up on Monday. Same product, same price as at the counter.</p>
+      <p>Food, treatments and filter media are bought again and again. The shop lets customers order them from you at any hour, for collection or delivery.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scene scene--flip">
+  <div class="wrap scene__grid">
+    <div class="scene__art">
+      <div class="rep device">
+        <div class="rep-h">September at a glance <img src="img/logo.png" alt=""></div>
+        <div class="rep-g">
+          <div class="a" style="--d:0"><b>41</b><span>online orders</span></div>
+          <div class="a" style="--d:1"><b>12</b><span>same-day deliveries</span></div>
+          <div class="a" style="--d:2"><b>63</b><span>WhatsApp replies</span></div>
+          <div class="a" style="--d:3"><b>38</b><span>new sign-ups</span></div>
+        </div>
+        <div class="rep-l a" style="--d:4">
+          <div><span>Most ordered</span>Tropical flake food, 250g</div>
+          <div><span>Most orders from</span>Constantia, Tokai, Claremont</div>
+          <div><span>Best message</span>Tuesday's angelfish, 19 replies</div>
+          <div><span>Advertising</span>R3,000 spent, 27 orders traced to it</div>
+        </div>
+        <div class="rep-f">Example figures, to show the shape of the report.</div>
+      </div>
+    </div>
+    <div class="scene__text">
+      <p class="kicker">First of the month</p>
+      <h3>One page, in plain English.</h3>
+      <p>What sold, how many people got in touch, which message drew the most replies, and what the advertising returned.</p>
+      <p>The report shows what is working and what is not, in figures you can check against your own.</p>
+    </div>
+  </div>
+</section>
+
+<div class="band"><img src="img/macaw-reef.webp" alt="The shop's blue and gold macaw on its perch above the reef tank" width="1400" height="2489" data-parallax="0.15"><span class="band__cap">Quality control</span></div>
+
+<!-- ============================================================ INCLUDED -->
+<section class="section midwater" id="included">
+  <div class="wrap">
+    <p class="kicker">In detail</p>
+    <h2>What is included.</h2>
+    <div class="pair">
+      <div class="card">
+        <h4>Set up once</h4>
+        <ul>
+          <li>An online shop matching the website, built for phones</li>
+          <li>Order online, then collect at the counter, or same-day delivery across the Southern Suburbs, live fish included</li>
+          <li>A courier account set up and linked to the shop, so an order anywhere in Cape Town is a printed label and a collection, not a phone call</li>
+          <li>Card payments through Yoco</li>
+          <li>WhatsApp set up for the business, with a sign-up so customers choose to hear from you</li>
+          <li>Facebook and Instagram set up properly</li>
+          <li>Your Google listing overhauled</li>
+          <li>Your products set up to appear in Google searches</li>
+          <li>Two training sessions and a written guide, so your team adds products, photos and prices themselves. I am on hand for the first batch.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Every month</h4>
+        <ul>
+          <li>One WhatsApp message a week to your customers</li>
+          <li>Facebook and Instagram posted every week</li>
+          <li>Google advertising run and adjusted as the results come in</li>
+          <li>The shop, the website and your Google listing looked after, and reviews answered</li>
+          <li>Help with any online order that needs it</li>
+          <li>One report in plain English</li>
+        </ul>
+        <h4 style="margin-top:1.8rem">What I would need from you</h4>
+        <ul>
+          <li>A WhatsApp number</li>
+          <li>One person on the floor who handles online orders</li>
+          <li>A way to deliver locally: a staff member with a car, or Uber. The courier covers the rest of Cape Town.</li>
+          <li>A few hours after training to load the first products</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ PRICE -->
+<section class="section depths on-dark" id="price">
+  <div class="caustics" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="kicker">Pricing</p>
+    <h2>What it costs.</h2>
+    <div class="price">
+      <div><small>To set up, once</small><b>R15,000</b><span>Half on commencement, half when the shop goes live.</span></div>
+      <div><small>Every month</small><b>R6,500</b><span>Everything above. Month to month, stop at the end of any month.</span></div>
+      <div><small>Google advertising budget</small><b>from R3,000</b><span>A month, paid straight to Google, from launch. Scaled up as the results justify it.</span></div>
+    </div>
+    <h4>Also paid to others, only once the shop is live</h4>
+    <table>
+      <tbody>
+        <tr><td>Card fees on online orders</td><td>about 3% per sale</td></tr>
+        <tr><td>Same-day delivery, per drop</td><td>about a short Uber trip</td></tr>
+        <tr><td>Courier across Cape Town, per parcel</td><td>from about R85</td></tr>
+        <tr><td>WhatsApp and email messages</td><td>free at your size</td></tr>
+        <tr><td>Hosting and the domain</td><td>included</td></tr>
+      </tbody>
+    </table>
+    <div class="terms">
+      <div>
+        <h4>Terms</h4>
+        <ul>
+          <li>Everything is in Sam's Aquarium's name: the domain, the shop, the ad account. You own it all.</li>
+          <li>No contract. Stop at the end of any month.</li>
+          <li>Hosting and the domain are included at no charge.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>&nbsp;</h4>
+        <ul>
+          <li>The monthly fee is reviewed together after twelve months, against the numbers in the reports.</li>
+          <li>Customer messaging is set up to comply with South African privacy law.</li>
+          <li>Prices exclude VAT.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CLOSE -->
+<section class="close" id="next">
+  <div class="cover__bg" data-parallax="0.12"><img src="img/storefront-sign.webp" alt="The Sam's Aquarium sign on Main Road, Bergvliet" width="1800" height="1012"></div>
+  <div class="cover__veil"></div>
+  <canvas class="fish" aria-hidden="true"></canvas>
+  <div class="wrap close__in">
+    <h2>Send me a WhatsApp number.</h2>
+    <p>The website goes live within a day of receiving it. If the package suits, tell me and we will agree a start date.</p>
+    <p><a class="btn btn--ghost" href="https://skyeh01.github.io/sams-aquarium/" target="_blank" rel="noopener">Open the new website</a></p>
+    <p class="sig">Skye Harmse<small>September 2026</small></p>
+  </div>
+</section>
+<footer class="foot"><div class="wrap">Sam's Aquarium, 15 Lawrence Street, Bergvliet, Cape Town</div></footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* before / after slider: the range input does the work; the line and clip follow it */
+  var cmp = document.querySelector('.cmp'), range = cmp && cmp.querySelector('.cmp__range'), touched = false;
+  if (cmp && range) {
+    var setSplit = function(v){ cmp.style.setProperty('--split', v); };
+    range.addEventListener('input', function(){ touched = true; setSplit(range.value); });
+    range.addEventListener('pointerdown', function(){ touched = true; });
+    if (!reduce && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function(en, io){
+        if (!en[0].isIntersecting) return; io.disconnect();
+        var t0 = null, from = 50, path = [[0,50],[900,18],[1900,74],[2600,50]];
+        function ease(t){ return t<.5 ? 2*t*t : -1+(4-2*t)*t; }
+        function tick(ts){ if (touched) return; if (!t0) t0 = ts; var e = ts - t0;
+          for (var i=1;i<path.length;i++){ if (e <= path[i][0]) { var a=path[i-1], b=path[i], k=ease((e-a[0])/(b[0]-a[0])); var v=a[1]+(b[1]-a[1])*k; setSplit(v.toFixed(1)); range.value=v; return requestAnimationFrame(tick); } }
+          setSplit(50); range.value=50; }
+        setTimeout(function(){ requestAnimationFrame(tick); }, 500);
+      }, {threshold:.5}).observe(cmp);
+    }
+  }
+
+  /* rail + progress */
+  var rail = document.querySelectorAll('.rail a'), bar = document.querySelector('.progress i');
+  function onScroll(){
+    if (bar){ var d = document.documentElement; var p = d.scrollTop / (d.scrollHeight - d.clientHeight) * 100; bar.style.setProperty('--p', p.toFixed(1)); }
+    if (rail.length){ var y = window.scrollY + window.innerHeight*.4, best = null;
+      for (var i=0;i<rail.length;i++){ var t = document.querySelector(rail[i].getAttribute('href')); if (t && t.offsetTop <= y) best = i; }
+      for (var j=0;j<rail.length;j++) rail[j].classList.toggle('is-on', j===best); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  if (reduce) return;
+
+  /* parallax */
+  var els = [], ticking = false;
+  function collect(){ els = []; var n = document.querySelectorAll('[data-parallax]');
+    for (var i=0;i<n.length;i++) els.push({el:n[i], box:n[i].parentElement, f:parseFloat(n[i].getAttribute('data-parallax'))||.15}); }
+  function update(){ ticking=false; var vh=window.innerHeight;
+    for (var i=0;i<els.length;i++){ var p=els[i], r=p.box.getBoundingClientRect();
+      if (r.bottom < -vh*.5 || r.top > vh*1.5) continue;
+      var prog=(r.top + r.height/2 - vh/2)/vh; p.el.style.transform='translate3d(0,'+(-prog*p.f*r.height).toFixed(1)+'px,0)'; } }
+  function req(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+  collect(); update();
+  window.addEventListener('scroll', req, {passive:true});
+  window.addEventListener('resize', function(){ collect(); req(); });
+
+  /* scenes: the ones already on screen at load stay still; the rest arrive as they scroll in */
+  var t0 = Date.now();
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (!en.isIntersecting) return; if (Date.now()-t0 > 400) en.target.classList.add('is-in'); io.unobserve(en.target); });
+    }, {threshold:.3});
+    var sc = document.querySelectorAll('.scene'); for (var s=0;s<sc.length;s++) io.observe(sc[s]);
+  }
+
+  /* the fish: a small school that keeps loosely together and scatters from the pointer */
+  function school(canvas){
+    var ctx = canvas.getContext('2d'); if (!ctx) return;
+    var dpr = Math.min(window.devicePixelRatio||1, 1.5), W=0, H=0, fish=[], bubbles=[];
+    var pointer={x:-9999,y:-9999,on:false}, visible=true, last=0;
+    var colors=['#f26a3d','#f26a3d','#ffb08a','#9fd6dd','#dff3f5','#f7f7f2'];
+    function resize(){ var r=canvas.getBoundingClientRect(); W=Math.max(1,Math.floor(r.width)); H=Math.max(1,Math.floor(r.height));
+      canvas.width=Math.floor(W*dpr); canvas.height=Math.floor(H*dpr); ctx.setTransform(dpr,0,0,dpr,0,0); }
+    function bubble(any){ return {x:Math.random()*W, y:any?Math.random()*H:H+10, r:1+Math.random()*3, v:.25+Math.random()*.55, s:Math.random()*6.28, a:.12+Math.random()*.25}; }
+    function seed(){ fish=[]; bubbles=[]; var n = W<700?8:(W<1100?12:16);
+      for (var i=0;i<n;i++){ var d=Math.random(), a=Math.random()*6.28;
+        fish.push({x:Math.random()*W, y:H*(.12+Math.random()*.6), vx:Math.cos(a)*.8, vy:Math.sin(a)*.4, size:12+d*22, speed:.6+d*.7, alpha:.28+d*.55,
+          color:colors[Math.floor(Math.random()*colors.length)], phase:Math.random()*6.28, freq:.8+Math.random()*.6, wander:Math.random()*6.28}); }
+      for (var b=0;b<20;b++) bubbles.push(bubble(true)); }
+    function step(dt){ var i,j,f,o;
+      for (i=0;i<fish.length;i++){ f=fish[i]; var ax=0,ay=0,cx=0,cy=0,c=0,alx=0,aly=0;
+        for (j=0;j<fish.length;j++){ if(i===j) continue; o=fish[j]; var dx=o.x-f.x, dy=o.y-f.y, d2=dx*dx+dy*dy;
+          if (d2<25600){ cx+=o.x; cy+=o.y; alx+=o.vx; aly+=o.vy; c++; if (d2<(f.size+o.size)*(f.size+o.size)*1.2){ ax-=dx/(d2+1)*40; ay-=dy/(d2+1)*40; } } }
+        if (c){ ax+=((cx/c)-f.x)*.0006; ay+=((cy/c)-f.y)*.0006; ax+=((alx/c)-f.vx)*.02; ay+=((aly/c)-f.vy)*.02; }
+        f.wander+=(Math.random()-.5)*.3; ax+=Math.cos(f.wander)*.01; ay+=Math.sin(f.wander)*.006;
+        var m=80; if(f.x<m)ax+=(m-f.x)*.002; if(f.x>W-m)ax-=(f.x-(W-m))*.002; if(f.y<m)ay+=(m-f.y)*.002; if(f.y>H-m)ay-=(f.y-(H-m))*.002;
+        if (pointer.on){ var px=f.x-pointer.x, py=f.y-pointer.y, pd=Math.sqrt(px*px+py*py); if (pd<150 && pd>.1){ var s=(150-pd)/150; ax+=(px/pd)*s*.35; ay+=(py/pd)*s*.35; } }
+        f.vx+=ax*dt; f.vy+=ay*dt; f.vy*=.985;
+        var sp=Math.sqrt(f.vx*f.vx+f.vy*f.vy), mx=f.speed*1.9, mn=f.speed*.45;
+        if (sp>mx){ f.vx=f.vx/sp*mx; f.vy=f.vy/sp*mx; } if (sp<mn&&sp>0){ f.vx=f.vx/sp*mn; f.vy=f.vy/sp*mn; }
+        f.x+=f.vx*dt; f.y+=f.vy*dt; }
+      for (i=0;i<bubbles.length;i++){ var bb=bubbles[i]; bb.y-=bb.v*dt; bb.s+=.02*dt; bb.x+=Math.sin(bb.s)*.2*dt; if (bb.y<-10) bubbles[i]=bubble(false); } }
+    function drawFish(f,t){ var s=f.size, wag=Math.sin(t*.008*f.freq+f.phase)*.35;
+      ctx.save(); ctx.translate(f.x,f.y); ctx.rotate(Math.atan2(f.vy,f.vx)); ctx.globalAlpha=f.alpha; ctx.fillStyle=f.color;
+      ctx.beginPath(); ctx.moveTo(s*.55,0); ctx.bezierCurveTo(s*.3,-s*.3,-s*.25,-s*.27,-s*.45,0); ctx.bezierCurveTo(-s*.25,s*.27,s*.3,s*.3,s*.55,0); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(-s*.38,0); ctx.lineTo(-s*.78,-s*.3+wag*s*.25); ctx.lineTo(-s*.7,wag*s*.1); ctx.lineTo(-s*.78,s*.3+wag*s*.25); ctx.closePath(); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(s*.1,-s*.22); ctx.lineTo(-s*.1,-s*.42+wag*s*.05); ctx.lineTo(-s*.25,-s*.2); ctx.closePath(); ctx.fill();
+      ctx.globalAlpha=Math.min(1,f.alpha+.2); ctx.fillStyle='#06161f'; ctx.beginPath(); ctx.arc(s*.34,-s*.05,Math.max(1.2,s*.05),0,6.28); ctx.fill(); ctx.restore(); }
+    function draw(t){ ctx.clearRect(0,0,W,H); var i; ctx.lineWidth=1;
+      for (i=0;i<bubbles.length;i++){ var b=bubbles[i]; ctx.globalAlpha=b.a; ctx.strokeStyle='#9fd6dd'; ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,6.28); ctx.stroke(); }
+      ctx.globalAlpha=1; fish.sort(function(a,b){return a.size-b.size}); for (i=0;i<fish.length;i++) drawFish(fish[i],t); }
+    function frame(t){ if (visible && !document.hidden){ var dt=last?Math.min(2.5,(t-last)/16.67):1; last=t; step(dt); draw(t); } else last=0; requestAnimationFrame(frame); }
+    var host = canvas.parentElement;
+    host.addEventListener('mousemove', function(e){ var r=canvas.getBoundingClientRect(); pointer.x=e.clientX-r.left; pointer.y=e.clientY-r.top; pointer.on=true; });
+    host.addEventListener('mouseleave', function(){ pointer.on=false; });
+    host.addEventListener('touchmove', function(e){ var r=canvas.getBoundingClientRect(), tt=e.touches[0]; pointer.x=tt.clientX-r.left; pointer.y=tt.clientY-r.top; pointer.on=true; }, {passive:true});
+    host.addEventListener('touchend', function(){ pointer.on=false; });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function(en){ visible=en[0].isIntersecting; },{threshold:.02}).observe(host);
+    var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt=setTimeout(function(){ resize(); seed(); },150); });
+    resize(); seed(); requestAnimationFrame(frame);
+  }
+  var cs = document.querySelectorAll('canvas.fish'); for (var k=0;k<cs.length;k++) school(cs[k]);
+})();
+</script>
+</body></html>
