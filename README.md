@@ -26,10 +26,10 @@ Shared files: `assets/css/site.css`, `assets/js/site.js`, `assets/img/*.webp`.
 Open `assets/js/site.js` and change one line near the top:
 
 ```js
-var WHATSAPP_NUMBER = '27217122534';
+var WHATSAPP_NUMBER = '27682265378';
 ```
 
-Country code first, digits only, no plus sign or spaces. It is currently set to the shop landline (021 712 2534) as a placeholder. Every WhatsApp button and link on the site is built from this number, so it only needs to change here.
+Country code first, digits only, no plus sign or spaces. It is set to the shop's WhatsApp Business line, +27 68 226 5378, which the shop gave on 23 September 2026. Every WhatsApp button and link on the site is built from this number, so it only needs to change here.
 
 ## Campaign links for WhatsApp promotions
 
@@ -58,7 +58,7 @@ Also in the structured data block at the top of `index.html`.
 
 The site was written from public sources (the old website, Google Business Profile, Google reviews, photos of the signage). These points should be checked:
 
-- **WhatsApp number.** Not published anywhere; reviews mention a WhatsApp line exists.
+- **WhatsApp number.** Confirmed: +27 68 226 5378 (WhatsApp Business), wired into `assets/js/site.js`.
 - **"Established 1985"** is taken from the current shop sign. Confirm the year.
 - **The 2021 move.** A sign in one shop photo reads "Sams will be swimming to Caversham Centre February 2021", so the About page says the shop moved to the Caversham Centre in 2021. Confirm the date and where the shop was before.
 - **Species lists** on `fish.html` are the typical range for a shop this size, not a live stock list. Remove anything the shop never carries and add regulars that are missing.

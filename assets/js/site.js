@@ -17,7 +17,7 @@
      so the shop can see which ad or post the message came from.
      Example: https://samsaquarium.co.za/fish.html?c=betta-weekend
      ------------------------------------------------------------------------ */
-  var WHATSAPP_NUMBER = '27217122534';
+  var WHATSAPP_NUMBER = '27682265378';
   var GREETING = "Hi Sam's Aquarium! ";
 
   function campaignTag() {
