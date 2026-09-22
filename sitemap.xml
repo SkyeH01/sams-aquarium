@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://samsaquarium.co.za/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://samsaquarium.co.za/fish.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://samsaquarium.co.za/aquariums.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://samsaquarium.co.za/start.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://samsaquarium.co.za/about.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://samsaquarium.co.za/visit.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://samsaquarium.co.za/guides.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://samsaquarium.co.za/cycling.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://samsaquarium.co.za/water.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://samsaquarium.co.za/stocking.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://samsaquarium.co.za/plants.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://samsaquarium.co.za/problems.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>
