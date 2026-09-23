@@ -1,6 +1,6 @@
 # Sam's Aquarium website
 
-A six-page static site for Sam's Aquarium, 15 Lawrence Street, Main Road, Bergvliet, Cape Town. Plain HTML, CSS and JavaScript. No build step, no framework, no database. Upload the folder to any web host and it works.
+A twelve-page static site for Sam's Aquarium, 15 Lawrence Street, Main Road, Bergvliet, Cape Town. Plain HTML, CSS and JavaScript. No build step, no framework, no database. Upload the folder to any web host and it works.
 
 ## Pages
 
@@ -65,6 +65,9 @@ The site was written from public sources (the old website, Google Business Profi
 - **Photo captions** name species as they appear (angelfish, platies, gold gouramis, yellow labs, oranda). Correct any that are wrong.
 - **Brands** named: Juwel, Red Sea, Fluval, Sera, Tetra, Sobo (all visible in shop photos or signage). Add or remove as needed.
 - **"Best price guaranteed on Juwel"** comes from the old website. Confirm it still stands.
+- **"The largest freshwater fish and aquarium supplier in Cape Town"** (home page, About page and its meta description). The shop's own 2015 About page says it is "arguably the largest supplier of aquariums … in Cape Town". The Advertising Regulatory Board expects proof on file for any claim that can be checked, so confirm the shop is happy to state it without "arguably".
+- **Promises made on the shop's behalf:** no deposit needed to reserve fish (`fish.html`), most WhatsApp questions answered the same day (`visit.html`), and new stock announced on WhatsApp before anywhere else (`index.html`). Confirm the shop will keep all three.
+- **A repeated review.** Emily N.'s review (the shout-out to Wade) appears on both the home and About pages. Ask the shop for another review to use on About.
 - **Juwel and Red Sea range names** (Rio, Lido, Vision, Trigon; Reefer, Max) are the manufacturers' current ranges. Check they match what's on the floor.
 - **The macaw.** The site says "ask the staff for the name". Add the name if the shop would like it on the site.
 - **Staff.** No names are used except "Wade", quoted from a public Google review. Add a team section with photos if they'd like one.
@@ -91,7 +94,15 @@ The site has one voice: **a knowledgeable friend who is glad you came in.** Warm
 
 **7. Remember the hobby is a pleasure.** Fish are beautiful and people keep them because they enjoy them. The copy should sound like it knows that.
 
+**8. Use contractions everywhere, the guides included.** "It's", "we'll" and "you're" sound like someone at the counter; "it is", "we will" and "you are" sound like a textbook.
+
+**9. Only say what the shop has confirmed about itself.** No invented habits ("the question we answer most days"), staff details or superlatives. If a line can't be checked, describe the service instead.
+
+**House style.** Display headings (the large section headings) end with a full stop; short labels ("Where", "When") and the headings inside a guide don't. Write "Open 7 days a week" in figures. Say "load shedding" rather than only "power cut", since it's the phrase South Africans use and search for. British spelling throughout: colour, centre, litres, fertiliser.
+
 **Words and phrases to keep off the site:** straight answers (implies others lie), honest (same), actually, obviously, of course, simply, just (as in "just do X"), mistake, wrong, fail, die, kill, suffer, waste, don't, never, avoid, "fewer than you think", "more than you'd expect" as a scold, and anything that begins "most people don't realise".
+
+The list applies to marketing and sales copy. The guides may name a real risk once, calmly, and follow it straight away with what to do: "ammonia is poisonous to fish even at low levels", or "this needs attention today" for a fish gasping at the surface. Literal uses are fine too, such as fish waste or "just as forgiving".
 
 ## Typography
 
