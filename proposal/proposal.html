@@ -1,3 +1,10 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#06161f">
 <title>Sam's Aquarium Proposal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,8 +134,8 @@
   @media(max-width:700px){
     .gives{grid-template-columns:1fr}
     .gives__k{padding-bottom:.15rem}
-    .gives__v{border-top:0;padding:.1rem 0 1.2rem 1.4rem}
-    .gives__v::before{top:.55rem}
+    .gives > .gives__v{border-top:0;padding:.1rem 0 1.2rem 1.4rem}
+    .gives__v::before{top:.62rem}
   }
 
   /* ---------- the week ---------- */
@@ -154,7 +161,7 @@
          box-shadow:0 44px 70px -34px rgba(6,22,31,.75),0 0 0 1px rgba(0,0,0,.3);
          font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#111;transform-style:preserve-3d}
   .screen{background:#fff;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;aspect-ratio:9/18.2;font-size:13px;line-height:1.35}
-  .status{display:flex;justify-content:space-between;align-items:center;padding:8px 18px 4px;font-size:11.5px;font-weight:600;background:inherit}
+  .status{display:flex;justify-content:space-between;align-items:center;padding:8px 18px 4px;font-size:12px;font-weight:600;background:inherit}
   .status i{font-style:normal;letter-spacing:-1px}
   .badge{background:#fff url(img/logo.png) 0 50%/297% auto no-repeat}
   .wa .status{background:#075E54;color:#fff}
@@ -164,7 +171,7 @@
   .wa-name{font-weight:600;font-size:14px;line-height:1.15}
   .wa-sub{font-size:11px;opacity:.85}
   .wa-body{flex:1;background:#e5ddd5;padding:12px 10px;display:flex;flex-direction:column;gap:7px;overflow:hidden}
-  .wa-date{align-self:center;background:#e1f2fb;color:#4a5b66;font-size:10.5px;padding:3px 8px;border-radius:6px;margin-bottom:2px}
+  .wa-date{align-self:center;background:#e1f2fb;color:#4a5b66;font-size:11.5px;padding:3px 8px;border-radius:6px;margin-bottom:2px}
   .msg{max-width:86%;background:#fff;border-radius:8px;padding:6px 8px 5px;box-shadow:0 1px .5px rgba(0,0,0,.13)}
   .msg--out{align-self:flex-end;background:#dcf8c6}
   .msg img{border-radius:6px;margin-bottom:6px;width:100%;aspect-ratio:16/10;object-fit:cover}
@@ -184,7 +191,7 @@
   .ig-act svg{width:22px;height:22px;stroke:#111;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .ig-cap{padding:0 12px 12px;font-size:12.5px;line-height:1.4}
   .ig-cap b{font-weight:600}
-  .ig-cap small{display:block;color:#888;font-size:10.5px;margin-top:6px}
+  .ig-cap small{display:block;color:#888;font-size:11.5px;margin-top:6px}
   .sh-head{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid #eee}
   .sh-head img{height:28px;width:auto}
   .sh-cart{width:20px;height:16px;border:2px solid #0b1f2a;border-top-width:0;border-radius:0 0 4px 4px;position:relative}
@@ -192,14 +199,14 @@
   .sh-img{aspect-ratio:4/3;overflow:hidden;background:#eef2f1}
   .sh-img img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
   .sh-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
-  .sh-cat{font-size:10.5px;color:#777}
+  .sh-cat{font-size:11.5px;color:#777}
   .sh-name{font-family:var(--head);font-weight:700;font-size:15px;color:#0b1f2a;line-height:1.2}
   .sh-price{font-family:var(--head);font-weight:700;font-size:17px;color:#0b1f2a}
   .sh-stock{font-size:11.5px;color:#1a7f4b}
   .sh-btns{display:grid;gap:7px;margin-top:6px}
   .sh-btn{text-align:center;padding:9px;border-radius:8px;font-weight:600;font-size:12.5px;border:1.5px solid #0b1f2a;color:#0b1f2a}
   .sh-btn--fill{background:#0b1f2a;color:#fff}
-  .sh-note{font-size:10.5px;color:#666;margin-top:auto;line-height:1.35}
+  .sh-note{font-size:11.5px;color:#666;margin-top:auto;line-height:1.35}
   .g{width:100%;max-width:440px;background:#fff;border-radius:14px;box-shadow:0 40px 70px -34px rgba(6,22,31,.6),0 0 0 1px rgba(0,0,0,.06);
      padding:14px 16px 16px;font-family:arial,sans-serif;color:#202124;font-size:13px}
   .g-bar{display:flex;align-items:center;gap:10px;border:1px solid #dfe1e5;border-radius:24px;padding:9px 14px;box-shadow:0 1px 6px rgba(32,33,36,.12)}
@@ -213,7 +220,7 @@
   .g-tile .im.ph{background:repeating-linear-gradient(135deg,#eceff1 0 6px,#e3e7ea 6px 12px)}
   .g-tile b{display:block;font-weight:400;color:#202124;margin-bottom:2px}
   .g-tile .pr{font-weight:700;color:#202124}
-  .g-tile .st{color:#70757a;font-size:10.5px;margin-top:2px}
+  .g-tile .st{color:#70757a;font-size:11.5px;margin-top:2px}
   .g-tile .st.us{color:#188038;font-weight:600}
   .g-tile--us{border-color:#0b1f2a}
   .g-map{margin-top:14px;padding-top:12px;border-top:1px solid #eee;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}
@@ -235,7 +242,7 @@
   .rep-l div{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px dashed var(--rule)}
   .rep-l div:last-child{border-bottom:0}
   .rep-l span{color:var(--text-dim)}
-  .rep-f{padding:8px 18px 12px;font-size:10.5px;color:var(--text-dim);border-top:1px solid var(--rule)}
+  .rep-f{padding:8px 18px 12px;font-size:11.5px;color:var(--text-dim);border-top:1px solid var(--rule)}
 
   /* ---------- photo band ---------- */
   .band{position:relative;height:clamp(260px,42vw,520px);overflow:hidden;background:var(--deep)}
@@ -272,7 +279,7 @@
   .depths td{padding:.6rem .8rem .6rem 0;border-bottom:1px solid rgba(159,214,221,.16);vertical-align:top}
   .depths td:last-child{text-align:right;padding-right:0;white-space:nowrap;font-variant-numeric:tabular-nums}
   .terms{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3.4rem);margin-top:2.6rem;padding-top:2.2rem;border-top:1px solid rgba(159,214,221,.22)}
-  @media(max-width:700px){.terms{grid-template-columns:1fr}}
+  @media(max-width:700px){.terms{grid-template-columns:1fr;gap:0}.terms > div + div h4{display:none}.terms > div + div ul{margin-top:0}}
   .terms ul{max-width:none}
   .terms li::marker{color:var(--glass)}
 
@@ -309,6 +316,8 @@
     .depths{background:var(--ink)}
   }
 </style>
+</head>
+<body>
 
 <nav class="rail" aria-label="Sections">
   <a href="#website"><span>The website</span></a>
@@ -322,7 +331,6 @@
 
 <!-- ============================================================ COVER -->
 <header class="cover">
-<meta name="robots" content="noindex, nofollow">
   <div class="cover__bg" data-parallax="0.12"><img src="img/hero.webp" alt="A school of orange fish in a dark freshwater aquarium" width="2000" height="1334"></div>
   <div class="cover__veil"></div>
   <canvas class="fish" aria-hidden="true"></canvas>
@@ -355,8 +363,8 @@
     <div class="cmp-print"><img src="img/site-old.jpg" alt="The 2015 website"><img src="img/site-new.jpg" alt="The new website"></div>
     <div class="split2">
       <div>
-        <p>Six pages, built to work on a phone, with photographs of your own tanks and shopfront throughout. It gives Google your address, your hours and what you sell, in the format Google reads. Every page has a WhatsApp button, and the opening hours line shows whether the shop is open at that moment, including the Friday lunch closure.</p>
-        <p>All it needs to go live is a WhatsApp number for the buttons, which currently point at the shop landline.</p>
+        <p>Twelve pages, including six guides for people setting up a tank, built to work on a phone, with photographs of your own tanks and shopfront throughout. It gives Google your address, your hours and what you sell, in the format Google reads. Every page has a WhatsApp button, and the opening hours line shows whether the shop is open at that moment, including the Friday lunch closure.</p>
+        <p>It is online now for you to look through, and every WhatsApp button goes to your WhatsApp Business number. It can move onto samsaquarium.co.za within a day.</p>
         <p><a class="btn" href="https://skyeh01.github.io/sams-aquarium/" target="_blank" rel="noopener">Open the new website</a></p>
       </div>
       <div>
@@ -583,7 +591,7 @@
         </ul>
         <h4 style="margin-top:1.8rem">What I would need from you</h4>
         <ul>
-          <li>A WhatsApp number</li>
+          <li>Access to your WhatsApp Business account</li>
           <li>One person on the floor who handles online orders</li>
           <li>A way to deliver locally: a staff member with a car, or Uber. The courier covers the rest of Cape Town.</li>
           <li>A few hours after training to load the first products</li>
@@ -641,8 +649,8 @@
   <div class="cover__veil"></div>
   <canvas class="fish" aria-hidden="true"></canvas>
   <div class="wrap close__in">
-    <h2>Send me a WhatsApp number.</h2>
-    <p>The website goes live within a day of receiving it. If the package suits, tell me and we will agree a start date.</p>
+    <h2>Have a look through it.</h2>
+    <p>The website is yours either way, and can move onto samsaquarium.co.za within a day. If the package suits, tell me and we will agree a start date.</p>
     <p><a class="btn btn--ghost" href="https://skyeh01.github.io/sams-aquarium/" target="_blank" rel="noopener">Open the new website</a></p>
     <p class="sig">Skye Harmse<small>September 2026</small></p>
   </div>
@@ -756,3 +764,5 @@
   var cs = document.querySelectorAll('canvas.fish'); for (var k=0;k<cs.length;k++) school(cs[k]);
 })();
 </script>
+</body>
+</html>
