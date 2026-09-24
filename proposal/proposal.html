@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#06161f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The full marketing package for Sam's Aquarium">
+<meta property="og:description" content="Online shop, WhatsApp, social media, Google and advertising, set up and run every month. Prepared by Skye Harmse, September 2026.">
+<meta property="og:image" content="https://skyeh01.github.io/sams-aquarium/proposal/img/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sam's Aquarium. The full marketing package.">
+<meta property="og:url" content="https://skyeh01.github.io/sams-aquarium/proposal/proposal.html">
+<meta name="twitter:card" content="summary_large_image">
 <title>Sam's Aquarium Proposal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -315,14 +324,28 @@
     .phone,.g,.rep,.card{box-shadow:none}
     .depths{background:var(--ink)}
   }
+
+  /* ---------- what is included: a checklist laid out as a spec sheet ---------- */
+  .inc h3{font-size:1.25rem;margin:2.6rem 0 .2rem;padding-bottom:.7rem;border-bottom:2px solid var(--ink)}
+  .inc h3:first-child{margin-top:1.6rem}
+  .inc-grid{list-style:none;margin:0;padding:0;max-width:none;display:grid;grid-template-columns:repeat(3,1fr);column-gap:clamp(1.4rem,3vw,2.6rem)}
+  .inc-grid li{margin:0;padding:1.1rem 0 1.2rem;border-bottom:1px solid var(--rule)}
+  .inc-grid b{display:flex;align-items:center;gap:.55rem;font-family:var(--head);font-weight:700;font-size:1.05rem;color:var(--ink);margin-bottom:.3rem}
+  .inc-grid b::before{content:"";flex:none;width:18px;height:18px;border-radius:50%;background:var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.4l2.6 2.6L13 6.6' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+  .inc-grid--needs b::before{background:var(--teal-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='2.4' fill='%23fff'/%3E%3C/svg%3E") center/100% no-repeat}
+  .inc-grid span{display:block;color:var(--text-dim);font-size:.98rem;line-height:1.5}
+  .inc-grid--needs{grid-template-columns:1fr 1fr}
+  @media(max-width:900px){.inc-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:600px){.inc-grid{grid-template-columns:1fr}}
+  .close .cover__veil{background:linear-gradient(90deg,rgba(6,22,31,.9) 0%,rgba(6,22,31,.75) 42%,rgba(6,22,31,.25) 75%),linear-gradient(180deg,rgba(6,22,31,.2) 0%,rgba(6,22,31,.6) 100%)}
+  .price-note{margin:.9rem 0 0;font-size:.92rem;color:var(--on-dark-dim);max-width:60ch}
+  .scene__text h3{margin-bottom:.6em}
 </style>
 </head>
 <body>
 
 <nav class="rail" aria-label="Sections">
-  <a href="#website"><span>The website</span></a>
-  <a href="#today"><span>What you get</span></a>
-  <a href="#week"><span>A week at Sam's</span></a>
+  <a href="#get"><span>What you get</span></a>
   <a href="#included"><span>What is included</span></a>
   <a href="#price"><span>What it costs</span></a>
   <a href="#next"><span>Next step</span></a>
@@ -333,75 +356,23 @@
 <header class="cover">
   <div class="cover__bg" data-parallax="0.12"><img src="img/hero.webp" alt="A school of orange fish in a dark freshwater aquarium" width="2000" height="1334"></div>
   <div class="cover__veil"></div>
-  <canvas class="fish" aria-hidden="true"></canvas>
   <div class="wrap cover__in">
     <img class="cover__logo" src="img/logo.png" alt="Sam's Aquarium" width="350" height="118">
-    <h1><span>A new website,</span><span>and everything</span><span>that goes with it.</span></h1>
-    <p>The website is complete and is provided at no charge. This proposal also sets out one package: an online shop with same-day delivery, weekly contact with your customers, and your products in Google results. One monthly fee, month to month.</p>
+    <h1><span>The full</span><span>marketing</span><span>package.</span></h1>
+    <p>An online shop, WhatsApp, social media, Google and advertising, set up and run for you every month, so Sam's is the first shop Cape Town's fishkeepers find.</p>
     <div class="cover__meta">
       <div>Prepared for<b>Sam's Aquarium, Bergvliet</b></div>
       <div>Prepared by<b>Skye Harmse</b></div>
       <div>Date<b>September 2026</b></div>
     </div>
   </div>
-  <div class="cover__scroll" aria-hidden="true"></div>
 </header>
 
-<!-- ============================================================ THE WEBSITE -->
-<section class="section surface" id="website">
+<!-- ============================================================ WHAT YOU GET -->
+<section class="section week-head" id="get">
   <div class="wrap">
-    <p class="kicker">The website</p>
-    <h2>The website.</h2>
-    <p class="lead">It is finished, it is yours, and there is nothing to pay. Drag the line to compare it with the one you have now.</p>
-    <div class="cmp" style="--split:50">
-      <img src="img/site-new.jpg" alt="The new Sam's Aquarium website" width="1200" height="750">
-      <img class="cmp__old" src="img/site-old.jpg" alt="The current Sam's Aquarium website from 2015" width="1200" height="750">
-      <input class="cmp__range" type="range" min="2" max="98" value="50" aria-label="Drag to compare the old and new website">
-      <div class="cmp__line"><span class="cmp__grip"></span></div>
-      <span class="cmp__tag cmp__tag--l">2015</span><span class="cmp__tag cmp__tag--r">Now</span>
-    </div>
-    <div class="cmp-print"><img src="img/site-old.jpg" alt="The 2015 website"><img src="img/site-new.jpg" alt="The new website"></div>
-    <div class="split2">
-      <div>
-        <p>Twelve pages, including six guides for people setting up a tank, built to work on a phone, with photographs of your own tanks and shopfront throughout. It gives Google your address, your hours and what you sell, in the format Google reads. Every page has a WhatsApp button, and the opening hours line shows whether the shop is open at that moment, including the Friday lunch closure.</p>
-        <p>It is online now for you to look through, and every WhatsApp button goes to your WhatsApp Business number. It can move onto samsaquarium.co.za within a day.</p>
-        <p><a class="btn" href="https://skyeh01.github.io/sams-aquarium/" target="_blank" rel="noopener">Open the new website</a></p>
-      </div>
-      <div>
-        <p class="dim">The website presents the shop. It does not take orders, send messages to customers, or place products in search results.</p>
-        <p class="dim">The package below adds those three things.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ TODAY / AFTER -->
-<section class="section shallows" id="today">
-  <div class="wrap">
-    <p class="kicker">The package</p>
     <h2>What you get.</h2>
-    <p class="lead">One package, one monthly fee. This is what it delivers.</p>
-    <div class="gives">
-      <div class="gives__k">Reaching customers</div>
-      <div class="gives__v">A WhatsApp message each week to everyone who has signed up to hear from you.</div>
-      <div class="gives__k">Social media</div>
-      <div class="gives__v">A post each week on Facebook and Instagram: new arrivals, the tanks, what is looking good.</div>
-      <div class="gives__k">Selling</div>
-      <div class="gives__v">Orders online for collection at the counter, courier delivery anywhere in Cape Town, and same-day delivery in the Southern Suburbs. Live fish are chosen and collected at the counter.</div>
-      <div class="gives__k">Being found</div>
-      <div class="gives__v">Your Google listing maintained, and your products in Google results with a photograph and a price.</div>
-      <div class="gives__k">Knowing what works</div>
-      <div class="gives__v">A one-page report each month: what sold, who got in touch, and where they came from.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ THE WEEK -->
-<section class="section week-head" id="week">
-  <div class="wrap">
-    <p class="kicker">In practice</p>
-    <h2>A week at Sam's, with the package running.</h2>
-    <p class="lead">Seen from the customer's side of the screen. The photographs are yours. The products, prices and figures are examples.</p>
+    <p class="lead">One package covering every place people find and buy from Sam's. It's set up once, then run for you every month. The photographs are yours; the products, prices and figures in the examples are illustrations.</p>
   </div>
 </section>
 
@@ -421,10 +392,9 @@
       </div></div>
     </div>
     <div class="scene__text">
-      <p class="kicker">Monday, 8:30</p>
-      <h3>A post goes up.</h3>
-      <p>Each week, one post goes onto Facebook and Instagram: new arrivals, a tank at its best, the macaw. I write it and post it. You supply a photograph when there is something to show.</p>
-      <p>Your pages stay current, and the people who follow them see the shop regularly.</p>
+      <h3>Social media, managed and automated.</h3>
+      <p>Posts written, scheduled and published on Facebook and Instagram every week: new arrivals, the tanks at their best, the macaw. You send a photo when there's something to show.</p>
+      <p>Messages from both land in one inbox, with automatic replies for opening hours, directions and stock questions.</p>
     </div>
   </div>
 </section>
@@ -445,10 +415,9 @@
       </div></div>
     </div>
     <div class="scene__text">
-      <p class="kicker">Tuesday, 9:15</p>
-      <h3>New arrivals, straight to the people who care.</h3>
-      <p>When stock arrives, a message goes to everyone who has signed up to hear from you. A reply reserves the fish, and their name goes on the tank.</p>
-      <p>Messages go only to customers who have opted in, so each one reaches a person who asked to receive it.</p>
+      <h3>WhatsApp marketing.</h3>
+      <p>WhatsApp set up on the official business platform, with a sign-up list so customers choose to hear from you. When stock arrives, a message goes to everyone on the list, and a reply reserves the fish.</p>
+      <p>Messages only go to people who signed up, so each one reaches someone who asked for it.</p>
     </div>
   </div>
 </section>
@@ -471,15 +440,37 @@
       </div>
     </div>
     <div class="scene__text">
-      <p class="kicker">Wednesday, lunchtime</p>
-      <h3>Someone in Tokai searches.</h3>
-      <p>They search for fish food in Cape Town. Your product appears with a photograph, a price, and "collect today". Your Google listing appears beside it with your rating and review count.</p>
-      <p>The product tile is advertising, charged per click from a budget you set. The listing beneath it is free.</p>
+      <h3>Google listing and Shopping.</h3>
+      <p>Your Google listing kept complete and current, with photos, hours and answered reviews. Your products appear in Google search results with a photograph, a price and "collect today".</p>
+      <p>Product ads are charged per click from a budget you set. The listing itself is free.</p>
     </div>
   </div>
 </section>
 
 <section class="scene scene--flip">
+  <div class="wrap scene__grid">
+    <div class="scene__art">
+      <div class="phone device"><div class="screen">
+        <div class="status"><span>21:04</span><i>●●●● ▮</i></div>
+        <div class="sh-head"><img src="img/logo.png" alt="Sam's Aquarium"><div class="sh-cart"></div></div>
+        <div class="sh-img a" style="--d:0"><img src="img/food-shelf.webp" alt="Tins of fish food on the shop shelf"></div>
+        <div class="sh-body">
+          <div class="a" style="--d:1"><div class="sh-cat">Food</div><div class="sh-name">Tropical flake food, 250g</div></div>
+          <div class="a" style="--d:2"><div class="sh-price">R89</div><div class="sh-stock">In stock at the shop</div></div>
+          <div class="sh-btns a" style="--d:3"><div class="sh-btn sh-btn--fill">Collect at the shop</div><div class="sh-btn">Deliver to me</div></div>
+          <div class="sh-note">Collect from 8:30 tomorrow. Same-day delivery in the Southern Suburbs on orders before 2pm, courier anywhere in Cape Town.</div>
+        </div>
+      </div></div>
+    </div>
+    <div class="scene__text">
+      <h3>An online shop.</h3>
+      <p>Customers order food, treatments and equipment from their phone at any hour, pay by card, and collect at the counter or get it delivered.</p>
+      <p>Same products, same prices as in the shop. Food, treatments and filter media are bought again and again, and the shop makes the repeat order a few taps.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scene">
   <div class="wrap scene__grid">
     <div class="scene__art">
       <div class="phone device"><div class="screen wa">
@@ -496,34 +487,9 @@
       </div></div>
     </div>
     <div class="scene__text">
-      <p class="kicker">Thursday, 2 o'clock</p>
-      <h3>A filter sponge to Tokai by four.</h3>
-      <p>A customer messages about a worn-out filter part. It is packed at the counter and sent by driver or Uber, with a care tip in the same conversation.</p>
-      <p>Live fish are still chosen and collected at the counter. Kit, food and treatments can be at the door the same afternoon.</p>
-    </div>
-  </div>
-</section>
-
-<section class="scene">
-  <div class="wrap scene__grid">
-    <div class="scene__art">
-      <div class="phone device"><div class="screen">
-        <div class="status"><span>21:04</span><i>●●●● ▮</i></div>
-        <div class="sh-head"><img src="img/logo.png" alt="Sam's Aquarium"><div class="sh-cart"></div></div>
-        <div class="sh-img a" style="--d:0"><img src="img/food-shelf.webp" alt="Tins of fish food on the shop shelf"></div>
-        <div class="sh-body">
-          <div class="a" style="--d:1"><div class="sh-cat">Food</div><div class="sh-name">Tropical flake food, 250g</div></div>
-          <div class="a" style="--d:2"><div class="sh-price">R89</div><div class="sh-stock">In stock at the shop</div></div>
-          <div class="sh-btns a" style="--d:3"><div class="sh-btn sh-btn--fill">Collect at the shop</div><div class="sh-btn">Deliver to me</div></div>
-          <div class="sh-note">Collect from 8:30 tomorrow. Same-day delivery in the Southern Suburbs on orders before 2pm, courier anywhere in Cape Town.</div>
-        </div>
-      </div></div>
-    </div>
-    <div class="scene__text">
-      <p class="kicker">Sunday, 9 in the evening</p>
-      <h3>The flake tin is empty.</h3>
-      <p>They open your shop on their phone, tap collect, and pick it up on Monday. Same product, same price as at the counter.</p>
-      <p>Food, treatments and filter media are bought again and again. The shop lets customers order them from you at any hour, for collection or delivery.</p>
+      <h3>Delivery across Cape Town.</h3>
+      <p>Same-day delivery in the Southern Suburbs by driver or Uber, and courier delivery anywhere else in Cape Town, booked from the shop.</p>
+      <p>Live fish are chosen and collected at the counter.</p>
     </div>
   </div>
 </section>
@@ -549,63 +515,53 @@
       </div>
     </div>
     <div class="scene__text">
-      <p class="kicker">First of the month</p>
-      <h3>One page, in plain English.</h3>
+      <h3>A monthly report.</h3>
       <p>What sold, how many people got in touch, which message drew the most replies, and what the advertising returned.</p>
-      <p>The report shows what is working and what is not, in figures you can check against your own.</p>
+      <p>One page, with figures you can check against your own.</p>
     </div>
   </div>
 </section>
 
-<div class="band"><img src="img/macaw-reef.webp" alt="The shop's blue and gold macaw on its perch above the reef tank" width="1400" height="2489" data-parallax="0.15"><span class="band__cap">Quality control</span></div>
-
 <!-- ============================================================ INCLUDED -->
 <section class="section midwater" id="included">
   <div class="wrap">
-    <p class="kicker">In detail</p>
     <h2>What is included.</h2>
-    <div class="pair">
-      <div class="card">
-        <h4>Set up once</h4>
-        <ul>
-          <li>An online shop matching the website, built for phones</li>
-          <li>Order online, then collect at the counter, or same-day delivery across the Southern Suburbs. Live fish are collected at the counter.</li>
-          <li>A courier account set up and linked to the shop, so an order anywhere in Cape Town is a printed label and a collection, not a phone call</li>
-          <li>Card payments through Yoco</li>
-          <li>WhatsApp set up for the business, with a sign-up so customers choose to hear from you</li>
-          <li>Facebook and Instagram set up properly</li>
-          <li>Your Google listing overhauled</li>
-          <li>Your products set up to appear in Google searches</li>
-          <li>Two training sessions and a written guide, so your team adds products, photos and prices themselves. I am on hand for the first batch.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4>Every month</h4>
-        <ul>
-          <li>One WhatsApp message a week to your customers</li>
-          <li>Facebook and Instagram posted every week</li>
-          <li>Google advertising run and adjusted as the results come in</li>
-          <li>The shop, the website and your Google listing looked after, and reviews answered</li>
-          <li>Help with any online order that needs it</li>
-          <li>One report in plain English</li>
-        </ul>
-        <h4 style="margin-top:1.8rem">What I would need from you</h4>
-        <ul>
-          <li>Access to your WhatsApp Business account</li>
-          <li>One person on the floor who handles online orders</li>
-          <li>A way to deliver locally: a staff member with a car, or Uber. The courier covers the rest of Cape Town.</li>
-          <li>A few hours after training to load the first products</li>
-        </ul>
-      </div>
+    <div class="inc">
+      <h3>Set up once</h3>
+      <ul class="inc-grid">
+        <li><b>Online shop</b><span>Built for phones, in Sam's colours, with collection at the counter or delivery.</span></li>
+        <li><b>Card payments</b><span>Yoco online payments, paid into the shop's own account.</span></li>
+        <li><b>Courier account</b><span>Linked to the shop, so an order anywhere in Cape Town is a printed label and a collection.</span></li>
+        <li><b>Same-day delivery</b><span>Set up for the Southern Suburbs, by a staff member with a car or by Uber.</span></li>
+        <li><b>WhatsApp Business API</b><span>The official WhatsApp business platform, with a sign-up list, approved message templates and automatic replies.</span></li>
+        <li><b>Facebook and Instagram</b><span>Pages set up properly and linked to WhatsApp and the shop, with one inbox for every message.</span></li>
+        <li><b>Google Business Profile</b><span>Overhauled: categories, photos, products, hours and a link to the shop.</span></li>
+        <li><b>Google Shopping</b><span>Your products in Google results, fed straight from the shop.</span></li>
+        <li><b>Training</b><span>Two sessions and a written guide, so your team adds products, photos and prices themselves.</span></li>
+      </ul>
+      <h3>Every month</h3>
+      <ul class="inc-grid">
+        <li><b>Social media</b><span>A post a week on Facebook and Instagram, written, scheduled and published.</span></li>
+        <li><b>WhatsApp</b><span>One message a week to everyone on the sign-up list.</span></li>
+        <li><b>Google Ads</b><span>An ad account in Sam's Aquarium's name, run and adjusted as the results come in.</span></li>
+        <li><b>Google listing</b><span>Kept current, with reviews answered.</span></li>
+        <li><b>Shop support</b><span>The shop kept running, and help with any online order that needs it.</span></li>
+        <li><b>Monthly report</b><span>One page: what sold, who got in touch, and where they came from.</span></li>
+      </ul>
+      <h3>What I need from you</h3>
+      <ul class="inc-grid inc-grid--needs">
+        <li><b>WhatsApp access</b><span>Access to your WhatsApp Business account for the move to the API.</span></li>
+        <li><b>One person for orders</b><span>Someone on the floor who packs and hands over online orders.</span></li>
+        <li><b>Local deliveries</b><span>A staff member with a car, or Uber. The courier covers the rest of Cape Town.</span></li>
+        <li><b>A few hours after training</b><span>Time to load the first products into the shop.</span></li>
+      </ul>
     </div>
   </div>
 </section>
 
 <!-- ============================================================ PRICE -->
 <section class="section depths on-dark" id="price">
-  <div class="caustics" aria-hidden="true"></div>
   <div class="wrap">
-    <p class="kicker">Pricing</p>
     <h2>What it costs.</h2>
     <div class="price">
       <div><small>To set up, once</small><b>R15,000</b><span>Half on commencement, half when the shop goes live.</span></div>
@@ -618,17 +574,18 @@
         <tr><td>Card fees on online orders</td><td>about 3% per sale</td></tr>
         <tr><td>Same-day delivery, per drop</td><td>about a short Uber trip</td></tr>
         <tr><td>Courier across Cape Town, per parcel</td><td>from about R85</td></tr>
-        <tr><td>WhatsApp and email messages</td><td>free at your size</td></tr>
+        <tr><td>WhatsApp marketing messages, charged by Meta</td><td>about R0.62 each</td></tr>
+        <tr><td>WhatsApp order updates, charged by Meta</td><td>about R0.12 each</td></tr>
         <tr><td>Hosting and the domain</td><td>included</td></tr>
       </tbody>
     </table>
+    <p class="price-note">Meta's WhatsApp rates from 1 October 2026, before VAT. A weekly message to 500 people comes to about R1,350 a month.</p>
     <div class="terms">
       <div>
         <h4>Terms</h4>
         <ul>
           <li>Everything is in Sam's Aquarium's name: the domain, the shop, the ad account. You own it all.</li>
           <li>No contract. Stop at the end of any month.</li>
-          <li>Hosting and the domain are included at no charge.</li>
         </ul>
       </div>
       <div>
@@ -647,11 +604,9 @@
 <section class="close" id="next">
   <div class="cover__bg" data-parallax="0.12"><img src="img/storefront-sign.webp" alt="The Sam's Aquarium sign on Main Road, Bergvliet" width="1800" height="1012"></div>
   <div class="cover__veil"></div>
-  <canvas class="fish" aria-hidden="true"></canvas>
   <div class="wrap close__in">
-    <h2>Have a look through it.</h2>
-    <p>The website is yours either way, and can move onto samsaquarium.co.za within a day. If the package suits, tell me and we will agree a start date.</p>
-    <p><a class="btn btn--ghost" href="https://skyeh01.github.io/sams-aquarium/" target="_blank" rel="noopener">Open the new website</a></p>
+    <h2>Next step.</h2>
+    <p>If the package suits, tell me and we'll agree a start date.</p>
     <p class="sig">Skye Harmse<small>September 2026</small></p>
   </div>
 </section>
@@ -661,25 +616,6 @@
 (function(){
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* before / after slider: the range input does the work; the line and clip follow it */
-  var cmp = document.querySelector('.cmp'), range = cmp && cmp.querySelector('.cmp__range'), touched = false;
-  if (cmp && range) {
-    var setSplit = function(v){ cmp.style.setProperty('--split', v); };
-    range.addEventListener('input', function(){ touched = true; setSplit(range.value); });
-    range.addEventListener('pointerdown', function(){ touched = true; });
-    if (!reduce && 'IntersectionObserver' in window) {
-      new IntersectionObserver(function(en, io){
-        if (!en[0].isIntersecting) return; io.disconnect();
-        var t0 = null, from = 50, path = [[0,50],[900,18],[1900,74],[2600,50]];
-        function ease(t){ return t<.5 ? 2*t*t : -1+(4-2*t)*t; }
-        function tick(ts){ if (touched) return; if (!t0) t0 = ts; var e = ts - t0;
-          for (var i=1;i<path.length;i++){ if (e <= path[i][0]) { var a=path[i-1], b=path[i], k=ease((e-a[0])/(b[0]-a[0])); var v=a[1]+(b[1]-a[1])*k; setSplit(v.toFixed(1)); range.value=v; return requestAnimationFrame(tick); } }
-          setSplit(50); range.value=50; }
-        setTimeout(function(){ requestAnimationFrame(tick); }, 500);
-      }, {threshold:.5}).observe(cmp);
-    }
-  }
 
   /* rail + progress */
   var rail = document.querySelectorAll('.rail a'), bar = document.querySelector('.progress i');
@@ -714,54 +650,6 @@
     }, {threshold:.3});
     var sc = document.querySelectorAll('.scene'); for (var s=0;s<sc.length;s++) io.observe(sc[s]);
   }
-
-  /* the fish: a small school that keeps loosely together and scatters from the pointer */
-  function school(canvas){
-    var ctx = canvas.getContext('2d'); if (!ctx) return;
-    var dpr = Math.min(window.devicePixelRatio||1, 1.5), W=0, H=0, fish=[], bubbles=[];
-    var pointer={x:-9999,y:-9999,on:false}, visible=true, last=0;
-    var colors=['#f26a3d','#f26a3d','#ffb08a','#9fd6dd','#dff3f5','#f7f7f2'];
-    function resize(){ var r=canvas.getBoundingClientRect(); W=Math.max(1,Math.floor(r.width)); H=Math.max(1,Math.floor(r.height));
-      canvas.width=Math.floor(W*dpr); canvas.height=Math.floor(H*dpr); ctx.setTransform(dpr,0,0,dpr,0,0); }
-    function bubble(any){ return {x:Math.random()*W, y:any?Math.random()*H:H+10, r:1+Math.random()*3, v:.25+Math.random()*.55, s:Math.random()*6.28, a:.12+Math.random()*.25}; }
-    function seed(){ fish=[]; bubbles=[]; var n = W<700?8:(W<1100?12:16);
-      for (var i=0;i<n;i++){ var d=Math.random(), a=Math.random()*6.28;
-        fish.push({x:Math.random()*W, y:H*(.12+Math.random()*.6), vx:Math.cos(a)*.8, vy:Math.sin(a)*.4, size:12+d*22, speed:.6+d*.7, alpha:.28+d*.55,
-          color:colors[Math.floor(Math.random()*colors.length)], phase:Math.random()*6.28, freq:.8+Math.random()*.6, wander:Math.random()*6.28}); }
-      for (var b=0;b<20;b++) bubbles.push(bubble(true)); }
-    function step(dt){ var i,j,f,o;
-      for (i=0;i<fish.length;i++){ f=fish[i]; var ax=0,ay=0,cx=0,cy=0,c=0,alx=0,aly=0;
-        for (j=0;j<fish.length;j++){ if(i===j) continue; o=fish[j]; var dx=o.x-f.x, dy=o.y-f.y, d2=dx*dx+dy*dy;
-          if (d2<25600){ cx+=o.x; cy+=o.y; alx+=o.vx; aly+=o.vy; c++; if (d2<(f.size+o.size)*(f.size+o.size)*1.2){ ax-=dx/(d2+1)*40; ay-=dy/(d2+1)*40; } } }
-        if (c){ ax+=((cx/c)-f.x)*.0006; ay+=((cy/c)-f.y)*.0006; ax+=((alx/c)-f.vx)*.02; ay+=((aly/c)-f.vy)*.02; }
-        f.wander+=(Math.random()-.5)*.3; ax+=Math.cos(f.wander)*.01; ay+=Math.sin(f.wander)*.006;
-        var m=80; if(f.x<m)ax+=(m-f.x)*.002; if(f.x>W-m)ax-=(f.x-(W-m))*.002; if(f.y<m)ay+=(m-f.y)*.002; if(f.y>H-m)ay-=(f.y-(H-m))*.002;
-        if (pointer.on){ var px=f.x-pointer.x, py=f.y-pointer.y, pd=Math.sqrt(px*px+py*py); if (pd<150 && pd>.1){ var s=(150-pd)/150; ax+=(px/pd)*s*.35; ay+=(py/pd)*s*.35; } }
-        f.vx+=ax*dt; f.vy+=ay*dt; f.vy*=.985;
-        var sp=Math.sqrt(f.vx*f.vx+f.vy*f.vy), mx=f.speed*1.9, mn=f.speed*.45;
-        if (sp>mx){ f.vx=f.vx/sp*mx; f.vy=f.vy/sp*mx; } if (sp<mn&&sp>0){ f.vx=f.vx/sp*mn; f.vy=f.vy/sp*mn; }
-        f.x+=f.vx*dt; f.y+=f.vy*dt; }
-      for (i=0;i<bubbles.length;i++){ var bb=bubbles[i]; bb.y-=bb.v*dt; bb.s+=.02*dt; bb.x+=Math.sin(bb.s)*.2*dt; if (bb.y<-10) bubbles[i]=bubble(false); } }
-    function drawFish(f,t){ var s=f.size, wag=Math.sin(t*.008*f.freq+f.phase)*.35;
-      ctx.save(); ctx.translate(f.x,f.y); ctx.rotate(Math.atan2(f.vy,f.vx)); ctx.globalAlpha=f.alpha; ctx.fillStyle=f.color;
-      ctx.beginPath(); ctx.moveTo(s*.55,0); ctx.bezierCurveTo(s*.3,-s*.3,-s*.25,-s*.27,-s*.45,0); ctx.bezierCurveTo(-s*.25,s*.27,s*.3,s*.3,s*.55,0); ctx.fill();
-      ctx.beginPath(); ctx.moveTo(-s*.38,0); ctx.lineTo(-s*.78,-s*.3+wag*s*.25); ctx.lineTo(-s*.7,wag*s*.1); ctx.lineTo(-s*.78,s*.3+wag*s*.25); ctx.closePath(); ctx.fill();
-      ctx.beginPath(); ctx.moveTo(s*.1,-s*.22); ctx.lineTo(-s*.1,-s*.42+wag*s*.05); ctx.lineTo(-s*.25,-s*.2); ctx.closePath(); ctx.fill();
-      ctx.globalAlpha=Math.min(1,f.alpha+.2); ctx.fillStyle='#06161f'; ctx.beginPath(); ctx.arc(s*.34,-s*.05,Math.max(1.2,s*.05),0,6.28); ctx.fill(); ctx.restore(); }
-    function draw(t){ ctx.clearRect(0,0,W,H); var i; ctx.lineWidth=1;
-      for (i=0;i<bubbles.length;i++){ var b=bubbles[i]; ctx.globalAlpha=b.a; ctx.strokeStyle='#9fd6dd'; ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,6.28); ctx.stroke(); }
-      ctx.globalAlpha=1; fish.sort(function(a,b){return a.size-b.size}); for (i=0;i<fish.length;i++) drawFish(fish[i],t); }
-    function frame(t){ if (visible && !document.hidden){ var dt=last?Math.min(2.5,(t-last)/16.67):1; last=t; step(dt); draw(t); } else last=0; requestAnimationFrame(frame); }
-    var host = canvas.parentElement;
-    host.addEventListener('mousemove', function(e){ var r=canvas.getBoundingClientRect(); pointer.x=e.clientX-r.left; pointer.y=e.clientY-r.top; pointer.on=true; });
-    host.addEventListener('mouseleave', function(){ pointer.on=false; });
-    host.addEventListener('touchmove', function(e){ var r=canvas.getBoundingClientRect(), tt=e.touches[0]; pointer.x=tt.clientX-r.left; pointer.y=tt.clientY-r.top; pointer.on=true; }, {passive:true});
-    host.addEventListener('touchend', function(){ pointer.on=false; });
-    if ('IntersectionObserver' in window) new IntersectionObserver(function(en){ visible=en[0].isIntersecting; },{threshold:.02}).observe(host);
-    var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt=setTimeout(function(){ resize(); seed(); },150); });
-    resize(); seed(); requestAnimationFrame(frame);
-  }
-  var cs = document.querySelectorAll('canvas.fish'); for (var k=0;k<cs.length;k++) school(cs[k]);
 })();
 </script>
 </body>
