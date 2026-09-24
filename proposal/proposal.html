@@ -378,17 +378,27 @@
   .film{--fw:min(1200px,calc(100vw - 2 * var(--gutter)));width:var(--fw);margin-left:calc((100% - var(--fw)) / 2);margin-top:clamp(2.2rem,4.5vw,3.4rem);
         position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#07152e;
         box-shadow:0 60px 100px -60px rgba(2,8,26,.95),0 0 0 1px rgba(255,255,255,.12)}
-  .film__bg{position:absolute;inset:-4%;width:108%;height:108%;max-width:none;object-fit:cover;filter:brightness(.33) saturate(.8)}
+  .film__bg{position:absolute;inset:-4%;width:108%;height:108%;max-width:none;object-fit:cover;filter:brightness(.3) saturate(.75)}
   .film__veil{position:absolute;inset:0;background:radial-gradient(110% 85% at 50% 45%,rgba(7,21,46,.1) 0%,rgba(7,21,46,.55) 70%,rgba(7,21,46,.9) 100%)}
   .film__stage{position:absolute;left:0;top:0;width:1200px;height:675px;transform-origin:0 0}
-  .film__fade{position:absolute;inset:0;background:#07152e;opacity:0;pointer-events:none;z-index:4}
-  .film__progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.12);z-index:5}
-  .film__progress i{display:block;height:100%;width:0;background:var(--orange)}
+  .film__fade{position:absolute;inset:0;background:#07152e;opacity:0;pointer-events:none;z-index:6}
+  .film.is-js .is-off{display:none}
 
-  .film__phone{position:absolute;left:120px;top:45px;width:300px;box-shadow:0 50px 80px -40px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.08)}
-  .film .wa-body{justify-content:flex-end;background:#efeae2;padding:10px 12px}
+  /* story bar and caption, drawn over the film */
+  .film__segs{position:absolute;left:18px;right:18px;top:14px;z-index:5;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .film__segs::before{content:"";position:absolute;left:-18px;right:-18px;top:-14px;height:56px;z-index:-1;background:linear-gradient(rgba(7,21,46,.62),rgba(7,21,46,0))}
+  .film__segs i{height:4px;border-radius:2px;background:rgba(150,162,172,.45);overflow:hidden}
+  .film__segs b{display:block;height:100%;background:var(--orange);transform-origin:0 50%}
+  .film__capwrap{position:absolute;left:0;right:0;bottom:clamp(14px,2.4vw,26px);z-index:5;display:flex;justify-content:center;padding:0 14px;pointer-events:none}
+  .film__cap{margin:0;max-width:none;background:rgba(6,22,31,.94);color:#fff;border-radius:12px;padding:.5em 1.05em .56em;
+             font-family:var(--head);font-weight:800;font-size:clamp(1.05rem,2.4vw,1.9rem);line-height:1.2;letter-spacing:-.015em;text-align:center;
+             box-shadow:0 18px 40px -18px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.1)}
+
+  /* the phone */
+  .film__phone{position:absolute;left:60px;top:42px;width:262px;box-shadow:0 50px 80px -40px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.08)}
+  .film .wa-body{justify-content:flex-end;background:#efeae2;padding:10px 11px}
   .film .wa-date{background:#d9f2e6;color:#2d5a45;margin-bottom:auto}
-  .film .msg{position:relative;border-top-left-radius:0;max-width:84%}
+  .film .msg{position:relative;border-top-left-radius:0;max-width:86%}
   .film .msg--out{border-top-left-radius:8px;border-top-right-radius:0}
   .film .msg::before{content:"";position:absolute;top:0;left:-7px;width:8px;height:10px;background:#fff;clip-path:polygon(0 0,100% 0,100% 100%)}
   .film .msg--out::before{left:auto;right:-7px;background:#dcf8c6;clip-path:polygon(0 0,100% 0,0 100%)}
@@ -397,59 +407,79 @@
   .film .typing i{width:7px;height:7px;border-radius:50%;background:#9aa7ae;animation:dot 1s infinite ease-in-out}
   .film .typing i:nth-child(2){animation-delay:.15s}.film .typing i:nth-child(3){animation-delay:.3s}
   @keyframes dot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
-  .film.is-js .msg.is-off{display:none}
 
-  .crm{position:absolute;left:500px;top:58px;width:580px;background:#fff;color:var(--text);border-radius:14px;overflow:hidden;font-size:14px;line-height:1.45;
-       box-shadow:0 50px 80px -40px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.08)}
-  .crm__bar{display:flex;justify-content:space-between;align-items:center;padding:11px 18px;background:#f5f8f9;border-bottom:1px solid #e3e9eb}
-  .crm__mark{font-family:var(--head);font-weight:800;font-variation-settings:"wdth" 112;text-transform:uppercase;font-size:13px;color:#1e4fa8;letter-spacing:.01em}
-  .crm__mark b{color:var(--orange);font-weight:800}
-  .crm__crumb{font-size:12.5px;color:var(--text-dim)}
-  .crm__crumb i{font-style:normal;margin:0 .3em}
-  .crm__profile{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:16px 20px 12px}
-  .crm__avatar{width:50px;height:50px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-family:var(--head);font-weight:800;font-size:17px}
-  .crm__name{display:block;font-family:var(--head);font-size:20px;line-height:1.1;color:var(--ink)}
-  .crm__sub{display:block;font-size:13px;color:var(--text-dim);margin-top:3px}
-  .crm__last{text-align:right}
-  .crm__last small{display:block;font-size:11.5px;color:var(--text-dim)}
-  .crm__last b{font-size:13px;color:var(--ink);transition:color .4s}
-  .crm .crm__last b.is-written{color:var(--orange-2);background:none;box-shadow:none}
-  .crm__tags{display:flex;flex-wrap:wrap;gap:6px;padding:0 20px 14px}
-  .crm__tags span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:#e7eefa;color:#1e4fa8}
-  .crm__tags .crm__tag-new{background:#fde5dc;color:var(--orange-2)}
-  .film.is-js .crm__tag-new.is-off,.film.is-js .crm__activity li.is-off{display:none}
-  .crm__cols{display:grid;grid-template-columns:1.2fr 1fr;border-top:1px solid #e3e9eb}
-  .crm__details{margin:0;padding:10px 12px 14px;border-right:1px solid #e3e9eb}
-  .crm__details div{padding:7px 10px;border-radius:8px;transition:background-color .45s var(--ease),box-shadow .45s var(--ease)}
-  .crm__details dt{font-size:11.5px;color:var(--text-dim)}
-  .crm__details dd{margin:0;font-weight:600;color:var(--ink);min-height:1.45em;transition:color .4s}
-  .crm__activity{padding:12px 16px}
-  .crm__activity h4{font-family:var(--body);font-size:12px;font-weight:600;color:var(--text-dim);margin:0 0 4px}
-  .crm__activity ol{list-style:none;margin:0;padding:0;max-width:none}
-  .crm__activity li{display:grid;grid-template-columns:44px 1fr;gap:8px;margin:0;padding:8px 6px;border-bottom:1px solid #eef2f3;border-radius:6px;font-size:13px;line-height:1.4;overflow:hidden;transition:background-color .45s var(--ease),box-shadow .45s var(--ease)}
-  .crm__activity li:last-child{border-bottom:0}
-  .crm__activity time{color:var(--text-dim);font-size:12px}
-  .crm__activity li.is-fresh span{font-weight:600;color:var(--ink)}
-  .crm .is-read{background:rgba(30,79,168,.1);box-shadow:inset 3px 0 0 #1e4fa8}
-  .crm .is-written{background:rgba(242,106,61,.12);box-shadow:inset 3px 0 0 var(--orange)}
-  .crm .is-written dd{color:var(--orange-2)}
+  /* the customer system: plain business software, greys and one blue */
+  .app{position:absolute;left:372px;top:42px;width:768px;height:505px;display:grid;grid-template-columns:52px minmax(0,1fr);background:#fff;border-radius:10px;overflow:hidden;
+       font-family:var(--body);font-size:13px;line-height:1.4;color:#1f2d33;box-shadow:0 50px 80px -40px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.08)}
+  .app svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .app__nav{background:#0f222c;display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 0}
+  .app__logo{width:32px;height:32px;border-radius:8px;background:#fff;display:grid;place-items:center;margin-bottom:10px}
+  .app__logo svg{width:22px;height:22px;stroke:none}
+  .app__ic{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;color:#7f96a0}
+  .app__ic.is-on{background:rgba(255,255,255,.1);color:#fff}
+  .app__ic svg{width:18px;height:18px}
+  .app__main{display:flex;flex-direction:column;min-width:0}
+  .app__top{flex:none;height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 16px 0 18px;border-bottom:1px solid #e7ecee}
+  .app__crumb{font-size:12.5px;color:#6b7c84}
+  .app__crumb i{font-style:normal;margin:0 .35em;color:#b3bec3}
+  .app__crumb b{color:#1f2d33;font-weight:600}
+  .app__search{display:flex;align-items:center;gap:7px;width:210px;height:28px;padding:0 10px;border:1px solid #e1e7ea;border-radius:6px;color:#98a6ad;font-size:12px}
+  .app__search svg{width:14px;height:14px}
+  .rec__head{flex:none;display:flex;justify-content:space-between;align-items:center;padding:12px 18px 10px}
+  .rec__who{display:flex;align-items:center;gap:11px}
+  .rec__init{width:36px;height:36px;border-radius:50%;background:#e4ebee;color:#34474f;display:grid;place-items:center;font-weight:700;font-size:13px}
+  .rec__name{display:block;font-family:var(--head);font-weight:700;font-variation-settings:"wdth" 100;font-size:16px;line-height:1.2;color:#0e1f26;letter-spacing:-.01em}
+  .rec__meta{display:block;font-size:12px;color:#6b7c84}
+  .rec__acts{display:flex;gap:8px}
+  .sbtn{height:28px;padding:0 12px;border:1px solid #d9e1e4;border-radius:6px;display:inline-flex;align-items:center;font-size:12.5px;font-weight:600;color:#26363d}
+  .sbtn--pri{background:#1e4fa8;border-color:#1e4fa8;color:#fff}
+  .rec__tabs{flex:none;display:flex;gap:20px;padding:0 18px;border-bottom:1px solid #e7ecee}
+  .rec__tabs span{padding:8px 0 9px;font-size:12.5px;font-weight:600;color:#7a8a91;border-bottom:2px solid transparent;margin-bottom:-1px}
+  .rec__tabs .is-on{color:#0e1f26;border-bottom-color:#1e4fa8}
+  .rec__grid{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:14px 18px}
+  .rec__col h6{font-family:var(--body);font-size:12px;font-weight:700;color:#6b7c84;margin:0 0 4px}
+  .props{margin:0 0 14px}
+  .props>div{display:grid;grid-template-columns:88px minmax(0,1fr);column-gap:10px;padding:6px 8px;margin:0 -8px;border-radius:6px;transition:background-color .35s}
+  .props dt{color:#6b7c84;font-size:12.5px}
+  .props dd{margin:0;color:#14252c;font-weight:600;min-height:1.4em}
+  .props .upd{grid-column:2;font-size:11px;color:#8a989e;margin-top:1px}
+  .app .is-read{background:#eaf0fa}
+  .order{border:1px solid #e3e9ec;border-radius:8px;margin-bottom:14px;overflow:hidden}
+  .order__h{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid #eef2f4}
+  .order__h h6{margin:0;font-size:12.5px;color:#14252c}
+  .status{font-size:11.5px;font-weight:600;color:#1b7340;background:#e3f4e9;padding:2px 9px;border-radius:999px}
+  .order__empty{display:none;margin:0;padding:12px;color:#8a989e;font-size:12.5px;max-width:none}
+  .film.is-js .order.is-empty .order__empty{display:block}
+  .film.is-js .order.is-empty .order__body,.film.is-js .order.is-empty .status{display:none}
+  .order__lines{list-style:none;margin:0;padding:2px 12px;max-width:none}
+  .order__lines li{display:flex;justify-content:space-between;gap:10px;margin:0;padding:6px 8px;margin-inline:-8px;border-bottom:1px solid #f0f3f5;border-radius:4px;font-size:12.5px;overflow:hidden}
+  .order__lines li:last-child{border-bottom:0}
+  .order__lines small{color:#8a989e;font-size:11.5px;margin-left:4px}
+  .order__lines b{font-weight:600}
+  .order__total{display:flex;justify-content:space-between;padding:7px 12px;font-weight:700;background:#f6f8f9;border-top:1px solid #eef2f4}
+  .feed{list-style:none;margin:0;padding:0;max-width:none}
+  .feed li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:9px;align-items:start;margin:0 -6px;padding:5px 6px;border-radius:6px;overflow:hidden;transition:background-color .35s}
+  .fi{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:#eef2f4;color:#5d6f77}
+  .fi--wa{background:#e3f6ea;color:#1d8a4b}
+  .fi svg{width:12px;height:12px}
+  .feed p{margin:0;font-size:12.5px;color:#26363d;line-height:1.35;max-width:none}
+  .feed p span{display:block;color:#8a989e;font-size:11.5px}
+  .feed time{font-size:11.5px;color:#8a989e;white-space:nowrap;padding-top:1px}
 
   .film__bar{--fw:min(1200px,calc(100vw - 2 * var(--gutter)));width:var(--fw);margin-left:calc((100% - var(--fw)) / 2);
-             display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1.2rem}
-  .film__subs{position:relative;flex:1;min-height:2.6em;font-family:var(--head);font-weight:800;font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.2;letter-spacing:-.015em}
-  .film__subs p{position:absolute;left:0;top:0;margin:0;color:#fff;opacity:0;max-width:none}
-  .film__subs p.is-on{opacity:1}
+             display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1rem}
+  .film__note{margin:0;max-width:none;font-size:.92rem;color:#aebfe3}
   .film__ctrl{display:flex;gap:.6rem;flex:none}
-  .film__btn{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);background:transparent;color:#fff;cursor:pointer}
+  .film__btn{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);background:transparent;color:#fff;cursor:pointer}
   .film__btn:hover{background:rgba(255,255,255,.12)}
   .film__btn:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
   .film__btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
   .film__btn .i-play,#film-toggle.is-paused .i-pause{display:none}
   #film-toggle.is-paused .i-play{display:block}
-  .film__note{--fw:min(1200px,calc(100vw - 2 * var(--gutter)));width:var(--fw);margin:.6rem 0 0 calc((100% - var(--fw)) / 2);max-width:none;font-size:.9rem;color:#aebfe3}
   @media(max-width:700px){
     .film{aspect-ratio:4/5;border-radius:14px}
-    .film__subs{min-height:2.5em;font-size:1.25rem}
+    .film__segs{left:12px;right:12px;top:10px;gap:4px}
+    .film__cap{border-radius:10px}
   }
 </style>
 </head>
@@ -636,11 +666,12 @@
 
 <!-- ============================================================ AI ASSISTANT
      Package 2 as a short product film: the WhatsApp chat beside the
-     customer's record in the shop's CRM. A GSAP timeline plays it like a
-     screen recording, with a camera that zooms into the chat and pans to
-     the record whenever the assistant reads or writes there. The markup
-     holds the film's last frame, which is what shows with reduced motion or
-     if the script can't load. -->
+     customer's page in the shop's customer system. A GSAP timeline plays it
+     like a screen recording, with a camera that zooms into the chat and pans
+     to the customer page whenever the assistant reads or writes there. A
+     caption card sits inside the film and a five-part bar along the top shows
+     where the story is. The markup holds the film's last frame, which is what
+     shows with reduced motion or if the script can't load. -->
 <section class="section aix" id="ai">
   <div class="wrap">
     <div class="aix__head">
@@ -649,7 +680,7 @@
       <p class="lead">Everything in the marketing package, plus an assistant on your WhatsApp. It answers customers day and night, remembers their tanks and suggests the extras, then hands the order to your team.</p>
     </div>
 
-    <div class="film" id="film" role="img" aria-label="Example: a customer, Thandi, messages Sam's on WhatsApp at 9:40pm. The assistant knows her tank, suggests harlequin rasboras and holds 8 for her, reminds her that her filter sponges are due, and takes an R295 order for Saturday, while her customer record updates.">
+    <div class="film" id="film" role="img" aria-label="Example: a customer, Thandi, messages Sam's on WhatsApp at 9:40pm. The assistant knows her tank, suggests harlequin rasboras and holds 8 for her, reminds her that her filter sponges are due, and takes an R295 order for Saturday, while her customer page updates.">
       <img class="film__bg" src="img/hero.webp" alt="" width="2000" height="1334">
       <div class="film__veil"></div>
       <div class="film__stage">
@@ -669,52 +700,79 @@
           <div class="wa-foot"><div class="wa-in">Message</div><div class="wa-mic"></div></div>
         </div></div>
 
-        <div class="crm">
-          <div class="crm__bar"><span class="crm__mark"><b>Sams</b> Aquarium</span><span class="crm__crumb">Customers <i>›</i> Thandi M.</span></div>
-          <div class="crm__profile">
-            <div class="crm__avatar">TM</div>
-            <div><b class="crm__name">Thandi M.</b><span class="crm__sub">Tokai. Customer since 2019</span></div>
-            <div class="crm__last"><small>Last contact</small><b data-f="last" data-from="In the shop, 12 Sep">WhatsApp, today 21:42</b></div>
-          </div>
-          <div class="crm__tags"><span>Community tank</span><span>WhatsApp list</span><span class="crm__tag-new" data-f="tag">Collecting Saturday</span></div>
-          <div class="crm__cols">
-            <dl class="crm__details">
-              <div data-f="tank"><dt>Tank</dt><dd>120 L planted community</dd></div>
-              <div data-f="fish"><dt>Fish</dt><dd>10 neons, 6 corydoras, 2 platies</dd></div>
-              <div data-f="filter" data-from="Bioflow sponges, bought March"><dt>Filter</dt><dd>New sponge set, Saturday</dd></div>
-              <div data-f="hold" data-from="Nothing on hold"><dt>On hold</dt><dd>8 harlequin rasboras, until Saturday</dd></div>
-              <div data-f="next" data-from="None booked"><dt>Next check-in</dt><dd>How the rasboras settled, 4 Oct</dd></div>
-            </dl>
-            <div class="crm__activity">
-              <h4>Activity</h4>
-              <ol>
-                <li data-f="order" class="is-fresh"><time>21:42</time><span>Order for Saturday: 8 harlequin rasboras, sponge set. R295</span></li>
-                <li data-f="held" class="is-fresh"><time>21:41</time><span>Held 8 harlequin rasboras</span></li>
-                <li><time>12 Sep</time><span>In the shop: fish food, R89</span></li>
-                <li data-f="sponges"><time>3 Mar</time><span>Bioflow sponge set, R95</span></li>
-              </ol>
+        <div class="app">
+          <nav class="app__nav">
+            <span class="app__logo"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 20C10 13 17 10 23 11c4 1 7 4 9 7l5-5v14l-5-5c-2 3-5 6-9 7C17 30 10 27 6 20z" fill="#f26a3d"/><circle cx="12" cy="18" r="1.8" fill="#06161f"/></svg></span>
+            <span class="app__ic is-on"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M3 19c.8-3.3 3.1-5 6-5s5.2 1.7 6 5"/><path d="M16 5.5a3 3 0 0 1 0 5.8M18 14.5c1.5.6 2.6 2.1 3 4.5"/></svg></span>
+            <span class="app__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>
+            <span class="app__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg></span>
+            <span class="app__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg></span>
+            <span class="app__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg></span>
+          </nav>
+          <div class="app__main">
+            <div class="app__top">
+              <span class="app__crumb">Customers <i>/</i> <b>Thandi M.</b></span>
+              <span class="app__search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>Search customers</span>
+            </div>
+            <div class="rec__head">
+              <div class="rec__who">
+                <span class="rec__init">TM</span>
+                <div><b class="rec__name">Thandi M.</b><span class="rec__meta">Tokai, customer since 2019</span></div>
+              </div>
+              <div class="rec__acts"><span class="sbtn">Call</span><span class="sbtn sbtn--pri">Message</span></div>
+            </div>
+            <div class="rec__tabs"><span class="is-on">Overview</span><span>Orders</span><span>Messages</span><span>Notes</span></div>
+            <div class="rec__grid">
+              <div class="rec__col rec__col--l">
+                <h6>Her tank</h6>
+                <dl class="props">
+                  <div data-f="tank"><dt>Tank</dt><dd>120 litres, planted community</dd></div>
+                  <div data-f="fish"><dt>Fish</dt><dd>10 neons, 6 corydoras, 2 platies</dd></div>
+                  <div data-f="filter" data-from="Juwel Bioflow, sponges from 3 Mar"><dt>Filter</dt><dd>Juwel Bioflow, new sponges Sat</dd><small class="upd">Updated by assistant</small></div>
+                  <div data-f="next" data-from="None booked"><dt>Next check-in</dt><dd>4 Oct, how the rasboras settled</dd><small class="upd">Updated by assistant</small></div>
+                </dl>
+                <h6>Contact</h6>
+                <dl class="props">
+                  <div><dt>WhatsApp</dt><dd>082 555 0143</dd></div>
+                  <div data-f="last" data-from="12 Sep, in the shop"><dt>Last contact</dt><dd>Today 21:42, WhatsApp</dd><small class="upd">Updated by assistant</small></div>
+                </dl>
+              </div>
+              <div class="rec__col rec__col--r">
+                <div class="order" data-f="order">
+                  <div class="order__h"><h6>Open order</h6><span class="status" data-f="status">Ready Sat 8:30</span></div>
+                  <p class="order__empty">No open orders</p>
+                  <div class="order__body">
+                    <ul class="order__lines">
+                      <li data-f="line-ras"><span>8 harlequin rasboras <small>on hold</small></span><b>R200</b></li>
+                      <li data-f="line-sponge"><span>Bioflow sponge set</span><b>R95</b></li>
+                    </ul>
+                    <div class="order__total"><span>Total</span><b data-f="total">R295</b></div>
+                  </div>
+                </div>
+                <h6>Activity</h6>
+                <ol class="feed">
+                  <li data-f="created"><span class="fi fi--wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg></span><p>Order created for Saturday, R295<span>By the assistant on WhatsApp</span></p><time>21:42</time></li>
+                  <li data-f="held"><span class="fi fi--wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg></span><p>Held 8 harlequin rasboras<span>By the assistant on WhatsApp</span></p><time>21:41</time></li>
+                  <li><span class="fi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span><p>Bought fish food, R89<span>In the shop</span></p><time>12 Sep</time></li>
+                  <li data-f="sponges"><span class="fi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span><p>Bought a Bioflow sponge set, R95<span>In the shop</span></p><time>3 Mar</time></li>
+                </ol>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="film__segs" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+      <div class="film__capwrap" aria-hidden="true"><p class="film__cap" data-caps='9:40pm. The shop&#39;s closed.|It knows her tank.|It holds the fish.|It spots what she&#39;s due for.|R295, ready for Saturday.'>R295, ready for Saturday.</p></div>
       <div class="film__fade" aria-hidden="true"></div>
-      <div class="film__progress" aria-hidden="true"><i></i></div>
     </div>
 
     <div class="film__bar">
-      <div class="film__subs" aria-hidden="true">
-        <p data-sub="1">9:40pm. The shop's closed.</p>
-        <p data-sub="2">It knows her tank.</p>
-        <p data-sub="3">It holds the fish.</p>
-        <p data-sub="4">It spots what she's due for.</p>
-        <p data-sub="5" class="is-on">R295, ready for Saturday.</p>
-      </div>
+      <p class="film__note">An example conversation. The customer, stock and prices are illustrations.</p>
       <div class="film__ctrl">
         <button type="button" class="film__btn" id="film-toggle" aria-label="Pause the film" hidden><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"/></svg></button>
         <button type="button" class="film__btn" id="film-replay" aria-label="Play the film from the start" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg></button>
       </div>
     </div>
-    <p class="film__note">An example conversation. The customer, stock and prices are illustrations.</p>
   </div>
 </section>
 
@@ -878,10 +936,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
 <script>
 /* Package 2 film. The stage is laid out at 1200 x 675 and scaled to the frame.
-   A camera {x, y, z} frames part of the stage: zoom in once, pan to follow
-   the action, zoom out when the scene ends. Pans use sine.inOut, the first
-   zoom expo.out. The markup holds the last frame; the script resets it and
-   plays the film when it is in view, pausing when it scrolls away. */
+   A camera {x, y, z} frames part of the stage in the space between the story
+   bar and the caption: zoom in once, pan to follow the action, zoom out when
+   the scene ends. Pans use sine.inOut, the first zoom expo.out. The markup
+   holds the last frame; the script resets it and plays the film while it is
+   in view. */
 (function(){
   'use strict';
   var film = document.getElementById('film');
@@ -905,55 +964,60 @@
   var body = $('.wa-body'), sub = $('.wa-sub'), typingEl = $('.typing');
   var msgs = Array.prototype.slice.call(film.querySelectorAll('.msg[data-i]'));
   var texts = msgs.map(function(m){ return m.querySelector('.msg__txt').textContent; });
-  var fields = {};
-  Array.prototype.slice.call(film.querySelectorAll('[data-f]')).forEach(function(el){ fields[el.getAttribute('data-f')] = el; });
-  var finals = {};
-  ['filter', 'hold', 'next'].forEach(function(k){ finals[k] = fields[k].querySelector('dd').textContent; });
-  finals.last = fields.last.textContent;
-  var subs = Array.prototype.slice.call(document.querySelectorAll('.film__subs p'));
-  var bar = $('.film__progress i'), fade = $('.film__fade');
+  var f = {};
+  Array.prototype.slice.call(film.querySelectorAll('[data-f]')).forEach(function(el){ f[el.getAttribute('data-f')] = el; });
+  var writes = ['filter', 'next', 'last'], finals = {};
+  writes.forEach(function(k){ finals[k] = f[k].querySelector('dd').textContent; });
+  var capEl = $('.film__cap'), caps = capEl.getAttribute('data-caps').split('|');
+  var segs = Array.prototype.slice.call(film.querySelectorAll('.film__segs b'));
+  var fade = $('.film__fade');
   var toggle = document.getElementById('film-toggle'), replay = document.getElementById('film-replay');
   var tl = null, userPaused = false, inView = false;
+  var FLASH = 'rgba(255,221,120,.6)', CLEAR = 'rgba(255,221,120,0)';
 
-  /* where things are on the stage, in stage pixels */
+  function narrow(){ return film.clientWidth < 700; }
   function rectOf(el){
     var st = stage.getBoundingClientRect(), r = el.getBoundingClientRect(), k = st.width / W1;
     return { x: (r.left - st.left) / k, y: (r.top - st.top) / k, w: r.width / k, h: r.height / k };
   }
   function union(els){
-    var rs = els.map(rectOf), x1 = Math.min.apply(null, rs.map(function(r){ return r.x; })), y1 = Math.min.apply(null, rs.map(function(r){ return r.y; }));
+    var rs = els.map(rectOf);
+    var x1 = Math.min.apply(null, rs.map(function(r){ return r.x; })), y1 = Math.min.apply(null, rs.map(function(r){ return r.y; }));
     var x2 = Math.max.apply(null, rs.map(function(r){ return r.x + r.w; })), y2 = Math.max.apply(null, rs.map(function(r){ return r.y + r.h; }));
     return { x: x1, y: y1, w: x2 - x1, h: y2 - y1 };
   }
-  function narrow(){ return film.clientWidth < 700; }
-  /* the camera that frames a rectangle, within zoom limits and the stage's edges */
-  function frame(r, pad){
-    var W = film.clientWidth, H = film.clientHeight, s = W / W1, zMax = narrow() ? 4 : 1.75;
-    pad = pad == null ? 26 : pad;
-    var z = Math.max(1, Math.min(zMax, W / (s * (r.w + pad * 2)), H / (s * (r.h + pad * 2))));
-    var hw = W / (2 * s * z), hh = H / (2 * s * z), x = r.x + r.w / 2, y = r.y + r.h / 2;
+  /* the camera that shows a rectangle in the free band between the bar and the caption */
+  function frame(r){
+    var W = film.clientWidth, H = film.clientHeight, s = W / W1, n = narrow();
+    var top = n ? 24 : 32, bot = n ? 84 : 110, pad = n ? 10 : 24, zMax = n ? 4 : 1.8;
+    var z = Math.max(1, Math.min(zMax, W / (s * (r.w + pad * 2)), (H - top - bot) / (s * (r.h + pad * 2))));
+    var k = s * z, hw = W / (2 * k);
+    var x = r.x + r.w / 2, y = r.y + r.h / 2 + (bot - top) / (2 * k);
     x = hw >= W1 / 2 ? W1 / 2 : Math.min(Math.max(x, hw), W1 - hw);
-    y = hh >= H1 / 2 ? H1 / 2 : Math.min(Math.max(y, hh), H1 - hh);
     return { x: x, y: y, z: z };
   }
   var shots = {
-    chat: function(){ var b = rectOf(body), h = Math.min(b.h, narrow() ? 330 : 400); return frame({ x: b.x - 8, y: b.y + b.h - h, w: b.w + 16, h: h }); },
-    tankRows: function(){ return frame(union([fields.tank, fields.fish, fields.filter])); },
-    /* on a phone the camera keeps to one column of the record, so the text stays readable */
-    record: function(){ return frame(narrow() ? union([fields.filter, fields.hold]) : rectOf($('.crm__cols'))); },
-    sponges: function(){ return frame(narrow() ? union([fields.fish, fields.filter]) : rectOf($('.crm__cols'))); },
-    finish: function(){ return frame(narrow() ? union([fields.filter, fields.next]) : union([$('.crm__profile'), $('.crm__cols')])); },
+    chat: function(){ var b = rectOf(body), h = Math.min(b.h, narrow() ? 300 : 330); return frame({ x: b.x - 8, y: b.y + b.h - h, w: b.w + 16, h: h }); },
+    tank: function(){ return frame(narrow() ? union([f.tank, f.fish]) : rectOf($('.rec__col--l'))); },
+    /* on a phone, the order shots frame a fixed area from the top of the order card, so it has room to grow */
+    order: function(){ return frame(narrow() ? orderArea() : rectOf($('.rec__col--r'))); },
+    filter: function(){ return frame(narrow() ? union([f.fish, f.filter]) : rectOf($('.rec__grid'))); },
+    finish: function(){ return frame(narrow() ? orderArea() : rectOf($('.rec__grid'))); },
     wide: function(){ return WIDE; }
   };
+  function orderArea(){ var o = rectOf(f.order); return { x: o.x, y: o.y - 8, w: o.w, h: 300 }; }
+  function clearReads(){ Array.prototype.slice.call(film.querySelectorAll('.is-read')).forEach(function(el){ el.classList.remove('is-read'); }); }
   function move(name, dur, ease){
+    clearReads();
     var t = shots[name]();
     gsap.to(cam, { x: t.x, y: t.y, z: t.z, duration: dur, ease: ease || 'sine.inOut', onUpdate: apply, overwrite: true });
   }
 
-  function subtitle(n){
-    subs.forEach(function(p){ if (p.classList.contains('is-on')) { p.classList.remove('is-on'); gsap.to(p, { opacity: 0, y: -8, duration: .25 }); } });
-    var p = subs[n - 1]; p.classList.add('is-on');
-    gsap.fromTo(p, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .45, delay: .2, ease: 'power2.out' });
+  function caption(n){
+    gsap.to(capEl, { opacity: 0, y: 10, duration: .2, ease: 'power1.in', overwrite: true, onComplete: function(){
+      capEl.textContent = caps[n - 1];
+      gsap.fromTo(capEl, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .45, ease: 'back.out(1.6)' });
+    } });
   }
   function typing(on){ typingEl.classList.toggle('is-on', on); sub.textContent = on ? 'typing\u2026' : 'online'; }
   function pop(el){ gsap.fromTo(el, { opacity: 0, y: 14, scale: .92 }, { opacity: 1, y: 0, scale: 1, duration: .45, ease: 'back.out(1.7)', transformOrigin: el.classList.contains('msg--out') ? '100% 100%' : '0 100%' }); }
@@ -964,60 +1028,71 @@
     t.textContent = ''; m.classList.remove('is-off'); pop(m);
     gsap.to(o, { n: words.length, duration: words.length * .055, ease: 'none', onUpdate: function(){ t.textContent = words.slice(0, Math.max(1, Math.round(o.n))).join(' '); } });
   }
-  function read(k){ fields[k].classList.remove('is-written'); fields[k].classList.add('is-read'); }
+  function flash(el){ gsap.fromTo(el, { backgroundColor: FLASH }, { backgroundColor: CLEAR, duration: 2.8, ease: 'power1.in', clearProps: 'backgroundColor' }); }
+  function read(k){ f[k].classList.add('is-read'); }
   function write(k){
-    var el = fields[k], dd = el.querySelector('dd') || el, full = finals[k], o = { n: 0 };
-    el.classList.remove('is-read'); el.classList.add('is-written');
+    var row = f[k], dd = row.querySelector('dd'), full = finals[k], o = { n: 0 };
+    row.querySelector('.upd').classList.remove('is-off');
+    flash(row);
     gsap.to(o, { n: full.length, duration: Math.min(.9, full.length * .025), ease: 'none', onUpdate: function(){ dd.textContent = full.slice(0, Math.round(o.n)); } });
   }
-  function addItem(k){
-    var li = fields[k]; li.classList.remove('is-off'); li.classList.add('is-written');
-    gsap.from(li, { height: 0, paddingTop: 0, paddingBottom: 0, opacity: 0, duration: .55, ease: 'power2.out' });
+  function grow(el){ el.classList.remove('is-off'); gsap.from(el, { height: 0, paddingTop: 0, paddingBottom: 0, opacity: 0, duration: .55, ease: 'power2.out', clearProps: 'height,paddingTop,paddingBottom,opacity' }); flash(el); }
+  function orderHold(){
+    f.order.classList.remove('is-empty');
+    gsap.from($('.order__body'), { height: 0, opacity: 0, duration: .6, ease: 'power2.out', clearProps: 'height,opacity' });
+    f.status.textContent = 'Held until Sat';
+    flash(f['line-ras']);
   }
-  function addTag(){ var t = fields.tag; t.classList.remove('is-off'); gsap.from(t, { scale: .6, opacity: 0, duration: .45, ease: 'back.out(2)' }); }
+  function orderAdd(){
+    grow(f['line-sponge']);
+    var o = { v: 200 };
+    gsap.to(o, { v: 295, duration: .8, ease: 'power1.out', onUpdate: function(){ f.total.textContent = 'R' + Math.round(o.v); } });
+    f.status.textContent = 'Ready Sat 8:30';
+    gsap.fromTo(f.status, { scale: .7 }, { scale: 1, duration: .45, ease: 'back.out(2.2)' });
+  }
 
   function reset(){
     cam.x = WIDE.x; cam.y = WIDE.y; cam.z = WIDE.z; apply();
     film.classList.add('is-js');
     msgs.forEach(function(m){ m.classList.add('is-off'); gsap.set(m, { clearProps: 'all' }); });
-    typing(false);
-    ['tank', 'fish', 'filter', 'hold', 'next', 'sponges'].forEach(function(k){ fields[k].classList.remove('is-read', 'is-written'); });
-    ['filter', 'hold', 'next'].forEach(function(k){ fields[k].querySelector('dd').textContent = fields[k].getAttribute('data-from'); });
-    fields.last.textContent = fields.last.getAttribute('data-from'); fields.last.classList.remove('is-written');
-    ['held', 'order'].forEach(function(k){ fields[k].classList.add('is-off'); fields[k].classList.remove('is-written'); gsap.set(fields[k], { clearProps: 'all' }); });
-    fields.tag.classList.add('is-off'); gsap.set(fields.tag, { clearProps: 'all' });
-    subs.forEach(function(p){ p.classList.remove('is-on'); gsap.set(p, { opacity: 0 }); });
-    bar.style.width = '0%';
+    typing(false); clearReads();
+    writes.forEach(function(k){ f[k].querySelector('dd').textContent = f[k].getAttribute('data-from'); f[k].querySelector('.upd').classList.add('is-off'); gsap.set(f[k], { clearProps: 'backgroundColor' }); });
+    f.order.classList.add('is-empty'); f.status.textContent = 'Held until Sat'; f.total.textContent = 'R200';
+    ['line-sponge', 'held', 'created'].forEach(function(k){ f[k].classList.add('is-off'); gsap.set(f[k], { clearProps: 'all' }); });
+    gsap.set(capEl, { opacity: 1, y: 0 }); capEl.textContent = caps[0];
+    gsap.set(segs, { scaleX: 0 });
   }
 
   function build(){
-    var t = gsap.timeline({ paused: true, onUpdate: function(){ bar.style.width = (t.progress() * 100).toFixed(2) + '%'; } });
+    var t = gsap.timeline({ paused: true });
     var c = function(fn, args, at){ t.call(fn, args, at); };
-    c(subtitle, [1], .2);
+    [[.2, 3.1], [3.1, 13.5], [13.5, 16.6], [16.6, 28.9], [28.9, 33.4]].forEach(function(ch, i){
+      t.fromTo(segs[i], { scaleX: 0 }, { scaleX: 1, duration: ch[1] - ch[0], ease: 'none', immediateRender: false }, ch[0]);
+    });
     c(show, [0], .9);
     c(move, ['chat', 1.1, 'expo.out'], 1.7);
-    c(subtitle, [2], 3.1);
-    c(move, ['tankRows', 1], 3.2);
-    c(read, ['tank'], 4.2); c(read, ['fish'], 4.5);
-    c(move, ['chat', 1], 5.6);
-    c(typing, [true], 6.2);
+    c(caption, [2], 3.1);
+    c(move, ['tank', 1], 3.2);
+    c(read, ['tank'], 4.2); c(read, ['fish'], 4.6);
+    c(move, ['chat', 1], 5.8);
+    c(typing, [true], 6.3);
     c(stream, [1], 7.3);
     c(show, [2], 12.7);
-    c(subtitle, [3], 13.5);
-    c(move, ['record', 1], 13.6);
-    c(write, ['hold'], 14.6); c(addItem, ['held'], 15.1);
-    c(subtitle, [4], 16.6);
-    c(move, ['sponges', .8], 16.7);
-    c(read, ['filter'], 17.4); c(read, ['sponges'], 17.7);
-    c(move, ['chat', 1], 18.9);
-    c(typing, [true], 19.5);
+    c(caption, [3], 13.5);
+    c(move, ['order', 1], 13.6);
+    c(orderHold, [], 14.6); c(grow, [f.held], 15.2);
+    c(caption, [4], 16.6);
+    c(move, ['filter', .9], 16.7);
+    c(read, ['filter'], 17.5); c(read, ['sponges'], 17.9);
+    c(move, ['chat', 1], 19.1);
+    c(typing, [true], 19.6);
     c(stream, [3], 20.5);
     c(show, [4], 24.8);
     c(typing, [true], 25.4);
     c(stream, [5], 26.4);
-    c(subtitle, [5], 28.9);
+    c(caption, [5], 28.9);
     c(move, ['finish', 1], 29);
-    c(write, ['filter'], 30); c(addItem, ['order'], 30.4); c(write, ['next'], 31); c(addTag, [], 31.6); c(write, ['last'], 31.9);
+    c(orderAdd, [], 30); c(write, ['filter'], 30.6); c(grow, [f.created], 31); c(write, ['next'], 31.4); c(write, ['last'], 31.9);
     c(move, ['wide', 1.2], 33.4);
     t.to({}, { duration: 4 }, 34.6);
     t.call(loop, null, 38.6);
