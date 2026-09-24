@@ -43,6 +43,25 @@
   }
 
   /* ------------------------------------------------------------------------
+     1b. Online shop
+     SHOP_URL is the online shop's address. Every link with a data-shop
+     attribute is built from it: data-shop="" opens the shop's front page and
+     data-shop="food" opens that category, using SHOP_CATEGORY_PATH. Set the
+     path to match the shop platform, for example 'collections/' on Shopify
+     or 'product-category/' on WooCommerce.
+     ------------------------------------------------------------------------ */
+  var SHOP_URL = 'https://shop.samsaquarium.co.za/';
+  var SHOP_CATEGORY_PATH = 'collections/';
+
+  function buildShopLinks() {
+    var links = document.querySelectorAll('a[data-shop]');
+    for (var i = 0; i < links.length; i++) {
+      var slug = links[i].getAttribute('data-shop');
+      links[i].href = SHOP_URL + (slug ? SHOP_CATEGORY_PATH + slug + '/' : '');
+    }
+  }
+
+  /* ------------------------------------------------------------------------
      2. Navigation: solid bar after scrolling, mobile menu
      ------------------------------------------------------------------------ */
   var nav = document.querySelector('.nav');
@@ -51,13 +70,29 @@
 
   var waFloat = document.querySelector('.wa-float');
   var heroEl = document.querySelector('.home-hero, .page-hero');
+  var bigButtonsInView = [];
   function onScrollNav() {
     if (nav) { if (window.scrollY > 40) nav.classList.add('is-scrolled'); else nav.classList.remove('is-scrolled'); }
-    // The floating WhatsApp button waits until the hero (which has its own button) has scrolled past
+    // The floating WhatsApp button waits until the hero (which has its own button) has scrolled past,
+    // and steps aside while one of the page's big buttons is on screen, so it never covers one on a phone
     if (waFloat && heroEl) {
       var past = window.scrollY > heroEl.offsetHeight - 120;
-      waFloat.classList.toggle('is-hidden', !past);
+      waFloat.classList.toggle('is-hidden', !past || bigButtonsInView.length > 0);
     }
+  }
+
+  function watchBigButtons() {
+    if (!waFloat || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        var k = bigButtonsInView.indexOf(entries[i].target);
+        if (entries[i].isIntersecting && k < 0) bigButtonsInView.push(entries[i].target);
+        if (!entries[i].isIntersecting && k >= 0) bigButtonsInView.splice(k, 1);
+      }
+      onScrollNav();
+    });
+    var btns = document.querySelectorAll('main .btn--big');
+    for (var j = 0; j < btns.length; j++) io.observe(btns[j]);
   }
 
   function setMenu(open) {
@@ -107,12 +142,12 @@
   }
 
   /* ------------------------------------------------------------------------
-     4. Tanks switch their light on as they scroll into view
+     4. Tank labels are stuck on as the tanks scroll into view
      ------------------------------------------------------------------------ */
   function watchTanks() {
     var tanks = document.querySelectorAll('.tank');
     if (!('IntersectionObserver' in window)) {
-      for (var i = 0; i < tanks.length; i++) tanks[i].classList.add('is-lit');
+      for (var i = 0; i < tanks.length; i++) tanks[i].classList.add('is-in');
       return;
     }
     var t0 = Date.now();
@@ -120,12 +155,12 @@
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
         io.unobserve(en.target);
-        // tanks in the same wall light up one after another, like walking down the aisle
+        // tanks in the same wall are labelled one after another, like walking down the aisle
         var group = en.target.closest ? (en.target.closest('.tank-wall, .wall__row, .gcards') || en.target.parentElement) : en.target.parentElement;
         var sibs = group.querySelectorAll('.tank');
         var k = Array.prototype.indexOf.call(sibs, en.target);
         var delay = (reduceMotion || Date.now() - t0 < 300) ? 0 : Math.min(k, 5) * 120;
-        setTimeout(function () { en.target.classList.add('is-lit'); }, delay);
+        setTimeout(function () { en.target.classList.add('is-in'); }, delay);
       });
     }, { threshold: 0.25 });
     for (var j = 0; j < tanks.length; j++) io.observe(tanks[j]);
@@ -329,6 +364,8 @@
      ------------------------------------------------------------------------ */
   function init() {
     buildWhatsAppLinks();
+    buildShopLinks();
+    watchBigButtons();
     markCurrentPage();
     setYear();
     renderHours();
