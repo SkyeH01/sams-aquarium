@@ -44,6 +44,14 @@ Set `SHOP_URL` to the shop's real address, and `SHOP_CATEGORY_PATH` to match the
 
 Each shelf's position on the photo is set in percentages in its `style` attribute (`--l`, `--t`, `--w`, `--h` for the shelf, `--tx`, `--ty` for the label), so it stays in place at any screen size. If the photo is replaced, those numbers need redoing.
 
+## Link previews
+
+When a page is shared on WhatsApp, Facebook, X or iMessage, the preview shows a 1200 by 630 card: the SAMS AQUARIUM wordmark in the sign's colours over one of the shop's photos, with the page title. Each page has its own card in `assets/img/share/`, named after the page (`index.jpg`, `fish.jpg` and so on), all JPEGs under 300 KB so WhatsApp shows them. To change a card, replace the file with any 1200 by 630 JPEG of the same name.
+
+The preview tags (`og:url` and `og:image`) use the address the site is live on now, `https://skyeh01.github.io/sams-aquarium/`, because the apps fetch the preview from that address. **When the site moves to samsaquarium.co.za,** find and replace `https://skyeh01.github.io/sams-aquarium/` with `https://samsaquarium.co.za/` in every `.html` file.
+
+Apps remember a preview once a link has been shared. After changing a card, refresh Facebook's copy with the Sharing Debugger (developers.facebook.com/tools/debug, then "Scrape Again"). WhatsApp keeps its own copy for a while; adding `?v=2` to the end of the link makes it fetch a fresh one.
+
 ## Campaign links for WhatsApp promotions
 
 Every WhatsApp button already carries a pre-written message that matches its page ("What fish do you have in stock this week?", "Can you source this for me?", and so on). To attribute messages to a specific ad, post or promotion, add `?c=` and a short campaign name to any page link:
