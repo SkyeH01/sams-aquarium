@@ -373,68 +373,83 @@
   .tier--ai .tier__fig{border-top-color:rgba(255,255,255,.22)}
 
 
-  /* ---------- Package 2: the story ---------- */
-  .story{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:clamp(2rem,5vw,5rem);align-items:start;margin-top:clamp(1.6rem,4vw,3rem)}
-  .beat{min-height:78vh;display:flex;flex-direction:column;justify-content:center;max-width:30rem;transition:opacity .5s var(--ease)}
-  .beat:first-child{min-height:62vh}
-  .beat h3{color:#fff;font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1.05;letter-spacing:-.02em;margin:0 0 .55em}
-  .beat p{color:#dbe6fb;font-size:clamp(1.1rem,1.5vw,1.28rem);line-height:1.55;max-width:34ch;margin:0}
-  .story.is-js .beat:not(.is-on){opacity:.28}
 
-  .story__stage{position:sticky;top:max(24px,calc(50vh - 345px));height:690px;display:grid;place-items:center}
-  .story__phone{position:relative;z-index:1;width:min(318px,calc((100vh - 70px) * .485));transition:transform .8s var(--ease),opacity .8s var(--ease)}
-  .story .wa-body{justify-content:flex-end}
-  .story .wa-date{background:#d9f2e6;color:#2d5a45;margin-bottom:auto}
-  .story .msg{animation:none;transform-origin:0 100%}
-  .story .msg--out{transform-origin:100% 100%}
-  .story.is-js .msg[data-beat]:not(.is-shown){display:none}
-  .story .msg.is-new{animation:pop .45s cubic-bezier(.34,1.56,.64,1) both}
-  @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.9)}to{opacity:1;transform:none}}
-  .msg--tagged{position:relative;margin-top:14px}
-  .tape--note{position:absolute;top:-15px;right:-10px;font-size:1.02rem;padding:.08em .6em .12em;transform:rotate(3deg);white-space:nowrap}
-  .story .msg.is-new .tape--note{animation:stick .5s var(--ease) .35s both}
-  @keyframes stick{from{opacity:0;transform:translateY(-8px) rotate(9deg) scale(.9)}to{opacity:1;transform:rotate(3deg)}}
+  /* ---------- Package 2: the film ---------- */
+  .film{--fw:min(1200px,calc(100vw - 2 * var(--gutter)));width:var(--fw);margin-left:calc((100% - var(--fw)) / 2);margin-top:clamp(2.2rem,4.5vw,3.4rem);
+        position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:#07152e;
+        box-shadow:0 60px 100px -60px rgba(2,8,26,.95),0 0 0 1px rgba(255,255,255,.12)}
+  .film__bg{position:absolute;inset:-4%;width:108%;height:108%;max-width:none;object-fit:cover;filter:brightness(.33) saturate(.8)}
+  .film__veil{position:absolute;inset:0;background:radial-gradient(110% 85% at 50% 45%,rgba(7,21,46,.1) 0%,rgba(7,21,46,.55) 70%,rgba(7,21,46,.9) 100%)}
+  .film__stage{position:absolute;left:0;top:0;width:1200px;height:675px;transform-origin:0 0}
+  .film__fade{position:absolute;inset:0;background:#07152e;opacity:0;pointer-events:none;z-index:4}
+  .film__progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.12);z-index:5}
+  .film__progress i{display:block;height:100%;width:0;background:var(--orange)}
 
-  /* the order slip: printed paper with a torn bottom edge, taped at the top */
-  .docket{position:absolute;z-index:2;width:330px;background:#fff;color:var(--text);padding:46px 24px 30px;
-          box-shadow:0 30px 50px -24px rgba(3,12,40,.75);transform:rotate(-2.5deg) translate(20px,40px);
-          -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 9px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 9px repeat-x;
-          mask:linear-gradient(#000 0 0) top/100% calc(100% - 9px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 9px repeat-x;
-          transition:opacity .7s var(--ease),transform .8s var(--ease)}
-  .docket__tape{position:absolute;top:8px;left:50%;transform:translateX(-50%) rotate(-3deg);font-size:1.2rem;white-space:nowrap;z-index:1}
-  .docket__head{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0 14px;border-bottom:1.5px dashed #c7d0d4}
-  .mark{font-family:var(--head);font-weight:800;font-variation-settings:"wdth" 112;text-transform:uppercase;font-size:1.35rem;color:#1e4fa8;letter-spacing:-.005em}
-  .mark b{color:var(--orange);font-weight:800}
-  .docket__head small{font-size:.85rem;color:var(--text-dim)}
-  .docket__who{margin:0;padding:12px 0;border-bottom:1.5px dashed #c7d0d4}
-  .docket__who div{display:flex;justify-content:space-between;gap:1rem;padding:3px 0}
-  .docket__who dt{color:var(--text-dim);font-size:.92rem}
-  .docket__who dd{margin:0;font-weight:600;color:var(--ink)}
-  .docket__items{list-style:none;margin:0;padding:12px 0;max-width:none;border-bottom:1.5px dashed #c7d0d4}
-  .docket__items li{display:flex;justify-content:space-between;gap:1rem;margin:0;padding:4px 0;font-size:1rem;color:var(--ink)}
-  .docket__items b{font-weight:700}
-  .docket__note{margin:12px 0 0;font-size:.92rem;color:var(--text)}
-  .docket__foot{margin:8px 0 0;font-size:.8rem;color:var(--text-dim)}
+  .film__phone{position:absolute;left:120px;top:45px;width:300px;box-shadow:0 50px 80px -40px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.08)}
+  .film .wa-body{justify-content:flex-end;background:#efeae2;padding:10px 12px}
+  .film .wa-date{background:#d9f2e6;color:#2d5a45;margin-bottom:auto}
+  .film .msg{position:relative;border-top-left-radius:0;max-width:84%}
+  .film .msg--out{border-top-left-radius:8px;border-top-right-radius:0}
+  .film .msg::before{content:"";position:absolute;top:0;left:-7px;width:8px;height:10px;background:#fff;clip-path:polygon(0 0,100% 0,100% 100%)}
+  .film .msg--out::before{left:auto;right:-7px;background:#dcf8c6;clip-path:polygon(0 0,100% 0,0 100%)}
+  .film .typing{display:none;align-self:flex-start;padding:10px 12px}
+  .film .typing.is-on{display:flex;gap:4px}
+  .film .typing i{width:7px;height:7px;border-radius:50%;background:#9aa7ae;animation:dot 1s infinite ease-in-out}
+  .film .typing i:nth-child(2){animation-delay:.15s}.film .typing i:nth-child(3){animation-delay:.3s}
+  @keyframes dot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+  .film.is-js .msg.is-off{display:none}
 
-  /* beat 4: the phone steps back and the slip lands on top */
-  .story.is-js .docket{opacity:0;transform:rotate(4deg) translate(40px,120px)}
-  .story.is-b4 .docket{opacity:1;transform:rotate(-2.5deg) translate(20px,40px)}
-  .story.is-b4 .story__phone{transform:translateX(-46px) rotate(-3deg) scale(.94);opacity:.6}
+  .crm{position:absolute;left:500px;top:58px;width:580px;background:#fff;color:var(--text);border-radius:14px;overflow:hidden;font-size:14px;line-height:1.45;
+       box-shadow:0 50px 80px -40px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.08)}
+  .crm__bar{display:flex;justify-content:space-between;align-items:center;padding:11px 18px;background:#f5f8f9;border-bottom:1px solid #e3e9eb}
+  .crm__mark{font-family:var(--head);font-weight:800;font-variation-settings:"wdth" 112;text-transform:uppercase;font-size:13px;color:#1e4fa8;letter-spacing:.01em}
+  .crm__mark b{color:var(--orange);font-weight:800}
+  .crm__crumb{font-size:12.5px;color:var(--text-dim)}
+  .crm__crumb i{font-style:normal;margin:0 .3em}
+  .crm__profile{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:16px 20px 12px}
+  .crm__avatar{width:50px;height:50px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-family:var(--head);font-weight:800;font-size:17px}
+  .crm__name{display:block;font-family:var(--head);font-size:20px;line-height:1.1;color:var(--ink)}
+  .crm__sub{display:block;font-size:13px;color:var(--text-dim);margin-top:3px}
+  .crm__last{text-align:right}
+  .crm__last small{display:block;font-size:11.5px;color:var(--text-dim)}
+  .crm__last b{font-size:13px;color:var(--ink);transition:color .4s}
+  .crm .crm__last b.is-written{color:var(--orange-2);background:none;box-shadow:none}
+  .crm__tags{display:flex;flex-wrap:wrap;gap:6px;padding:0 20px 14px}
+  .crm__tags span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:#e7eefa;color:#1e4fa8}
+  .crm__tags .crm__tag-new{background:#fde5dc;color:var(--orange-2)}
+  .film.is-js .crm__tag-new.is-off,.film.is-js .crm__activity li.is-off{display:none}
+  .crm__cols{display:grid;grid-template-columns:1.2fr 1fr;border-top:1px solid #e3e9eb}
+  .crm__details{margin:0;padding:10px 12px 14px;border-right:1px solid #e3e9eb}
+  .crm__details div{padding:7px 10px;border-radius:8px;transition:background-color .45s var(--ease),box-shadow .45s var(--ease)}
+  .crm__details dt{font-size:11.5px;color:var(--text-dim)}
+  .crm__details dd{margin:0;font-weight:600;color:var(--ink);min-height:1.45em;transition:color .4s}
+  .crm__activity{padding:12px 16px}
+  .crm__activity h4{font-family:var(--body);font-size:12px;font-weight:600;color:var(--text-dim);margin:0 0 4px}
+  .crm__activity ol{list-style:none;margin:0;padding:0;max-width:none}
+  .crm__activity li{display:grid;grid-template-columns:44px 1fr;gap:8px;margin:0;padding:8px 6px;border-bottom:1px solid #eef2f3;border-radius:6px;font-size:13px;line-height:1.4;overflow:hidden;transition:background-color .45s var(--ease),box-shadow .45s var(--ease)}
+  .crm__activity li:last-child{border-bottom:0}
+  .crm__activity time{color:var(--text-dim);font-size:12px}
+  .crm__activity li.is-fresh span{font-weight:600;color:var(--ink)}
+  .crm .is-read{background:rgba(30,79,168,.1);box-shadow:inset 3px 0 0 #1e4fa8}
+  .crm .is-written{background:rgba(242,106,61,.12);box-shadow:inset 3px 0 0 var(--orange)}
+  .crm .is-written dd{color:var(--orange-2)}
 
-  @media(max-width:999px){
-    .story{grid-template-columns:1fr;gap:2.4rem}
-    .story__stage{position:relative;top:auto;height:auto;order:-1;display:flex;flex-direction:column;align-items:center;gap:2.6rem}
-    .story__phone{width:100%;max-width:318px}
-    .docket,.story.is-js .docket,.story.is-b4 .docket{position:relative;transform:rotate(-2deg);opacity:1;width:min(330px,100%)}
-    .story.is-b4 .story__phone{transform:none;opacity:1}
-    .beat,.beat:first-child{min-height:0;max-width:none}
-    .story.is-js .beat:not(.is-on){opacity:1}
-    .story__beats{display:grid;gap:2rem}
-    .beat h3{font-size:clamp(1.5rem,6vw,1.9rem)}
-  }
-  @media(prefers-reduced-motion:reduce){
-    .beat,.story__phone,.docket{transition:none}
-    .story .msg.is-new,.story .msg.is-new .tape--note{animation:none}
+  .film__bar{--fw:min(1200px,calc(100vw - 2 * var(--gutter)));width:var(--fw);margin-left:calc((100% - var(--fw)) / 2);
+             display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1.2rem}
+  .film__subs{position:relative;flex:1;min-height:2.6em;font-family:var(--head);font-weight:800;font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.2;letter-spacing:-.015em}
+  .film__subs p{position:absolute;left:0;top:0;margin:0;color:#fff;opacity:0;max-width:none}
+  .film__subs p.is-on{opacity:1}
+  .film__ctrl{display:flex;gap:.6rem;flex:none}
+  .film__btn{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(255,255,255,.55);background:transparent;color:#fff;cursor:pointer}
+  .film__btn:hover{background:rgba(255,255,255,.12)}
+  .film__btn:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+  .film__btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .film__btn .i-play,#film-toggle.is-paused .i-pause{display:none}
+  #film-toggle.is-paused .i-play{display:block}
+  .film__note{--fw:min(1200px,calc(100vw - 2 * var(--gutter)));width:var(--fw);margin:.6rem 0 0 calc((100% - var(--fw)) / 2);max-width:none;font-size:.9rem;color:#aebfe3}
+  @media(max-width:700px){
+    .film{aspect-ratio:4/5;border-radius:14px}
+    .film__subs{min-height:2.5em;font-size:1.25rem}
   }
 </style>
 </head>
@@ -620,11 +635,12 @@
 </section>
 
 <!-- ============================================================ AI ASSISTANT
-     Package 2, told as a story. On a wide screen the phone stays pinned
-     while four short beats scroll past; each beat adds the next part of the
-     chat, and the last one brings in the order slip. On a phone the chat
-     plays through once when it comes into view. The markup holds the
-     finished state, so it reads complete without JavaScript. -->
+     Package 2 as a short product film: the WhatsApp chat beside the
+     customer's record in the shop's CRM. A GSAP timeline plays it like a
+     screen recording, with a camera that zooms into the chat and pans to
+     the record whenever the assistant reads or writes there. The markup
+     holds the film's last frame, which is what shows with reduced motion or
+     if the script can't load. -->
 <section class="section aix" id="ai">
   <div class="wrap">
     <div class="aix__head">
@@ -633,58 +649,72 @@
       <p class="lead">Everything in the marketing package, plus an assistant on your WhatsApp. It answers customers day and night, remembers their tanks and suggests the extras, then hands the order to your team.</p>
     </div>
 
-    <div class="story" id="story">
-      <div class="story__beats">
-        <div class="beat" data-beat="1">
-          <h3>9:40 at night. The shop is closed.</h3>
-          <p>A customer messages Sam's on WhatsApp, and gets an answer straight away.</p>
-        </div>
-        <div class="beat" data-beat="2">
-          <h3>It remembers her tank.</h3>
-          <p>Every customer's tank, fish and past buys are saved, so it suggests fish that suit her tank, and only ones that are in stock.</p>
-        </div>
-        <div class="beat" data-beat="3">
-          <h3>It holds the fish and sells the extra.</h3>
-          <p>It reserves the fish for her and offers what she's due for, like new filter sponges. That's an extra R95 sale while the shop was closed.</p>
-        </div>
-        <div class="beat" data-beat="4">
-          <h3>In the morning, the order is ready for your team.</h3>
-          <p>Your team sees what to pack and when she's collecting. Anything tricky, like a sick fish or a complaint, goes straight to a person.</p>
-        </div>
-      </div>
-
-      <div class="story__stage">
-        <div class="phone story__phone"><div class="screen wa">
+    <div class="film" id="film" role="img" aria-label="Example: a customer, Thandi, messages Sam's on WhatsApp at 9:40pm. The assistant knows her tank, suggests harlequin rasboras and holds 8 for her, reminds her that her filter sponges are due, and takes an R295 order for Saturday, while her customer record updates.">
+      <img class="film__bg" src="img/hero.webp" alt="" width="2000" height="1334">
+      <div class="film__veil"></div>
+      <div class="film__stage">
+        <div class="phone film__phone"><div class="screen wa">
           <div class="status"><span>21:42</span><i>●●●● ▮</i></div>
-          <div class="wa-head"><div class="wa-back"></div><div class="wa-av badge"></div><div><div class="wa-name">Sam's Aquarium</div><div class="wa-sub">Business account</div></div></div>
+          <div class="wa-head"><div class="wa-back"></div><div class="wa-av badge"></div><div><div class="wa-name">Sam's Aquarium</div><div class="wa-sub">online</div></div></div>
           <div class="wa-body">
             <div class="wa-date">You're chatting with Sam's AI assistant</div>
-            <div class="msg msg--out" data-beat="1">Hi! What else could I add to my tank?<div class="msg-t">21:40</div></div>
-            <div class="msg msg--tagged" data-beat="2"><span class="tape tape--note">Knows her tank</span>Hi Thandi. Your 120 litre tank has neons and corydoras, and harlequin rasboras came in this week. They school well with neons. Shall I hold 8 for you?<div class="msg-t">21:40</div></div>
-            <div class="msg msg--out" data-beat="2">Yes please!<div class="msg-t">21:41</div></div>
-            <div class="msg msg--tagged" data-beat="3"><span class="tape tape--note">Holds the fish</span>Done, 8 held until Saturday. Your filter sponges are due for a change too. Add a Bioflow sponge set for R95?<div class="msg-t">21:41</div></div>
-            <div class="msg msg--out" data-beat="3">Yes, add it<div class="msg-t">21:42</div></div>
-            <div class="msg msg--tagged" data-beat="3"><span class="tape tape--note">Extra R95 sale</span>Added. Both will be ready to collect on Saturday.<div class="msg-t">21:42</div></div>
+              <div class="msg msg--out" data-i="0"><span class="msg__txt">Hi! I've got space in my tank for a few more fish. Any ideas?</span><div class="msg-t">21:40</div></div>
+              <div class="msg" data-i="1"><span class="msg__txt">Hi Thandi! Your 120 litre planted tank has 10 neons, 6 corydoras and 2 platies, so there's room for one more small school. Harlequin rasboras came in on Tuesday. They're peaceful, like the same water as your neons, and their copper colour looks great against green plants. R25 each, and 8 makes a good group. Shall I hold 8?</span><div class="msg-t">21:40</div></div>
+              <div class="msg msg--out" data-i="2"><span class="msg__txt">Oh they're beautiful. Yes please!</span><div class="msg-t">21:41</div></div>
+              <div class="msg" data-i="3"><span class="msg__txt">Done, 8 held under your name until Saturday. Your Bioflow sponges are from March, so they're due. Change one this week and one in two weeks, so the filter keeps up with the new fish. Add a set for R95?</span><div class="msg-t">21:41</div></div>
+              <div class="msg msg--out" data-i="4"><span class="msg__txt">Good catch, add it</span><div class="msg-t">21:42</div></div>
+              <div class="msg" data-i="5"><span class="msg__txt">Added. Ready from 8:30 on Saturday: 8 harlequin rasboras and a sponge set, R295. I'll send a reminder that morning.</span><div class="msg-t">21:42</div></div>
+            <div class="msg typing" aria-hidden="true"><i></i><i></i><i></i></div>
           </div>
           <div class="wa-foot"><div class="wa-in">Message</div><div class="wa-mic"></div></div>
         </div></div>
 
-        <div class="docket" aria-label="Example order slip">
-          <span class="tape docket__tape">Ready to pack</span>
-          <div class="docket__head"><span class="mark"><b>Sams</b> Aquarium</span><small>Order for collection</small></div>
-          <dl class="docket__who">
-            <div><dt>Customer</dt><dd>Thandi M., Tokai</dd></div>
-            <div><dt>Collecting</dt><dd>Saturday</dd></div>
-          </dl>
-          <ul class="docket__items">
-            <li><span>8 harlequin rasboras</span><b>On hold</b></li>
-            <li><span>1 Bioflow sponge set</span><b>R95</b></li>
-          </ul>
-          <p class="docket__note">Her tank: 120 litre community, with neons and corydoras.</p>
-          <p class="docket__foot">Taken on WhatsApp by the assistant, Thursday 21:42</p>
+        <div class="crm">
+          <div class="crm__bar"><span class="crm__mark"><b>Sams</b> Aquarium</span><span class="crm__crumb">Customers <i>›</i> Thandi M.</span></div>
+          <div class="crm__profile">
+            <div class="crm__avatar">TM</div>
+            <div><b class="crm__name">Thandi M.</b><span class="crm__sub">Tokai. Customer since 2019</span></div>
+            <div class="crm__last"><small>Last contact</small><b data-f="last" data-from="In the shop, 12 Sep">WhatsApp, today 21:42</b></div>
+          </div>
+          <div class="crm__tags"><span>Community tank</span><span>WhatsApp list</span><span class="crm__tag-new" data-f="tag">Collecting Saturday</span></div>
+          <div class="crm__cols">
+            <dl class="crm__details">
+              <div data-f="tank"><dt>Tank</dt><dd>120 L planted community</dd></div>
+              <div data-f="fish"><dt>Fish</dt><dd>10 neons, 6 corydoras, 2 platies</dd></div>
+              <div data-f="filter" data-from="Bioflow sponges, bought March"><dt>Filter</dt><dd>New sponge set, Saturday</dd></div>
+              <div data-f="hold" data-from="Nothing on hold"><dt>On hold</dt><dd>8 harlequin rasboras, until Saturday</dd></div>
+              <div data-f="next" data-from="None booked"><dt>Next check-in</dt><dd>How the rasboras settled, 4 Oct</dd></div>
+            </dl>
+            <div class="crm__activity">
+              <h4>Activity</h4>
+              <ol>
+                <li data-f="order" class="is-fresh"><time>21:42</time><span>Order for Saturday: 8 harlequin rasboras, sponge set. R295</span></li>
+                <li data-f="held" class="is-fresh"><time>21:41</time><span>Held 8 harlequin rasboras</span></li>
+                <li><time>12 Sep</time><span>In the shop: fish food, R89</span></li>
+                <li data-f="sponges"><time>3 Mar</time><span>Bioflow sponge set, R95</span></li>
+              </ol>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="film__fade" aria-hidden="true"></div>
+      <div class="film__progress" aria-hidden="true"><i></i></div>
     </div>
+
+    <div class="film__bar">
+      <div class="film__subs" aria-hidden="true">
+        <p data-sub="1">9:40pm. The shop's closed.</p>
+        <p data-sub="2">It knows her tank.</p>
+        <p data-sub="3">It holds the fish.</p>
+        <p data-sub="4">It spots what she's due for.</p>
+        <p data-sub="5" class="is-on">R295, ready for Saturday.</p>
+      </div>
+      <div class="film__ctrl">
+        <button type="button" class="film__btn" id="film-toggle" aria-label="Pause the film" hidden><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"/></svg></button>
+        <button type="button" class="film__btn" id="film-replay" aria-label="Play the film from the start" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg></button>
+      </div>
+    </div>
+    <p class="film__note">An example conversation. The customer, stock and prices are illustrations.</p>
   </div>
 </section>
 
@@ -845,43 +875,178 @@
 })();
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
 <script>
-/* Package 2 story. Wide screens: each beat that reaches the middle of the
-   screen adds its part of the chat, and beat 4 brings in the order slip.
-   Phones: the chat plays through once when it comes into view. */
+/* Package 2 film. The stage is laid out at 1200 x 675 and scaled to the frame.
+   A camera {x, y, z} frames part of the stage: zoom in once, pan to follow
+   the action, zoom out when the scene ends. Pans use sine.inOut, the first
+   zoom expo.out. The markup holds the last frame; the script resets it and
+   plays the film when it is in view, pausing when it scrolls away. */
 (function(){
   'use strict';
-  var story = document.getElementById('story');
-  if (!story || !('IntersectionObserver' in window)) return;
-  var beats = Array.prototype.slice.call(story.querySelectorAll('.beat'));
-  var msgs = Array.prototype.slice.call(story.querySelectorAll('.msg[data-beat]'));
-  var wide = window.matchMedia('(min-width: 1000px)').matches;
-  story.classList.add('is-js');
+  var film = document.getElementById('film');
+  if (!film) return;
+  var stage = film.querySelector('.film__stage'), bg = film.querySelector('.film__bg');
+  var W1 = 1200, H1 = 675, WIDE = { x: 600, y: 337.5, z: 1 };
+  var cam = { x: WIDE.x, y: WIDE.y, z: WIDE.z };
 
-  function show(m){ if (!m.classList.contains('is-shown')) { m.classList.add('is-shown', 'is-new'); } }
-  function hide(m){ m.classList.remove('is-shown', 'is-new'); }
-
-  if (wide) {
-    var current = 0;
-    function set(n){
-      if (n === current) return; current = n;
-      beats.forEach(function(b){ b.classList.toggle('is-on', +b.getAttribute('data-beat') === n); });
-      msgs.forEach(function(m){ if (+m.getAttribute('data-beat') <= n) show(m); else hide(m); });
-      story.classList.toggle('is-b4', n >= 4);
-    }
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if (en.isIntersecting) set(+en.target.getAttribute('data-beat')); });
-    }, { rootMargin: '-50% 0px -50% 0px' });
-    beats.forEach(function(b){ io.observe(b); });
-  } else {
-    beats.forEach(function(b){ b.classList.add('is-on'); });
-    story.classList.add('is-b4');
-    var phone = story.querySelector('.story__phone');
-    new IntersectionObserver(function(en, o){
-      if (!en[0].isIntersecting) return; o.disconnect();
-      msgs.forEach(function(m, i){ setTimeout(function(){ show(m); }, 300 + i * 1100); });
-    }, { threshold: .55 }).observe(phone);
+  function apply(){
+    var W = film.clientWidth, H = film.clientHeight, s = W / W1, k = s * cam.z;
+    stage.style.transform = 'translate(' + (W / 2 - cam.x * k).toFixed(2) + 'px,' + (H / 2 - cam.y * k).toFixed(2) + 'px) scale(' + k.toFixed(4) + ')';
+    bg.style.transform = 'translate(' + (-(cam.x - W1 / 2) * s * .05).toFixed(1) + 'px,' + (-(cam.y - H1 / 2) * s * .05).toFixed(1) + 'px) scale(' + (1 + (cam.z - 1) * .05).toFixed(3) + ')';
   }
+  apply();
+  window.addEventListener('resize', apply);
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !window.gsap || !('IntersectionObserver' in window)) return;
+
+  var $ = function(sel){ return film.querySelector(sel); };
+  var body = $('.wa-body'), sub = $('.wa-sub'), typingEl = $('.typing');
+  var msgs = Array.prototype.slice.call(film.querySelectorAll('.msg[data-i]'));
+  var texts = msgs.map(function(m){ return m.querySelector('.msg__txt').textContent; });
+  var fields = {};
+  Array.prototype.slice.call(film.querySelectorAll('[data-f]')).forEach(function(el){ fields[el.getAttribute('data-f')] = el; });
+  var finals = {};
+  ['filter', 'hold', 'next'].forEach(function(k){ finals[k] = fields[k].querySelector('dd').textContent; });
+  finals.last = fields.last.textContent;
+  var subs = Array.prototype.slice.call(document.querySelectorAll('.film__subs p'));
+  var bar = $('.film__progress i'), fade = $('.film__fade');
+  var toggle = document.getElementById('film-toggle'), replay = document.getElementById('film-replay');
+  var tl = null, userPaused = false, inView = false;
+
+  /* where things are on the stage, in stage pixels */
+  function rectOf(el){
+    var st = stage.getBoundingClientRect(), r = el.getBoundingClientRect(), k = st.width / W1;
+    return { x: (r.left - st.left) / k, y: (r.top - st.top) / k, w: r.width / k, h: r.height / k };
+  }
+  function union(els){
+    var rs = els.map(rectOf), x1 = Math.min.apply(null, rs.map(function(r){ return r.x; })), y1 = Math.min.apply(null, rs.map(function(r){ return r.y; }));
+    var x2 = Math.max.apply(null, rs.map(function(r){ return r.x + r.w; })), y2 = Math.max.apply(null, rs.map(function(r){ return r.y + r.h; }));
+    return { x: x1, y: y1, w: x2 - x1, h: y2 - y1 };
+  }
+  function narrow(){ return film.clientWidth < 700; }
+  /* the camera that frames a rectangle, within zoom limits and the stage's edges */
+  function frame(r, pad){
+    var W = film.clientWidth, H = film.clientHeight, s = W / W1, zMax = narrow() ? 4 : 1.75;
+    pad = pad == null ? 26 : pad;
+    var z = Math.max(1, Math.min(zMax, W / (s * (r.w + pad * 2)), H / (s * (r.h + pad * 2))));
+    var hw = W / (2 * s * z), hh = H / (2 * s * z), x = r.x + r.w / 2, y = r.y + r.h / 2;
+    x = hw >= W1 / 2 ? W1 / 2 : Math.min(Math.max(x, hw), W1 - hw);
+    y = hh >= H1 / 2 ? H1 / 2 : Math.min(Math.max(y, hh), H1 - hh);
+    return { x: x, y: y, z: z };
+  }
+  var shots = {
+    chat: function(){ var b = rectOf(body), h = Math.min(b.h, narrow() ? 330 : 400); return frame({ x: b.x - 8, y: b.y + b.h - h, w: b.w + 16, h: h }); },
+    tankRows: function(){ return frame(union([fields.tank, fields.fish, fields.filter])); },
+    /* on a phone the camera keeps to one column of the record, so the text stays readable */
+    record: function(){ return frame(narrow() ? union([fields.filter, fields.hold]) : rectOf($('.crm__cols'))); },
+    sponges: function(){ return frame(narrow() ? union([fields.fish, fields.filter]) : rectOf($('.crm__cols'))); },
+    finish: function(){ return frame(narrow() ? union([fields.filter, fields.next]) : union([$('.crm__profile'), $('.crm__cols')])); },
+    wide: function(){ return WIDE; }
+  };
+  function move(name, dur, ease){
+    var t = shots[name]();
+    gsap.to(cam, { x: t.x, y: t.y, z: t.z, duration: dur, ease: ease || 'sine.inOut', onUpdate: apply, overwrite: true });
+  }
+
+  function subtitle(n){
+    subs.forEach(function(p){ if (p.classList.contains('is-on')) { p.classList.remove('is-on'); gsap.to(p, { opacity: 0, y: -8, duration: .25 }); } });
+    var p = subs[n - 1]; p.classList.add('is-on');
+    gsap.fromTo(p, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .45, delay: .2, ease: 'power2.out' });
+  }
+  function typing(on){ typingEl.classList.toggle('is-on', on); sub.textContent = on ? 'typing\u2026' : 'online'; }
+  function pop(el){ gsap.fromTo(el, { opacity: 0, y: 14, scale: .92 }, { opacity: 1, y: 0, scale: 1, duration: .45, ease: 'back.out(1.7)', transformOrigin: el.classList.contains('msg--out') ? '100% 100%' : '0 100%' }); }
+  function show(i){ typing(false); var m = msgs[i]; m.querySelector('.msg__txt').textContent = texts[i]; m.classList.remove('is-off'); pop(m); }
+  function stream(i){
+    typing(false);
+    var m = msgs[i], t = m.querySelector('.msg__txt'), words = texts[i].split(' '), o = { n: 0 };
+    t.textContent = ''; m.classList.remove('is-off'); pop(m);
+    gsap.to(o, { n: words.length, duration: words.length * .055, ease: 'none', onUpdate: function(){ t.textContent = words.slice(0, Math.max(1, Math.round(o.n))).join(' '); } });
+  }
+  function read(k){ fields[k].classList.remove('is-written'); fields[k].classList.add('is-read'); }
+  function write(k){
+    var el = fields[k], dd = el.querySelector('dd') || el, full = finals[k], o = { n: 0 };
+    el.classList.remove('is-read'); el.classList.add('is-written');
+    gsap.to(o, { n: full.length, duration: Math.min(.9, full.length * .025), ease: 'none', onUpdate: function(){ dd.textContent = full.slice(0, Math.round(o.n)); } });
+  }
+  function addItem(k){
+    var li = fields[k]; li.classList.remove('is-off'); li.classList.add('is-written');
+    gsap.from(li, { height: 0, paddingTop: 0, paddingBottom: 0, opacity: 0, duration: .55, ease: 'power2.out' });
+  }
+  function addTag(){ var t = fields.tag; t.classList.remove('is-off'); gsap.from(t, { scale: .6, opacity: 0, duration: .45, ease: 'back.out(2)' }); }
+
+  function reset(){
+    cam.x = WIDE.x; cam.y = WIDE.y; cam.z = WIDE.z; apply();
+    film.classList.add('is-js');
+    msgs.forEach(function(m){ m.classList.add('is-off'); gsap.set(m, { clearProps: 'all' }); });
+    typing(false);
+    ['tank', 'fish', 'filter', 'hold', 'next', 'sponges'].forEach(function(k){ fields[k].classList.remove('is-read', 'is-written'); });
+    ['filter', 'hold', 'next'].forEach(function(k){ fields[k].querySelector('dd').textContent = fields[k].getAttribute('data-from'); });
+    fields.last.textContent = fields.last.getAttribute('data-from'); fields.last.classList.remove('is-written');
+    ['held', 'order'].forEach(function(k){ fields[k].classList.add('is-off'); fields[k].classList.remove('is-written'); gsap.set(fields[k], { clearProps: 'all' }); });
+    fields.tag.classList.add('is-off'); gsap.set(fields.tag, { clearProps: 'all' });
+    subs.forEach(function(p){ p.classList.remove('is-on'); gsap.set(p, { opacity: 0 }); });
+    bar.style.width = '0%';
+  }
+
+  function build(){
+    var t = gsap.timeline({ paused: true, onUpdate: function(){ bar.style.width = (t.progress() * 100).toFixed(2) + '%'; } });
+    var c = function(fn, args, at){ t.call(fn, args, at); };
+    c(subtitle, [1], .2);
+    c(show, [0], .9);
+    c(move, ['chat', 1.1, 'expo.out'], 1.7);
+    c(subtitle, [2], 3.1);
+    c(move, ['tankRows', 1], 3.2);
+    c(read, ['tank'], 4.2); c(read, ['fish'], 4.5);
+    c(move, ['chat', 1], 5.6);
+    c(typing, [true], 6.2);
+    c(stream, [1], 7.3);
+    c(show, [2], 12.7);
+    c(subtitle, [3], 13.5);
+    c(move, ['record', 1], 13.6);
+    c(write, ['hold'], 14.6); c(addItem, ['held'], 15.1);
+    c(subtitle, [4], 16.6);
+    c(move, ['sponges', .8], 16.7);
+    c(read, ['filter'], 17.4); c(read, ['sponges'], 17.7);
+    c(move, ['chat', 1], 18.9);
+    c(typing, [true], 19.5);
+    c(stream, [3], 20.5);
+    c(show, [4], 24.8);
+    c(typing, [true], 25.4);
+    c(stream, [5], 26.4);
+    c(subtitle, [5], 28.9);
+    c(move, ['finish', 1], 29);
+    c(write, ['filter'], 30); c(addItem, ['order'], 30.4); c(write, ['next'], 31); c(addTag, [], 31.6); c(write, ['last'], 31.9);
+    c(move, ['wide', 1.2], 33.4);
+    t.to({}, { duration: 4 }, 34.6);
+    t.call(loop, null, 38.6);
+    return t;
+  }
+
+  function start(){ reset(); tl = build(); tl.play(); }
+  function loop(){
+    gsap.to(fade, { opacity: 1, duration: .5, onComplete: function(){ if (tl) tl.kill(); start(); gsap.to(fade, { opacity: 0, duration: .6 }); } });
+  }
+  function setPaused(p){
+    userPaused = p; toggle.classList.toggle('is-paused', p);
+    toggle.setAttribute('aria-label', p ? 'Play the film' : 'Pause the film');
+    if (p) gsap.globalTimeline.pause(); else if (inView) gsap.globalTimeline.resume();
+  }
+
+  reset();
+  toggle.hidden = false; replay.hidden = false;
+  toggle.addEventListener('click', function(){ setPaused(!userPaused); });
+  replay.addEventListener('click', function(){
+    gsap.globalTimeline.clear(); gsap.set(fade, { opacity: 0 });
+    setPaused(false); gsap.globalTimeline.resume(); start();
+  });
+  new IntersectionObserver(function(en){
+    inView = en[0].isIntersecting;
+    if (!inView) { gsap.globalTimeline.pause(); return; }
+    if (!tl) start();
+    if (!userPaused) gsap.globalTimeline.resume();
+  }, { threshold: .5 }).observe(film);
 })();
 </script>
 </body>
