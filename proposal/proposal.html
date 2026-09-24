@@ -359,7 +359,7 @@
   @media(max-width:600px){.inc-grid--needs{grid-template-columns:1fr}}
 
   /* ---------- Package 2: the AI assistant, in the sign's blue ---------- */
-  .aix{--sign:#1e4fa8;background:linear-gradient(180deg,#1b479b 0%,#163c85 100%);color:#fff;overflow:hidden}
+  .aix{--sign:#1e4fa8;background:linear-gradient(180deg,#1b479b 0%,#163c85 100%);color:#fff;overflow:clip}
   .aix__head{max-width:46rem}
   .aix h2{color:#fff;font-size:clamp(2.3rem,5.4vw,4.2rem);line-height:1;letter-spacing:-.025em;margin:.9rem 0 .45em}
   .aix .lead{color:#dbe6fb;max-width:52ch}
@@ -367,120 +367,75 @@
         background:linear-gradient(90deg,rgba(0,0,0,.04),transparent 12%,transparent 88%,rgba(0,0,0,.04)),#efe3bf;
         padding:.2em .8em .25em;transform:rotate(-2deg);box-shadow:0 2px 5px rgba(0,0,0,.25);
         clip-path:polygon(1% 0,99% 2%,100% 20%,98.5% 45%,100% 70%,99% 100%,1% 98%,0 78%,1.5% 52%,0 25%)}
-  .caps{list-style:none;margin:clamp(2.4rem,5vw,3.6rem) 0 0;padding:clamp(1.8rem,4vw,2.6rem) 0 0;border-top:1px solid rgba(255,255,255,.2);max-width:none;
         display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.6rem,3vw,2.4rem) clamp(1.4rem,3vw,2.6rem)}
-  .caps li{margin:0}
-  .caps svg{width:30px;height:30px;fill:none;stroke:var(--orange);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:.7rem;display:block}
-  .caps svg.fill{fill:var(--orange);stroke:none;width:34px}
-  .caps b{display:block;font-family:var(--head);font-size:1.15rem;margin-bottom:.3rem}
-  .caps span{display:block;color:#c9d7f3;font-size:.98rem;line-height:1.5}
   .tier--ai{background:#1e4fa8;border-color:#1e4fa8}
   .tier--ai .tier__what,.tier--ai .tier__fig small{color:#dbe6fb}
   .tier--ai .tier__fig{border-top-color:rgba(255,255,255,.22)}
 
-  /* ---------- Package 2 demo: the assistant as a working system ---------- */
-  .aix{position:relative}
-  .aix::before{content:"";position:absolute;inset:0;pointer-events:none;
-    background-image:radial-gradient(rgba(255,255,255,.08) 1px,transparent 1.3px);background-size:24px 24px;
-    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 18%,#000 82%,transparent 100%)}
-  .aix .wrap{position:relative;z-index:1}
-  .lab,.log,.lab__foot{--labw:min(1240px,calc(100vw - 2 * var(--gutter)));width:var(--labw);margin-left:calc((100% - var(--labw)) / 2)}
-  .lab{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 310px minmax(0,1fr);gap:clamp(2rem,4.5vw,4.4rem);align-items:center;
-       margin-top:clamp(2.6rem,5vw,3.8rem);perspective:1600px}
-  .lab__wires{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
-  .lab__wires path{fill:none;stroke:rgba(255,255,255,.3);stroke-width:1.5;stroke-dasharray:2 6;stroke-linecap:round;transition:stroke .3s,stroke-width .3s}
-  .lab__wires path.is-read{stroke:#9cc0ff;stroke-width:2;stroke-dasharray:none}
-  .lab__wires path.is-write{stroke:var(--orange);stroke-width:2;stroke-dasharray:none}
-  .lab__col{position:relative;z-index:1;display:grid;gap:1.4rem}
-  .lab__phone{position:relative;z-index:1;width:310px}
-  .lab .wa-body{justify-content:flex-end}
-  .lab .wa-date{background:#d9f2e6;color:#2d5a45;margin-bottom:auto}
-  .lab .msg{animation:none;transform-origin:0 100%}
-  .lab .msg--out{transform-origin:100% 100%}
-  .lab.is-playing .msg[data-step]:not(.is-shown){display:none}
-  .lab .msg.is-shown{animation:pop .45s cubic-bezier(.34,1.56,.64,1) both}
-  @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.9)}to{opacity:1;transform:none}}
-  .typing{display:none;align-self:flex-start;padding:10px 12px}
-  .lab.is-typing .typing{display:flex;gap:4px;animation:pop .35s cubic-bezier(.34,1.56,.64,1) both}
-  .typing i{width:7px;height:7px;border-radius:50%;background:#9aa7ae;animation:dot 1s infinite ease-in-out}
-  .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
-  @keyframes dot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
 
-  .panel{background:#fff;color:var(--text);border-radius:14px;overflow:hidden;box-shadow:0 36px 60px -36px rgba(3,12,40,.85),0 0 0 1px rgba(255,255,255,.08)}
-  .panel__h{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:13px 18px;background:var(--ink);color:#fff}
-  .panel__h b{font-family:var(--head);font-size:1rem}
-  .panel__h span{font-size:.8rem;color:var(--on-dark-dim)}
-  .panel__rows{list-style:none;margin:0;padding:6px 10px 8px;max-width:none}
-  .panel__rows li,.record__rows div{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin:0;padding:10px 10px;border-radius:7px;
-       transition:background-color .45s var(--ease),box-shadow .45s var(--ease)}
-  .panel__rows li span,.record__rows dt{color:var(--text-dim);font-size:.9rem}
-  .panel__rows li b,.record__rows dd{margin:0;font-weight:600;color:var(--ink);text-align:right;font-size:.95rem;font-variant-numeric:tabular-nums}
-  .record__rows{margin:0;padding:6px 10px 8px}
-  .is-read{background:rgba(30,79,168,.11);box-shadow:inset 3px 0 0 #1e4fa8}
-  .is-written{background:rgba(242,106,61,.13);box-shadow:inset 3px 0 0 var(--orange)}
-  .is-written dd{color:var(--orange-2)}
-  .panel__rows li.is-counted b{color:var(--orange-2)}
+  /* ---------- Package 2: the story ---------- */
+  .story{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:clamp(2rem,5vw,5rem);align-items:start;margin-top:clamp(1.6rem,4vw,3rem)}
+  .beat{min-height:78vh;display:flex;flex-direction:column;justify-content:center;max-width:30rem;transition:opacity .5s var(--ease)}
+  .beat:first-child{min-height:62vh}
+  .beat h3{color:#fff;font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1.05;letter-spacing:-.02em;margin:0 0 .55em}
+  .beat p{color:#dbe6fb;font-size:clamp(1.1rem,1.5vw,1.28rem);line-height:1.55;max-width:34ch;margin:0}
+  .story.is-js .beat:not(.is-on){opacity:.28}
 
-  .chip{position:absolute;left:0;top:0;z-index:6;display:flex;align-items:center;gap:.5rem;white-space:nowrap;pointer-events:none;
-        background:#fff;color:var(--ink);font-weight:600;font-size:.86rem;padding:.5em .85em;border-radius:999px;
-        box-shadow:0 14px 28px -12px rgba(3,12,40,.8);opacity:0;transition:opacity .2s;will-change:transform}
-  .chip::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--dot,#1e4fa8)}
+  .story__stage{position:sticky;top:max(24px,calc(50vh - 345px));height:690px;display:grid;place-items:center}
+  .story__phone{position:relative;z-index:1;width:min(318px,calc((100vh - 70px) * .485));transition:transform .8s var(--ease),opacity .8s var(--ease)}
+  .story .wa-body{justify-content:flex-end}
+  .story .wa-date{background:#d9f2e6;color:#2d5a45;margin-bottom:auto}
+  .story .msg{animation:none;transform-origin:0 100%}
+  .story .msg--out{transform-origin:100% 100%}
+  .story.is-js .msg[data-beat]:not(.is-shown){display:none}
+  .story .msg.is-new{animation:pop .45s cubic-bezier(.34,1.56,.64,1) both}
+  @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.9)}to{opacity:1;transform:none}}
+  .msg--tagged{position:relative;margin-top:14px}
+  .tape--note{position:absolute;top:-15px;right:-10px;font-size:1.02rem;padding:.08em .6em .12em;transform:rotate(3deg);white-space:nowrap}
+  .story .msg.is-new .tape--note{animation:stick .5s var(--ease) .35s both}
+  @keyframes stick{from{opacity:0;transform:translateY(-8px) rotate(9deg) scale(.9)}to{opacity:1;transform:rotate(3deg)}}
 
-  /* the entrance, once, when the demo first plays */
-  .lab.is-armed:not(.is-entered) .lab__phone,.lab.is-armed:not(.is-entered) .lab__col{opacity:0}
-  .lab.is-entered .lab__phone{animation:phoneIn 1.2s var(--ease) both}
-  .lab.is-entered .lab__col--left{animation:colIn 1s var(--ease) .2s both;--from:-40px}
-  .lab.is-entered .lab__col--right{animation:colIn 1s var(--ease) .35s both;--from:40px}
-  @keyframes phoneIn{from{opacity:0;transform:rotateY(-18deg) rotateX(8deg) translateY(40px) scale(.94)}to{opacity:1;transform:none}}
-  @keyframes colIn{from{opacity:0;transform:translateX(var(--from))}to{opacity:1;transform:none}}
+  /* the order slip: printed paper with a torn bottom edge, taped at the top */
+  .docket{position:absolute;z-index:2;width:330px;background:#fff;color:var(--text);padding:46px 24px 30px;
+          box-shadow:0 30px 50px -24px rgba(3,12,40,.75);transform:rotate(-2.5deg) translate(20px,40px);
+          -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 9px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 9px repeat-x;
+          mask:linear-gradient(#000 0 0) top/100% calc(100% - 9px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 9px repeat-x;
+          transition:opacity .7s var(--ease),transform .8s var(--ease)}
+  .docket__tape{position:absolute;top:8px;left:50%;transform:translateX(-50%) rotate(-3deg);font-size:1.2rem;white-space:nowrap;z-index:1}
+  .docket__head{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0 14px;border-bottom:1.5px dashed #c7d0d4}
+  .mark{font-family:var(--head);font-weight:800;font-variation-settings:"wdth" 112;text-transform:uppercase;font-size:1.35rem;color:#1e4fa8;letter-spacing:-.005em}
+  .mark b{color:var(--orange);font-weight:800}
+  .docket__head small{font-size:.85rem;color:var(--text-dim)}
+  .docket__who{margin:0;padding:12px 0;border-bottom:1.5px dashed #c7d0d4}
+  .docket__who div{display:flex;justify-content:space-between;gap:1rem;padding:3px 0}
+  .docket__who dt{color:var(--text-dim);font-size:.92rem}
+  .docket__who dd{margin:0;font-weight:600;color:var(--ink)}
+  .docket__items{list-style:none;margin:0;padding:12px 0;max-width:none;border-bottom:1.5px dashed #c7d0d4}
+  .docket__items li{display:flex;justify-content:space-between;gap:1rem;margin:0;padding:4px 0;font-size:1rem;color:var(--ink)}
+  .docket__items b{font-weight:700}
+  .docket__note{margin:12px 0 0;font-size:.92rem;color:var(--text)}
+  .docket__foot{margin:8px 0 0;font-size:.8rem;color:var(--text-dim)}
 
-  /* progress: the steps it takes, filled as it goes */
-  .log{position:relative;list-style:none;padding:0;margin-top:clamp(2.4rem,4.5vw,3.4rem);max-width:none;
-       display:grid;grid-template-columns:repeat(7,1fr);gap:.8rem;--p:0}
-  /* the track runs from the first step's dot to the last one's */
-  .log::before,.log::after{content:"";position:absolute;left:16px;top:15px;height:2px;border-radius:2px}
-  .log::before{right:calc((100% - 4.8rem) / 7 - 16px);background:rgba(255,255,255,.2)}
-  .log::after{width:calc(var(--p) * (100% - (100% - 4.8rem) / 7));background:var(--orange);transition:width .7s var(--ease)}
-  .log li{position:relative;z-index:1;margin:0}
-  .log i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;font-style:normal;font-family:var(--head);font-weight:700;font-size:.9rem;
-         color:#c9d7f3;background:#163c85;border:2px solid rgba(255,255,255,.35);transition:background-color .4s,border-color .4s,color .4s,transform .4s var(--ease)}
-  .log span{display:block;margin-top:.7rem;font-size:.92rem;line-height:1.35;color:#aabfe6;transition:color .4s}
-  .log li.is-active i{border-color:var(--orange);color:#fff;transform:scale(1.12)}
-  .log li.is-active span{color:#fff}
-  .log li.is-done i{background:var(--orange);border-color:var(--orange);color:#fff}
-  .log li.is-done span{color:#e3ebfb}
-  .log.is-final li i{background:var(--orange);border-color:var(--orange);color:#fff}
+  /* beat 4: the phone steps back and the slip lands on top */
+  .story.is-js .docket{opacity:0;transform:rotate(4deg) translate(40px,120px)}
+  .story.is-b4 .docket{opacity:1;transform:rotate(-2.5deg) translate(20px,40px)}
+  .story.is-b4 .story__phone{transform:translateX(-46px) rotate(-3deg) scale(.94);opacity:.6}
 
-  .lab__foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem 2rem;margin-top:clamp(1.8rem,3.5vw,2.4rem)}
-  .lab__result{margin:0;font-family:var(--head);font-weight:700;font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.35;color:#fff;max-width:46ch;
-               opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-  .lab__result.is-shown{opacity:1;transform:none}
-  .lab__meta{display:flex;align-items:center;gap:1.1rem;font-size:.9rem;color:#c9d7f3}
-  .key{display:inline-flex;align-items:center;gap:.45rem}
-  .key::before{content:"";width:14px;height:14px;border-radius:3px}
-  .key--read::before{background:#dfe7f7;box-shadow:inset 3px 0 0 #1e4fa8}
-  .key--write::before{background:#fde3d9;box-shadow:inset 3px 0 0 var(--orange)}
-  .replay{font:inherit;font-weight:600;color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,.7);border-radius:4px;padding:.5em .95em;cursor:pointer}
-  .replay:hover{background:rgba(255,255,255,.12)}
-  .replay:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
-
-  @media(max-width:1060px){
-    .lab{grid-template-columns:1fr;justify-items:center;gap:1.6rem}
-    .lab__phone{order:-1}
-    .lab__col{width:100%;max-width:520px}
-    .lab__col--right{order:0}.lab__col--left{order:1}
-    .lab__wires,.chip{display:none}
-    .log{grid-template-columns:1fr;gap:.9rem;max-width:520px;margin-left:auto;margin-right:auto;width:100%}
-    .log::before,.log::after{left:15px;top:15px;bottom:15px;width:2px;height:auto}
-    .log::before{right:auto}
-    .log::after{height:calc(var(--p) * (100% - 30px));bottom:auto;width:2px;transition:height .7s var(--ease)}
-    .log li{display:flex;align-items:center;gap:.9rem}
-    .log span{margin:0}
-    .lab__foot{max-width:520px;margin-left:auto;margin-right:auto;width:100%}
-    .caps{grid-template-columns:1fr 1fr}
+  @media(max-width:999px){
+    .story{grid-template-columns:1fr;gap:2.4rem}
+    .story__stage{position:relative;top:auto;height:auto;order:-1;display:flex;flex-direction:column;align-items:center;gap:2.6rem}
+    .story__phone{width:100%;max-width:318px}
+    .docket,.story.is-js .docket,.story.is-b4 .docket{position:relative;transform:rotate(-2deg);opacity:1;width:min(330px,100%)}
+    .story.is-b4 .story__phone{transform:none;opacity:1}
+    .beat,.beat:first-child{min-height:0;max-width:none}
+    .story.is-js .beat:not(.is-on){opacity:1}
+    .story__beats{display:grid;gap:2rem}
+    .beat h3{font-size:clamp(1.5rem,6vw,1.9rem)}
   }
-  @media(max-width:560px){.caps{grid-template-columns:1fr}.lab__phone{width:100%;max-width:310px}}
-  @media(prefers-reduced-motion:reduce){.typing i{animation:none}.panel__rows li,.record__rows div,.log i,.log span,.log::after,.lab__result{transition:none}}
+  @media(prefers-reduced-motion:reduce){
+    .beat,.story__phone,.docket{transition:none}
+    .story .msg.is-new,.story .msg.is-new .tape--note{animation:none}
+  }
 </style>
 </head>
 <body>
@@ -665,97 +620,71 @@
 </section>
 
 <!-- ============================================================ AI ASSISTANT
-     Package 2. The chat plays out when it scrolls into view and the customer
-     record fills in as the assistant learns things. Final state is in the
-     markup; the script resets and replays it. -->
+     Package 2, told as a story. On a wide screen the phone stays pinned
+     while four short beats scroll past; each beat adds the next part of the
+     chat, and the last one brings in the order slip. On a phone the chat
+     plays through once when it comes into view. The markup holds the
+     finished state, so it reads complete without JavaScript. -->
 <section class="section aix" id="ai">
   <div class="wrap">
     <div class="aix__head">
       <span class="tape">Package 2</span>
-      <h2>An AI assistant that knows every customer's tank.</h2>
-      <p class="lead">Everything in the marketing package, plus an assistant built on Claude. It answers customers on WhatsApp day and night, remembers each customer's tank, and keeps their record up to date as it goes.</p>
+      <h2>A shop assistant that never closes.</h2>
+      <p class="lead">Everything in the marketing package, plus an assistant on your WhatsApp. It answers customers day and night, remembers their tanks and suggests the extras, then hands the order to your team.</p>
     </div>
 
-<div class="lab is-final" id="lab">
-      <svg class="lab__wires" aria-hidden="true"></svg>
-
-      <div class="lab__col lab__col--left">
-        <div class="panel" id="p-stock">
-          <div class="panel__h"><b>Stock</b><span>From the till, today</span></div>
-          <ul class="panel__rows">
-            <li data-k="rasbora"><span>Harlequin rasboras</span><b data-from-n="24">16</b></li>
-            <li data-k="sponge"><span>Bioflow sponge set</span><b data-from-n="6">5</b></li>
-            <li data-k="neon"><span>Neon tetras</span><b>40</b></li>
-          </ul>
+    <div class="story" id="story">
+      <div class="story__beats">
+        <div class="beat" data-beat="1">
+          <h3>9:40 at night. The shop is closed.</h3>
+          <p>A customer messages Sam's on WhatsApp, and gets an answer straight away.</p>
         </div>
-        <div class="panel" id="p-guides">
-          <div class="panel__h"><b>Shop guides</b><span>What it's trained on</span></div>
-          <ul class="panel__rows">
-            <li data-k="school"><span>Schooling fish</span><b>Groups of 6 or more</b></li>
-            <li data-k="mix"><span>Neons mix with</span><b>Rasboras, corydoras</b></li>
-            <li data-k="filter"><span>Filter sponges</span><b>Every 6 months</b></li>
-          </ul>
+        <div class="beat" data-beat="2">
+          <h3>It remembers her tank.</h3>
+          <p>Every customer's tank, fish and past buys are saved, so it suggests fish that suit her tank, and only ones that are in stock.</p>
+        </div>
+        <div class="beat" data-beat="3">
+          <h3>It holds the fish and sells the extra.</h3>
+          <p>It reserves the fish for her and offers what she's due for, like new filter sponges. That's an extra R95 sale while the shop was closed.</p>
+        </div>
+        <div class="beat" data-beat="4">
+          <h3>In the morning, the order is ready for your team.</h3>
+          <p>Your team sees what to pack and when she's collecting. Anything tricky, like a sick fish or a complaint, goes straight to a person.</p>
         </div>
       </div>
 
-      <div class="phone lab__phone"><div class="screen wa">
-        <div class="status"><span>19:42</span><i>●●●● ▮</i></div>
-        <div class="wa-head"><div class="wa-back"></div><div class="wa-av badge"></div><div><div class="wa-name">Sam's Aquarium</div><div class="wa-sub">Business account</div></div></div>
-        <div class="wa-body">
-          <div class="wa-date">You're chatting with Sam's AI assistant</div>
-          <div class="msg msg--out" data-step="0"><span class="msg__txt">Hi! What else could I add to my tank?</span><div class="msg-t">19:40</div></div>
-          <div class="msg" data-step="1"><span class="msg__txt">Hi Thandi. Your 120 litre tank has neons and corydoras, and harlequin rasboras came in this week. They school well with neons. Shall I hold 8 for you?</span><div class="msg-t">19:40</div></div>
-          <div class="msg msg--out" data-step="2"><span class="msg__txt">Yes please!</span><div class="msg-t">19:41</div></div>
-          <div class="msg" data-step="3"><span class="msg__txt">Done, 8 held until Saturday. Your filter sponges are due for a change too. Add a Bioflow sponge set for R95?</span><div class="msg-t">19:41</div></div>
-          <div class="msg msg--out" data-step="4"><span class="msg__txt">Yes, add it</span><div class="msg-t">19:42</div></div>
-          <div class="msg" data-step="5"><span class="msg__txt">Added. Both will be ready to collect on Saturday.</span><div class="msg-t">19:42</div></div>
-          <div class="msg typing" aria-hidden="true"><i></i><i></i><i></i></div>
-        </div>
-        <div class="wa-foot"><div class="wa-in">Message</div><div class="wa-mic"></div></div>
-      </div></div>
+      <div class="story__stage">
+        <div class="phone story__phone"><div class="screen wa">
+          <div class="status"><span>21:42</span><i>●●●● ▮</i></div>
+          <div class="wa-head"><div class="wa-back"></div><div class="wa-av badge"></div><div><div class="wa-name">Sam's Aquarium</div><div class="wa-sub">Business account</div></div></div>
+          <div class="wa-body">
+            <div class="wa-date">You're chatting with Sam's AI assistant</div>
+            <div class="msg msg--out" data-beat="1">Hi! What else could I add to my tank?<div class="msg-t">21:40</div></div>
+            <div class="msg msg--tagged" data-beat="2"><span class="tape tape--note">Knows her tank</span>Hi Thandi. Your 120 litre tank has neons and corydoras, and harlequin rasboras came in this week. They school well with neons. Shall I hold 8 for you?<div class="msg-t">21:40</div></div>
+            <div class="msg msg--out" data-beat="2">Yes please!<div class="msg-t">21:41</div></div>
+            <div class="msg msg--tagged" data-beat="3"><span class="tape tape--note">Holds the fish</span>Done, 8 held until Saturday. Your filter sponges are due for a change too. Add a Bioflow sponge set for R95?<div class="msg-t">21:41</div></div>
+            <div class="msg msg--out" data-beat="3">Yes, add it<div class="msg-t">21:42</div></div>
+            <div class="msg msg--tagged" data-beat="3"><span class="tape tape--note">Extra R95 sale</span>Added. Both will be ready to collect on Saturday.<div class="msg-t">21:42</div></div>
+          </div>
+          <div class="wa-foot"><div class="wa-in">Message</div><div class="wa-mic"></div></div>
+        </div></div>
 
-      <div class="lab__col lab__col--right">
-        <div class="panel record" id="rec">
-          <div class="panel__h"><b>Customer record</b><span>Updated from WhatsApp</span></div>
-          <dl class="record__rows">
-            <div data-k="customer"><dt>Customer</dt><dd>Thandi M., Tokai</dd></div>
-            <div data-k="tank"><dt>Tank</dt><dd>120 litre community, planted</dd></div>
-            <div data-k="fish"><dt>Fish</dt><dd>10 neons, 6 corydoras, 2 platies</dd></div>
-            <div data-k="hold" data-from="None"><dt>On hold</dt><dd>8 harlequin rasboras, until Saturday</dd></div>
-            <div data-k="order" data-from="None"><dt>Order</dt><dd>Bioflow sponge set, R95</dd></div>
-            <div data-k="next" data-from="Filter sponges, October"><dt>Next reminder</dt><dd>Filter sponges, March 2027</dd></div>
-            <div data-k="last" data-from="In the shop, 12 September"><dt>Last contact</dt><dd>WhatsApp, today 19:42</dd></div>
+        <div class="docket" aria-label="Example order slip">
+          <span class="tape docket__tape">Ready to pack</span>
+          <div class="docket__head"><span class="mark"><b>Sams</b> Aquarium</span><small>Order for collection</small></div>
+          <dl class="docket__who">
+            <div><dt>Customer</dt><dd>Thandi M., Tokai</dd></div>
+            <div><dt>Collecting</dt><dd>Saturday</dd></div>
           </dl>
+          <ul class="docket__items">
+            <li><span>8 harlequin rasboras</span><b>On hold</b></li>
+            <li><span>1 Bioflow sponge set</span><b>R95</b></li>
+          </ul>
+          <p class="docket__note">Her tank: 120 litre community, with neons and corydoras.</p>
+          <p class="docket__foot">Taken on WhatsApp by the assistant, Thursday 21:42</p>
         </div>
       </div>
     </div>
-
-    <ol class="log is-final" id="log" style="--p:1">
-      <li><i>1</i><span>Reads Thandi's tank</span></li>
-      <li><i>2</i><span>Checks stock</span></li>
-      <li><i>3</i><span>Checks the guides</span></li>
-      <li><i>4</i><span>Holds 8 rasboras</span></li>
-      <li><i>5</i><span>Checks her filter</span></li>
-      <li><i>6</i><span>Adds to the order</span></li>
-      <li><i>7</i><span>Updates her record</span></li>
-    </ol>
-
-    <div class="lab__foot">
-      <p class="lab__result is-shown" id="result">Two minutes, 19:40 to 19:42: eight fish reserved, R95 added to the order, and Thandi's record up to date.</p>
-      <div class="lab__meta">
-        <span class="key key--read">Reads</span><span class="key key--write">Writes</span>
-        <button type="button" class="replay" id="replay" hidden>Play it again</button>
-      </div>
-    </div>
-
-    <ul class="caps">
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><b>Answers in seconds, day and night</b><span>On WhatsApp, from the shop's own guides, range and prices.</span></li>
-        <li><svg viewBox="0 0 40 40" class="fill"><path d="M6 20C10 13 17 10 23 11c4 1 7 4 9 7l5-5v14l-5-5c-2 3-5 6-9 7C17 30 10 27 6 20z"/></svg><b>Remembers every tank</b><span>Tank size, fish and past purchases, from every conversation.</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8L3 12z"/><circle cx="7.5" cy="8.5" r="1.4"/></svg><b>Suggests what suits</b><span>Fish and products that fit the customer's tank and are in stock.</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b>Holds fish and takes orders</b><span>Reserves livestock and adds products to an order.</span></li>
-        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6"/></svg><b>Hands over to your team</b><span>Sick fish, complaints and anything it's unsure of go to a person.</span></li>
-        <li><svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4V8z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Drafts your posts</b><span>Turns the photos your team sends into posts, ready to approve.</span></li>
-    </ul>
   </div>
 </section>
 
@@ -917,144 +846,42 @@
 </script>
 
 <script>
-/* Package 2 demo. The chat plays out while data moves between the phone and
-   the shop's systems: chips travel along the wires, rows light up blue when
-   read and orange when written, stock counts down, and the steps fill in.
-   The markup holds the finished state, which shows as-is without
-   JavaScript or with reduced motion. */
+/* Package 2 story. Wide screens: each beat that reaches the middle of the
+   screen adds its part of the chat, and beat 4 brings in the order slip.
+   Phones: the chat plays through once when it comes into view. */
 (function(){
   'use strict';
-  var lab = document.getElementById('lab');
-  if (!lab || !('IntersectionObserver' in window)) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var story = document.getElementById('story');
+  if (!story || !('IntersectionObserver' in window)) return;
+  var beats = Array.prototype.slice.call(story.querySelectorAll('.beat'));
+  var msgs = Array.prototype.slice.call(story.querySelectorAll('.msg[data-beat]'));
+  var wide = window.matchMedia('(min-width: 1000px)').matches;
+  story.classList.add('is-js');
 
-  function $(sel){ return lab.querySelector(sel); }
-  function $$(sel, root){ return Array.prototype.slice.call((root || lab).querySelectorAll(sel)); }
-  var phone = $('.lab__phone'), sub = $('.wa-sub'), wires = $('.lab__wires');
-  var log = document.getElementById('log'), steps = $$('li', log);
-  var result = document.getElementById('result'), replay = document.getElementById('replay');
-  var msgs = $$('.msg[data-step]');
-  var texts = msgs.map(function(m){ return m.querySelector('.msg__txt').textContent; });
-  var rec = {};
-  $$('#rec [data-k]').forEach(function(r){ rec[r.getAttribute('data-k')] = { el: r, final: r.querySelector('dd').textContent }; });
-  var counts = $$('[data-from-n]');
-  var finals = counts.map(function(c){ return c.textContent; });
-  var chip = document.createElement('div'); chip.className = 'chip'; chip.setAttribute('aria-hidden', 'true'); lab.appendChild(chip);
-  var paths = {}, timers = [], rafs = [];
-  var BLUE = '#1e4fa8', ORANGE = '#f26a3d';
+  function show(m){ if (!m.classList.contains('is-shown')) { m.classList.add('is-shown', 'is-new'); } }
+  function hide(m){ m.classList.remove('is-shown', 'is-new'); }
 
-  function at(ms, fn){ timers.push(setTimeout(fn, ms)); }
-
-  function drawWires(){
-    wires.innerHTML = ''; paths = {};
-    if (window.innerWidth <= 1060) return;
-    var L = lab.getBoundingClientRect(), P = phone.getBoundingClientRect();
-    function r(el){ var b = el.getBoundingClientRect(); return { l: b.left - L.left, r: b.right - L.left, t: b.top - L.top, h: b.height }; }
-    var ph = r(phone);
-    [['stock', '#p-stock', 'left', .36], ['guides', '#p-guides', 'left', .6], ['record', '#rec', 'right', .48]].forEach(function(d){
-      var e = r($(d[1])), x1, y1 = e.t + e.h / 2, x2, y2 = ph.t + ph.h * d[3];
-      if (d[2] === 'left') { x1 = e.r; x2 = ph.l + 4; } else { x1 = e.l; x2 = ph.r - 4; }
-      var dx = (x2 - x1) / 2;
-      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', 'M' + x1 + ' ' + y1 + ' C' + (x1 + dx) + ' ' + y1 + ' ' + (x2 - dx) + ' ' + y2 + ' ' + x2 + ' ' + y2);
-      wires.appendChild(path); paths[d[0]] = path;
-    });
-  }
-
-  /* a chip carries data along a wire: panel to phone when read, phone to record when written */
-  function send(wire, text, toPhone, color){
-    var path = paths[wire]; if (!path) return;
-    chip.textContent = text; chip.style.setProperty('--dot', color);
-    var kind = color === ORANGE ? 'is-write' : 'is-read';
-    path.classList.add(kind);
-    var len = path.getTotalLength(), w = chip.offsetWidth, h = chip.offsetHeight, t0 = null, D = 1050;
-    chip.style.opacity = 1;
-    function frame(ts){
-      if (!t0) t0 = ts;
-      var k = Math.min(1, (ts - t0) / D), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
-      var pt = path.getPointAtLength(len * (toPhone ? e : 1 - e));
-      chip.style.transform = 'translate(' + (pt.x - w / 2) + 'px,' + (pt.y - h / 2) + 'px)';
-      if (k < 1) rafs.push(requestAnimationFrame(frame));
-      else { chip.style.opacity = 0; at(250, function(){ path.classList.remove(kind); }); }
+  if (wide) {
+    var current = 0;
+    function set(n){
+      if (n === current) return; current = n;
+      beats.forEach(function(b){ b.classList.toggle('is-on', +b.getAttribute('data-beat') === n); });
+      msgs.forEach(function(m){ if (+m.getAttribute('data-beat') <= n) show(m); else hide(m); });
+      story.classList.toggle('is-b4', n >= 4);
     }
-    rafs.push(requestAnimationFrame(frame));
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting) set(+en.target.getAttribute('data-beat')); });
+    }, { rootMargin: '-50% 0px -50% 0px' });
+    beats.forEach(function(b){ io.observe(b); });
+  } else {
+    beats.forEach(function(b){ b.classList.add('is-on'); });
+    story.classList.add('is-b4');
+    var phone = story.querySelector('.story__phone');
+    new IntersectionObserver(function(en, o){
+      if (!en[0].isIntersecting) return; o.disconnect();
+      msgs.forEach(function(m, i){ setTimeout(function(){ show(m); }, 300 + i * 1100); });
+    }, { threshold: .55 }).observe(phone);
   }
-
-  function show(i){ msgs[i].querySelector('.msg__txt').textContent = texts[i]; msgs[i].classList.add('is-shown'); }
-  function stream(i){
-    typing(false);
-    var t = msgs[i].querySelector('.msg__txt'), words = texts[i].split(' '), n = 0;
-    t.textContent = ''; msgs[i].classList.add('is-shown');
-    (function next(){ n++; t.textContent = words.slice(0, n).join(' '); if (n < words.length) at(40, next); })();
-  }
-  function typing(on){ lab.classList.toggle('is-typing', on); sub.textContent = on ? 'typing\u2026' : 'Business account'; }
-  function read(sel){ $$(sel).forEach(function(el){ el.classList.remove('is-written'); el.classList.add('is-read'); }); }
-  function write(key){
-    var r = rec[key], dd = r.el.querySelector('dd'), s = r.final, n = 0;
-    r.el.classList.remove('is-read'); r.el.classList.add('is-written');
-    (function tick(){ n += 2; dd.textContent = s.slice(0, n); if (n < s.length) at(22, tick); })();
-  }
-  function count(key, sel){
-    var el = $(sel), li = el.parentNode, from = +el.textContent, to = +finals[counts.indexOf(el)], t0 = null;
-    li.classList.add('is-counted');
-    function f(ts){ if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / 800); el.textContent = Math.round(from + (to - from) * k); if (k < 1) rafs.push(requestAnimationFrame(f)); }
-    rafs.push(requestAnimationFrame(f));
-  }
-  function step(n){
-    steps.forEach(function(li, i){ li.classList.toggle('is-done', i < n - 1); li.classList.toggle('is-active', i === n - 1); });
-    log.style.setProperty('--p', (n - 1) / (steps.length - 1));
-  }
-
-  function reset(){
-    timers.forEach(clearTimeout); rafs.forEach(cancelAnimationFrame); timers = []; rafs = [];
-    lab.classList.remove('is-final'); log.classList.remove('is-final');
-    lab.classList.add('is-playing'); typing(false);
-    msgs.forEach(function(m){ m.classList.remove('is-shown'); });
-    $$('.is-read, .is-written, .is-counted').forEach(function(el){ el.classList.remove('is-read', 'is-written', 'is-counted'); });
-    Object.keys(rec).forEach(function(k){ var f = rec[k].el.getAttribute('data-from'); if (f !== null) rec[k].el.querySelector('dd').textContent = f; });
-    counts.forEach(function(c){ c.textContent = c.getAttribute('data-from-n'); });
-    steps.forEach(function(li){ li.classList.remove('is-done', 'is-active'); });
-    log.style.setProperty('--p', 0);
-    result.classList.remove('is-shown'); replay.hidden = true;
-    chip.style.opacity = 0;
-    $$('path', wires).forEach(function(pa){ pa.classList.remove('is-read', 'is-write'); });
-  }
-
-  function play(){
-    reset(); drawWires();
-    var o = lab.classList.contains('is-entered') ? 0 : 900;
-    lab.classList.add('is-entered');
-    at(o + 200, function(){ show(0); });
-    at(o + 900, function(){ step(1); read('#rec [data-k=tank], #rec [data-k=fish]'); send('record', '120 litre tank, neons, corydoras', true, BLUE); });
-    at(o + 2100, function(){ step(2); read('#p-stock [data-k=rasbora]'); send('stock', '24 harlequin rasboras in stock', true, BLUE); });
-    at(o + 3300, function(){ step(3); read('#p-guides [data-k=school], #p-guides [data-k=mix]'); send('guides', 'Schooling fish: 6 or more', true, BLUE); });
-    at(o + 4400, function(){ typing(true); });
-    at(o + 5200, function(){ stream(1); });
-    at(o + 7500, function(){ show(2); });
-    at(o + 8100, function(){ step(4); send('record', 'Hold 8 until Saturday', false, ORANGE); });
-    at(o + 9100, function(){ write('hold'); count('rasbora', '#p-stock [data-k=rasbora] b'); });
-    at(o + 10000, function(){ step(5); read('#rec [data-k=next], #p-guides [data-k=filter], #p-stock [data-k=sponge]'); send('record', 'Sponges due in October', true, BLUE); });
-    at(o + 11200, function(){ typing(true); });
-    at(o + 11900, function(){ stream(3); });
-    at(o + 13600, function(){ show(4); });
-    at(o + 14200, function(){ step(6); send('record', 'Bioflow sponge set, R95', false, ORANGE); });
-    at(o + 15200, function(){ write('order'); count('sponge', '#p-stock [data-k=sponge] b'); });
-    at(o + 15800, function(){ step(7); write('next'); });
-    at(o + 16200, function(){ write('last'); });
-    at(o + 16600, function(){ typing(true); });
-    at(o + 17300, function(){ stream(5); });
-    at(o + 18300, function(){
-      steps.forEach(function(li){ li.classList.remove('is-active'); li.classList.add('is-done'); });
-      log.style.setProperty('--p', 1);
-      result.classList.add('is-shown'); replay.hidden = false;
-    });
-  }
-
-  reset();
-  lab.classList.add('is-armed');
-  new IntersectionObserver(function(en, io){ if (en[0].isIntersecting) { io.disconnect(); play(); } }, { threshold: .3 }).observe(lab);
-  replay.addEventListener('click', play);
-  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(drawWires, 150); });
 })();
 </script>
 </body>
