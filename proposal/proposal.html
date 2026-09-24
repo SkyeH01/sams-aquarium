@@ -340,21 +340,12 @@
   .price-note{margin:.9rem 0 0;font-size:.92rem;color:var(--on-dark-dim);max-width:60ch}
   .scene__text h3{margin-bottom:.6em}
 
-  /* ---------- AI assistant section ---------- */
-  .ai-head{background:var(--deep);color:var(--on-dark);padding-bottom:clamp(1.4rem,3vw,2rem)}
-  .ai-head h2{color:#fff}
-  .ai-head .lead{color:var(--on-dark-dim)}
-  .scene--ai,.scene--ai:nth-of-type(odd),.scene--ai:nth-of-type(even){background:var(--deep)}
-  .scene--ai h3{color:#fff}
-  .scene--ai .scene__text p{color:var(--on-dark)}
-  .scene--ai .wa-date{background:#d9f2e6;color:#2d5a45}
   .inc-grid--ai b::before{background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.4l2.6 2.6L13 6.6' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
   .inc-grid--needs{grid-template-columns:repeat(3,1fr)}
 
   /* ---------- two packages ---------- */
   .tiers{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2.5vw,1.8rem);margin:1.6rem 0 1.4rem}
   .tier{border:1px solid rgba(159,214,221,.22);border-radius:10px;padding:clamp(1.3rem,3vw,1.9rem)}
-  .tier--ai{border-color:var(--orange);background:rgba(242,106,61,.06)}
   .tier h3{font-size:1.35rem;color:#fff;margin:0 0 .45rem}
   .tier__what{color:var(--on-dark-dim);font-size:.98rem;margin:0 0 1.3rem;min-height:3.1em}
   .tier__fig{padding:.9rem 0;border-top:1px solid rgba(159,214,221,.16)}
@@ -366,6 +357,58 @@
   @media(max-width:760px){.tiers{grid-template-columns:1fr}.tier__what{min-height:0}}
   @media(max-width:900px){.inc-grid--needs{grid-template-columns:1fr 1fr}}
   @media(max-width:600px){.inc-grid--needs{grid-template-columns:1fr}}
+
+  /* ---------- Package 2: the AI assistant, in the sign's blue ---------- */
+  .aix{--sign:#1e4fa8;background:linear-gradient(180deg,#1b479b 0%,#163c85 100%);color:#fff;overflow:hidden}
+  .aix__head{max-width:46rem}
+  .aix h2{color:#fff;font-size:clamp(2.3rem,5.4vw,4.2rem);line-height:1;letter-spacing:-.025em;margin:.9rem 0 .45em}
+  .aix .lead{color:#dbe6fb;max-width:52ch}
+  .tape{display:inline-block;font-family:"Caveat","Segoe Print",cursive;font-weight:700;font-size:1.5rem;line-height:1.1;color:#23303a;
+        background:linear-gradient(90deg,rgba(0,0,0,.04),transparent 12%,transparent 88%,rgba(0,0,0,.04)),#efe3bf;
+        padding:.2em .8em .25em;transform:rotate(-2deg);box-shadow:0 2px 5px rgba(0,0,0,.25);
+        clip-path:polygon(1% 0,99% 2%,100% 20%,98.5% 45%,100% 70%,99% 100%,1% 98%,0 78%,1.5% 52%,0 25%)}
+  .stage{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(1.6rem,4vw,3.6rem);align-items:center;margin-top:clamp(2.2rem,5vw,3.4rem)}
+  .stage__phone{width:310px}
+  .stage .wa-body{justify-content:flex-end}
+  .stage .wa-date{background:#d9f2e6;color:#2d5a45;margin-bottom:auto}
+  .stage .msg{animation:none}
+  .stage.is-playing .msg[data-step]:not(.is-shown){display:none}
+  .stage .msg.is-shown{animation:arrive .35s var(--ease) both}
+  .typing{display:none;align-self:flex-start;padding:10px 12px}
+  .stage.is-typing .typing{display:flex;gap:4px}
+  .typing i{width:7px;height:7px;border-radius:50%;background:#9aa7ae;animation:dot 1s infinite ease-in-out}
+  .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+  @keyframes dot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+  .record{background:#fff;color:var(--text);border-radius:14px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(4,14,40,.8)}
+  .record__h{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:16px 22px;background:var(--ink);color:#fff}
+  .record__h b{font-family:var(--head);font-size:1.05rem}
+  .record__sync{font-size:.85rem;color:var(--on-dark-dim)}
+  .record__rows{margin:0;padding:8px 22px 4px}
+  .record__rows div{display:grid;grid-template-columns:8.5rem 1fr;gap:1rem;padding:11px 12px;margin:0 -12px;border-bottom:1px solid var(--rule);border-radius:6px;transition:background-color .5s var(--ease)}
+  .record__rows div:last-child{border-bottom:0}
+  .record__rows dt{color:var(--text-dim);font-size:.95rem}
+  .record__rows dd{margin:0;font-weight:600;color:var(--ink)}
+  .record__rows .is-read{background:rgba(30,79,168,.1);box-shadow:inset 3px 0 0 var(--sign)}
+  .record__rows .is-written{background:rgba(242,106,61,.12);box-shadow:inset 3px 0 0 var(--orange)}
+  .record__rows .is-written dd{color:var(--orange-2)}
+  .record__note{margin:0;padding:10px 22px 14px;font-size:.85rem;color:var(--text-dim);border-top:1px solid var(--rule);max-width:none}
+  .stage__foot{margin:1.2rem 0 0;min-height:2.6rem;max-width:none}
+  .replay{font:inherit;font-weight:600;color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,.7);border-radius:4px;padding:.55em 1em;cursor:pointer}
+  .replay:hover{background:rgba(255,255,255,.12)}
+  .replay:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+  .caps{list-style:none;margin:clamp(2.4rem,5vw,3.6rem) 0 0;padding:clamp(1.8rem,4vw,2.6rem) 0 0;border-top:1px solid rgba(255,255,255,.2);max-width:none;
+        display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.6rem,3vw,2.4rem) clamp(1.4rem,3vw,2.6rem)}
+  .caps li{margin:0}
+  .caps svg{width:30px;height:30px;fill:none;stroke:var(--orange);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:.7rem;display:block}
+  .caps svg.fill{fill:var(--orange);stroke:none;width:34px}
+  .caps b{display:block;font-family:var(--head);font-size:1.15rem;margin-bottom:.3rem}
+  .caps span{display:block;color:#c9d7f3;font-size:.98rem;line-height:1.5}
+  @media(max-width:900px){.stage{grid-template-columns:1fr;justify-items:center}.record{width:100%;max-width:520px}.caps{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.caps{grid-template-columns:1fr}.record__rows div{grid-template-columns:7rem 1fr}.stage__phone{width:100%;max-width:310px}}
+  @media(prefers-reduced-motion:reduce){.typing i,.stage .msg.is-shown{animation:none}.record__rows div{transition:none}}
+  .tier--ai{background:#1e4fa8;border-color:#1e4fa8}
+  .tier--ai .tier__what,.tier--ai .tier__fig small{color:#dbe6fb}
+  .tier--ai .tier__fig{border-top-color:rgba(255,255,255,.22)}
 </style>
 </head>
 <body>
@@ -549,59 +592,59 @@
   </div>
 </section>
 
-<!-- ============================================================ AI ASSISTANT -->
-<section class="section ai-head" id="ai">
+<!-- ============================================================ AI ASSISTANT
+     Package 2. The chat plays out when it scrolls into view and the customer
+     record fills in as the assistant learns things. Final state is in the
+     markup; the script resets and replays it. -->
+<section class="section aix" id="ai">
   <div class="wrap">
-    <h2>Add the AI assistant.</h2>
-    <p class="lead">The second package includes everything above, plus an AI assistant built on Claude. It answers customers on WhatsApp day and night, gets to know each customer's tank, and keeps your customer records up to date.</p>
-  </div>
-</section>
+    <div class="aix__head">
+      <span class="tape">Package 2</span>
+      <h2>An AI assistant that knows every customer's tank.</h2>
+      <p class="lead">Everything in the marketing package, plus an assistant built on Claude. It answers customers on WhatsApp day and night, remembers each customer's tank, and keeps their record up to date as it goes.</p>
+    </div>
 
-<section class="scene scene--ai">
-  <div class="wrap scene__grid">
-    <div class="scene__art">
-      <div class="phone device"><div class="screen wa">
+    <div class="stage" id="stage">
+      <div class="phone stage__phone"><div class="screen wa">
         <div class="status"><span>19:42</span><i>●●●● ▮</i></div>
         <div class="wa-head"><div class="wa-back"></div><div class="wa-av badge"></div><div><div class="wa-name">Sam's Aquarium</div><div class="wa-sub">Business account</div></div></div>
         <div class="wa-body">
           <div class="wa-date">You're chatting with Sam's AI assistant</div>
-          <div class="msg msg--out a" style="--d:0">Hi! What else could I add to my tank?<div class="msg-t">19:40</div></div>
-          <div class="msg a" style="--d:1">Hi Thandi. Your 120 litre tank has neons and corydoras, and harlequin rasboras came in this week. They school well with neons. Shall I hold 8 for you?<div class="msg-t">19:40</div></div>
-          <div class="msg msg--out a" style="--d:2">Yes please!<div class="msg-t">19:41</div></div>
-          <div class="msg a" style="--d:3">Done, 8 held until Saturday. Your filter sponges are due for a change too. Add a Bioflow sponge set for R95?<div class="msg-t">19:42</div></div>
+          <div class="msg msg--out" data-step="1">Hi! What else could I add to my tank?<div class="msg-t">19:40</div></div>
+          <div class="msg" data-step="2">Hi Thandi. Your 120 litre tank has neons and corydoras, and harlequin rasboras came in this week. They school well with neons. Shall I hold 8 for you?<div class="msg-t">19:40</div></div>
+          <div class="msg msg--out" data-step="3">Yes please!<div class="msg-t">19:41</div></div>
+          <div class="msg" data-step="4">Done, 8 held until Saturday. Your filter sponges are due for a change too. Add a Bioflow sponge set for R95?<div class="msg-t">19:41</div></div>
+          <div class="msg msg--out" data-step="5">Yes, add it<div class="msg-t">19:42</div></div>
+          <div class="msg" data-step="6">Added. Both will be ready to collect on Saturday.<div class="msg-t">19:42</div></div>
+          <div class="msg typing" aria-hidden="true"><i></i><i></i><i></i></div>
         </div>
         <div class="wa-foot"><div class="wa-in">Message</div><div class="wa-mic"></div></div>
       </div></div>
-    </div>
-    <div class="scene__text">
-      <h3>An assistant that knows every tank.</h3>
-      <p>Customers message Sam's on WhatsApp and get an answer straight away. The assistant remembers each customer's tank and fish, answers care questions from the shop's own guides, and suggests fish and products that suit their tank and are in stock.</p>
-      <p>It reserves fish and adds products to an order. Sick fish, complaints and anything it isn't sure of go straight to your team, who can see every conversation and take over at any time.</p>
-    </div>
-  </div>
-</section>
 
-<section class="scene scene--ai scene--flip">
-  <div class="wrap scene__grid">
-    <div class="scene__art">
-      <div class="rep device">
-        <div class="rep-h">Customer record <img src="img/logo.png" alt=""></div>
-        <div class="rep-l a" style="--d:0">
-          <div><span>Customer</span>Thandi M., Tokai</div>
-          <div><span>Tank</span>120 litre community, planted</div>
-          <div><span>Fish</span>10 neons, 6 corydoras, 2 platies</div>
-          <div><span>On hold</span>8 harlequin rasboras, until Saturday</div>
-          <div><span>Next reminder</span>Filter sponges, October</div>
-          <div><span>Lists</span>New arrivals, community fish</div>
-        </div>
-        <div class="rep-f">Example record, updated by the assistant from the chat.</div>
+      <div class="record">
+        <div class="record__h"><b>Customer record</b><span class="record__sync">Updated from WhatsApp</span></div>
+        <dl class="record__rows">
+          <div><dt>Customer</dt><dd>Thandi M., Tokai</dd></div>
+          <div data-read="2"><dt>Tank</dt><dd>120 litre community, planted</dd></div>
+          <div data-read="2"><dt>Fish</dt><dd>10 neons, 6 corydoras, 2 platies</dd></div>
+          <div data-write="4" data-from="None"><dt>On hold</dt><dd>8 harlequin rasboras, until Saturday</dd></div>
+          <div data-write="6" data-from="None"><dt>Order</dt><dd>Bioflow sponge set, R95</dd></div>
+          <div data-write="6" data-from="Filter sponges, October"><dt>Next reminder</dt><dd>Filter sponges, March 2027</dd></div>
+          <div data-write="6" data-from="In the shop, 12 September"><dt>Last contact</dt><dd>WhatsApp, today 19:42</dd></div>
+        </dl>
+        <p class="record__note">Example customer. Rows the assistant reads are marked in blue, rows it writes in orange.</p>
       </div>
     </div>
-    <div class="scene__text">
-      <h3>Customer records that update themselves.</h3>
-      <p>Every conversation updates the customer's record: their tank, their fish, what they bought, what's on hold and when they'll need supplies again. The assistant uses it to send the right reminder at the right time.</p>
-      <p>Social posts are drafted automatically from the photos your team sends, ready to approve with a tap.</p>
-    </div>
+    <p class="stage__foot"><button type="button" class="replay" id="replay" hidden>Play the conversation again</button></p>
+
+    <ul class="caps">
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><b>Answers in seconds, day and night</b><span>On WhatsApp, from the shop's own guides, range and prices.</span></li>
+        <li><svg viewBox="0 0 40 40" class="fill"><path d="M6 20C10 13 17 10 23 11c4 1 7 4 9 7l5-5v14l-5-5c-2 3-5 6-9 7C17 30 10 27 6 20z"/></svg><b>Remembers every tank</b><span>Tank size, fish and past purchases, from every conversation.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8L3 12z"/><circle cx="7.5" cy="8.5" r="1.4"/></svg><b>Suggests what suits</b><span>Fish and products that fit the customer's tank and are in stock.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b>Holds fish and takes orders</b><span>Reserves livestock and adds products to an order.</span></li>
+        <li><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.3-6 8-6s6.8 2 8 6"/></svg><b>Hands over to your team</b><span>Sick fish, complaints and anything it's unsure of go to a person.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4V8z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Drafts your posts</b><span>Turns the photos your team sends into posts, ready to approve.</span></li>
+    </ul>
   </div>
 </section>
 
@@ -759,6 +802,50 @@
     }, {threshold:.3});
     var sc = document.querySelectorAll('.scene'); for (var s=0;s<sc.length;s++) io.observe(sc[s]);
   }
+})();
+</script>
+
+<script>
+/* Package 2 demo: the chat plays out and the record fills in. Without
+   JavaScript, or with reduced motion, the finished conversation shows. */
+(function(){
+  'use strict';
+  var stage = document.getElementById('stage'), replay = document.getElementById('replay');
+  if (!stage || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var msgs = stage.querySelectorAll('.msg[data-step]');
+  var rows = stage.querySelectorAll('.record__rows div');
+  var finals = [];
+  for (var r = 0; r < rows.length; r++) finals.push(rows[r].querySelector('dd').textContent);
+  var timers = [];
+  var plan = [[0,1],[700,'t'],[2000,2],[2900,3],[3400,'t'],[4600,4],[5500,5],[6000,'t'],[7100,6]];
+  function reset(){
+    timers.forEach(clearTimeout); timers = [];
+    stage.classList.add('is-playing'); stage.classList.remove('is-typing');
+    for (var i = 0; i < msgs.length; i++) msgs[i].classList.remove('is-shown');
+    for (var j = 0; j < rows.length; j++) {
+      rows[j].classList.remove('is-read', 'is-written');
+      var from = rows[j].getAttribute('data-from');
+      rows[j].querySelector('dd').textContent = from === null ? finals[j] : from;
+    }
+    replay.hidden = true;
+  }
+  function step(n){
+    stage.classList.remove('is-typing');
+    for (var i = 0; i < msgs.length; i++) if (+msgs[i].getAttribute('data-step') === n) msgs[i].classList.add('is-shown');
+    for (var j = 0; j < rows.length; j++) {
+      if (+rows[j].getAttribute('data-read') === n) rows[j].classList.add('is-read');
+      if (+rows[j].getAttribute('data-write') === n) { rows[j].querySelector('dd').textContent = finals[j]; rows[j].classList.add('is-written'); }
+    }
+    if (n === 6) timers.push(setTimeout(function(){ replay.hidden = false; }, 600));
+  }
+  function play(){
+    reset();
+    plan.forEach(function(p){ timers.push(setTimeout(function(){ if (p[1] === 't') stage.classList.add('is-typing'); else step(p[1]); }, p[0] + 300)); });
+  }
+  reset();
+  new IntersectionObserver(function(en, io){ if (en[0].isIntersecting) { io.disconnect(); play(); } }, {threshold: .45}).observe(stage);
+  replay.addEventListener('click', play);
 })();
 </script>
 </body>
