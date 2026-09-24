@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#06161f">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The full marketing package for Sam's Aquarium">
-<meta property="og:description" content="Online shop, WhatsApp, social media, Google and advertising, set up and run every month. Prepared by Skye Harmse, September 2026.">
+<meta property="og:description" content="Online shop, WhatsApp, social media, Google and advertising, set up and run every month, with an optional AI assistant. Prepared by Skye Harmse, September 2026.">
 <meta property="og:image" content="https://skyeh01.github.io/sams-aquarium/proposal/img/share.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -334,18 +334,45 @@
   .inc-grid b::before{content:"";flex:none;width:18px;height:18px;border-radius:50%;background:var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.4l2.6 2.6L13 6.6' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
   .inc-grid--needs b::before{background:var(--teal-2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='2.4' fill='%23fff'/%3E%3C/svg%3E") center/100% no-repeat}
   .inc-grid span{display:block;color:var(--text-dim);font-size:.98rem;line-height:1.5}
-  .inc-grid--needs{grid-template-columns:1fr 1fr}
   @media(max-width:900px){.inc-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:600px){.inc-grid{grid-template-columns:1fr}}
   .close .cover__veil{background:linear-gradient(90deg,rgba(6,22,31,.9) 0%,rgba(6,22,31,.75) 42%,rgba(6,22,31,.25) 75%),linear-gradient(180deg,rgba(6,22,31,.2) 0%,rgba(6,22,31,.6) 100%)}
   .price-note{margin:.9rem 0 0;font-size:.92rem;color:var(--on-dark-dim);max-width:60ch}
   .scene__text h3{margin-bottom:.6em}
+
+  /* ---------- AI assistant section ---------- */
+  .ai-head{background:var(--deep);color:var(--on-dark);padding-bottom:clamp(1.4rem,3vw,2rem)}
+  .ai-head h2{color:#fff}
+  .ai-head .lead{color:var(--on-dark-dim)}
+  .scene--ai,.scene--ai:nth-of-type(odd),.scene--ai:nth-of-type(even){background:var(--deep)}
+  .scene--ai h3{color:#fff}
+  .scene--ai .scene__text p{color:var(--on-dark)}
+  .scene--ai .wa-date{background:#d9f2e6;color:#2d5a45}
+  .inc-grid--ai b::before{background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.4l2.6 2.6L13 6.6' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+  .inc-grid--needs{grid-template-columns:repeat(3,1fr)}
+
+  /* ---------- two packages ---------- */
+  .tiers{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2.5vw,1.8rem);margin:1.6rem 0 1.4rem}
+  .tier{border:1px solid rgba(159,214,221,.22);border-radius:10px;padding:clamp(1.3rem,3vw,1.9rem)}
+  .tier--ai{border-color:var(--orange);background:rgba(242,106,61,.06)}
+  .tier h3{font-size:1.35rem;color:#fff;margin:0 0 .45rem}
+  .tier__what{color:var(--on-dark-dim);font-size:.98rem;margin:0 0 1.3rem;min-height:3.1em}
+  .tier__fig{padding:.9rem 0;border-top:1px solid rgba(159,214,221,.16)}
+  .tier__fig small{display:block;font-size:.88rem;color:var(--on-dark-dim);margin-bottom:.3rem}
+  .tier__fig b{display:block;font-family:var(--head);font-weight:800;font-size:clamp(2rem,4.2vw,2.8rem);color:#fff;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+  .price-common{padding:1.1rem 0 1.6rem;margin-bottom:1.8rem;border-bottom:1px solid rgba(159,214,221,.22)}
+  .price-common p{margin:0 0 .5rem;color:var(--on-dark-dim);max-width:none}
+  .price-common b{color:#fff;font-weight:600}
+  @media(max-width:760px){.tiers{grid-template-columns:1fr}.tier__what{min-height:0}}
+  @media(max-width:900px){.inc-grid--needs{grid-template-columns:1fr 1fr}}
+  @media(max-width:600px){.inc-grid--needs{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <nav class="rail" aria-label="Sections">
   <a href="#get"><span>What you get</span></a>
+  <a href="#ai"><span>AI assistant</span></a>
   <a href="#included"><span>What is included</span></a>
   <a href="#price"><span>What it costs</span></a>
   <a href="#next"><span>Next step</span></a>
@@ -359,7 +386,7 @@
   <div class="wrap cover__in">
     <img class="cover__logo" src="img/logo.png" alt="Sam's Aquarium" width="350" height="118">
     <h1><span>The full</span><span>marketing</span><span>package.</span></h1>
-    <p>An online shop, WhatsApp, social media, Google and advertising, set up and run for you every month, so Sam's is the first shop Cape Town's fishkeepers find.</p>
+    <p>An online shop, WhatsApp, social media, Google and advertising, set up and run for you every month, so Sam's is the first shop Cape Town's fishkeepers find. Available with an AI assistant that gets to know every customer's tank.</p>
     <div class="cover__meta">
       <div>Prepared for<b>Sam's Aquarium, Bergvliet</b></div>
       <div>Prepared by<b>Skye Harmse</b></div>
@@ -393,8 +420,8 @@
     </div>
     <div class="scene__text">
       <h3>Social media, managed and automated.</h3>
-      <p>Posts written, scheduled and published on Facebook and Instagram every week: new arrivals, the tanks at their best, the macaw. You send a photo when there's something to show.</p>
-      <p>Messages from both land in one inbox, with automatic replies for opening hours, directions and stock questions.</p>
+      <p>Facebook and Instagram posts planned, written and scheduled a month at a time, then published automatically through the month: new arrivals, featured tanks, products and offers. Your team sends photos from the shop floor on WhatsApp, and I turn them into posts.</p>
+      <p>Comments and messages from Facebook, Instagram and WhatsApp all arrive in one inbox for your team to answer. Common questions, like opening hours, directions and delivery areas, get an instant automatic reply.</p>
     </div>
   </div>
 </section>
@@ -522,6 +549,62 @@
   </div>
 </section>
 
+<!-- ============================================================ AI ASSISTANT -->
+<section class="section ai-head" id="ai">
+  <div class="wrap">
+    <h2>Add the AI assistant.</h2>
+    <p class="lead">The second package includes everything above, plus an AI assistant built on Claude. It answers customers on WhatsApp day and night, gets to know each customer's tank, and keeps your customer records up to date.</p>
+  </div>
+</section>
+
+<section class="scene scene--ai">
+  <div class="wrap scene__grid">
+    <div class="scene__art">
+      <div class="phone device"><div class="screen wa">
+        <div class="status"><span>19:42</span><i>●●●● ▮</i></div>
+        <div class="wa-head"><div class="wa-back"></div><div class="wa-av badge"></div><div><div class="wa-name">Sam's Aquarium</div><div class="wa-sub">Business account</div></div></div>
+        <div class="wa-body">
+          <div class="wa-date">You're chatting with Sam's AI assistant</div>
+          <div class="msg msg--out a" style="--d:0">Hi! What else could I add to my tank?<div class="msg-t">19:40</div></div>
+          <div class="msg a" style="--d:1">Hi Thandi. Your 120 litre tank has neons and corydoras, and harlequin rasboras came in this week. They school well with neons. Shall I hold 8 for you?<div class="msg-t">19:40</div></div>
+          <div class="msg msg--out a" style="--d:2">Yes please!<div class="msg-t">19:41</div></div>
+          <div class="msg a" style="--d:3">Done, 8 held until Saturday. Your filter sponges are due for a change too. Add a Bioflow sponge set for R95?<div class="msg-t">19:42</div></div>
+        </div>
+        <div class="wa-foot"><div class="wa-in">Message</div><div class="wa-mic"></div></div>
+      </div></div>
+    </div>
+    <div class="scene__text">
+      <h3>An assistant that knows every tank.</h3>
+      <p>Customers message Sam's on WhatsApp and get an answer straight away. The assistant remembers each customer's tank and fish, answers care questions from the shop's own guides, and suggests fish and products that suit their tank and are in stock.</p>
+      <p>It reserves fish and adds products to an order. Sick fish, complaints and anything it isn't sure of go straight to your team, who can see every conversation and take over at any time.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scene scene--ai scene--flip">
+  <div class="wrap scene__grid">
+    <div class="scene__art">
+      <div class="rep device">
+        <div class="rep-h">Customer record <img src="img/logo.png" alt=""></div>
+        <div class="rep-l a" style="--d:0">
+          <div><span>Customer</span>Thandi M., Tokai</div>
+          <div><span>Tank</span>120 litre community, planted</div>
+          <div><span>Fish</span>10 neons, 6 corydoras, 2 platies</div>
+          <div><span>On hold</span>8 harlequin rasboras, until Saturday</div>
+          <div><span>Next reminder</span>Filter sponges, October</div>
+          <div><span>Lists</span>New arrivals, community fish</div>
+        </div>
+        <div class="rep-f">Example record, updated by the assistant from the chat.</div>
+      </div>
+    </div>
+    <div class="scene__text">
+      <h3>Customer records that update themselves.</h3>
+      <p>Every conversation updates the customer's record: their tank, their fish, what they bought, what's on hold and when they'll need supplies again. The assistant uses it to send the right reminder at the right time.</p>
+      <p>Social posts are drafted automatically from the photos your team sends, ready to approve with a tap.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============================================================ INCLUDED -->
 <section class="section midwater" id="included">
   <div class="wrap">
@@ -548,12 +631,23 @@
         <li><b>Shop support</b><span>The shop kept running, and help with any online order that needs it.</span></li>
         <li><b>Monthly report</b><span>One page: what sold, who got in touch, and where they came from.</span></li>
       </ul>
+      <h3>Added in the AI assistant package</h3>
+      <ul class="inc-grid inc-grid--ai">
+        <li><b>AI WhatsApp assistant</b><span>Built on Claude and trained on the shop's guides, range and prices. Answers customers at any hour.</span></li>
+        <li><b>Customer tank profiles</b><span>Each customer's tank, fish and purchases recorded from their conversations.</span></li>
+        <li><b>Product and fish suggestions</b><span>Fish and products matched to each customer's tank, from what's in stock.</span></li>
+        <li><b>Customer records (CRM)</b><span>Every contact, conversation, order and reminder in one place, updated automatically.</span></li>
+        <li><b>Automated post drafts</b><span>Posts drafted from the photos your team sends, ready to approve.</span></li>
+        <li><b>Weekly review and tuning</b><span>I read the assistant's conversations each week and improve its answers.</span></li>
+      </ul>
       <h3>What I need from you</h3>
       <ul class="inc-grid inc-grid--needs">
         <li><b>WhatsApp access</b><span>Access to your WhatsApp Business account for the move to the API.</span></li>
         <li><b>One person for orders</b><span>Someone on the floor who packs and hands over online orders.</span></li>
         <li><b>Local deliveries</b><span>A staff member with a car, or Uber. The courier covers the rest of Cape Town.</span></li>
         <li><b>A few hours after training</b><span>Time to load the first products into the shop.</span></li>
+        <li><b>Stock data, for the AI package</b><span>A daily stock export from your till system, so the assistant only offers what's in stock.</span></li>
+        <li><b>Your go-ahead on handovers</b><span>Who on your team picks up conversations the assistant passes on.</span></li>
       </ul>
     </div>
   </div>
@@ -563,10 +657,23 @@
 <section class="section depths on-dark" id="price">
   <div class="wrap">
     <h2>What it costs.</h2>
-    <div class="price">
-      <div><small>To set up, once</small><b>R15,000</b><span>Half on commencement, half when the shop goes live.</span></div>
-      <div><small>Every month</small><b>R6,500</b><span>Everything above. Month to month, stop at the end of any month.</span></div>
-      <div><small>Google advertising budget</small><b>from R3,000</b><span>A month, paid straight to Google, from launch. Scaled up as the results justify it.</span></div>
+    <div class="tiers">
+      <div class="tier">
+        <h3>Marketing package</h3>
+        <p class="tier__what">The online shop, WhatsApp, social media, Google, delivery and the monthly report.</p>
+        <div class="tier__fig"><small>To set up, once</small><b>R15,000</b></div>
+        <div class="tier__fig"><small>Every month</small><b>R6,500</b></div>
+      </div>
+      <div class="tier tier--ai">
+        <h3>Marketing + AI assistant</h3>
+        <p class="tier__what">Everything in the marketing package, plus the AI assistant, customer records and automated post drafts.</p>
+        <div class="tier__fig"><small>To set up, once</small><b>R25,000</b></div>
+        <div class="tier__fig"><small>Every month</small><b>R10,500</b></div>
+      </div>
+    </div>
+    <div class="price-common">
+      <p><b>Setup</b> is paid half on commencement and half when the shop goes live. <b>Monthly fees</b> run month to month; stop at the end of any month.</p>
+      <p><b>Google advertising budget</b> from R3,000 a month with either package, paid straight to Google from launch, and scaled up as the results justify it.</p>
     </div>
     <h4>Also paid to others, only once the shop is live</h4>
     <table>
@@ -575,7 +682,8 @@
         <tr><td>Same-day delivery, per drop</td><td>about a short Uber trip</td></tr>
         <tr><td>Courier across Cape Town, per parcel</td><td>from about R85</td></tr>
         <tr><td>WhatsApp marketing messages, charged by Meta</td><td>about R0.62 each</td></tr>
-        <tr><td>WhatsApp order updates, charged by Meta</td><td>about R0.12 each</td></tr>
+        <tr><td>WhatsApp replies and order updates, charged by Meta</td><td>about R0.12 each</td></tr>
+        <tr><td>AI running costs, for the AI package</td><td>included</td></tr>
         <tr><td>Hosting and the domain</td><td>included</td></tr>
       </tbody>
     </table>
@@ -592,7 +700,8 @@
         <h4>&nbsp;</h4>
         <ul>
           <li>The monthly fee is reviewed together after twelve months, against the numbers in the reports.</li>
-          <li>Customer messaging is set up to comply with South African privacy law.</li>
+          <li>Customer messaging and customer records are set up to comply with South African privacy law.</li>
+          <li>Customers are told when they're chatting with the AI assistant, and can ask for a person at any time.</li>
           <li>Prices exclude VAT.</li>
         </ul>
       </div>
